@@ -1,103 +1,68 @@
 package Pages;
 
 import Object.LoginPageObjects;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import Utilities.Wait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 
-public class LoginPage extends Base {
-
-    LoginPageObjects lpo = new LoginPageObjects();
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, lpo);
-    }
+public class LoginPage extends Wait {
 
     public void Check_Login_Displayed() {
-        if (lpo.Log_in_text.isDisplayed()) {
-            System.out.println("Login Page Displayed");
-        } else {
-            System.out.println("Login Page not displayed");
-        }
+       Assert.assertEquals(new LoginPageObjects(driver).getLog_in_text().getText(),"Log in");
     }
 
 
     public void CheckLogo() {
-        if (lpo.logo.isDisplayed()) {//verify logo
-            System.out.println("Logo Displayed");
-        } else {
-            System.out.println("Logo Not Displayed");
-        }
+       Assert.assertTrue(new LoginPageObjects(driver).getlogo().isDisplayed());
     }
 
     public void Verifyfootertext() {
-        String text = lpo.footer_text.getText();
-        System.out.println(text);
-        if (text.equalsIgnoreCase("All rights reserved © Daraz2022.")) {
-            System.out.println("Footer Text Displayed");
-        } else {
-            System.out.println("Footer Text Not Displaxyed");
-        }
+     Assert.assertEquals(new LoginPageObjects(driver).getfooter_text().getText(), "All rights reserved © Daraz2022.");
 
     }
+
 
     public void Login_Case1() {//Successful Login
 
         driver.navigate().refresh();
-        lpo.email.sendKeys("admin");//input username
-        lpo.view_password.click();//Check view password icon
-        lpo.password.sendKeys("12345");//input Password
-        lpo.rememberme_checkbox.click();//Check remember me
-        lpo.login_button.click();//click login button
+        new LoginPageObjects(driver).getemail().sendKeys("techadmin");//input username
+        new LoginPageObjects(driver).getunhide_password().click();//Check view password icon
+        new LoginPageObjects(driver).getpassword().sendKeys(")<6zRZvD!S");//input Password
+        new LoginPageObjects(driver).getrememberme_checkbox().click();//Check remember me
+        new LoginPageObjects(driver).getlogin_button().click();//click login button
     }
-    public void  Login_Case2(){//Empty Login and Verify validation
+    public void  Login_Case2() {//Empty Login and Verify validation
         driver.navigate().refresh();
-        lpo.login_button.click();
-        if(lpo.username_validation.isDisplayed() && lpo.password_validation.isDisplayed()){
-            System.out.println("Case 2 Passed");
-        }
-        else {
-            System.out.println("Case2 failed");
-        }
-
+        new LoginPageObjects(driver).getlogin_button().click();
+        Assert.assertEquals(new LoginPageObjects(driver).getusername_validation().getText(), "Email OR username is a required field; you cannot leave it as blank.");
+        Assert.assertEquals(new LoginPageObjects(driver).getpassword_validation().getText(), "Password is a required field; you cannot leave it as blank.");
     }
-
     public void Login_Case3(){//wrong password
         driver.navigate().refresh();
-        lpo.email.sendKeys("admin");
-        lpo.password.sendKeys(("1234"));
-        lpo.login_button.click();
-        String validation_text = wait.until(ExpectedConditions.visibilityOf(lpo.validation)).getText();
-        if(validation_text.equalsIgnoreCase("Either provided username or password is incorrect.")){
-            System.out.println("Case 3 Passed");
-        }
-        else{ System.out.println("Case 3 Failed");}
+        new LoginPageObjects(driver).getemail().sendKeys("admin");
+        new LoginPageObjects(driver).getpassword().sendKeys(("1234"));
+        new LoginPageObjects(driver).getlogin_button().click();
+        String validation_text = Wait.waitforelement().until(ExpectedConditions.visibilityOf( new LoginPageObjects(driver).getvalidation())).getText();
+        Assert.assertEquals(validation_text,"Either provided username or password is incorrect.");
     }
 
     public void Login_Case4(){ //wrong username
         driver.navigate().refresh();
-        lpo.email.sendKeys("admi");
-        lpo.password.sendKeys(("12345"));
-        lpo.login_button.click();
-        String validation_text = wait.until(ExpectedConditions.visibilityOf(lpo.validation)).getText();
-        if(validation_text.equalsIgnoreCase("Either provided username or password is incorrect.")){
-            System.out.println("Case 4 Passed");
-        }
-        else{ System.out.println("Case 4 Failed");}
+        new LoginPageObjects(driver).getemail().sendKeys("admi");
+        new LoginPageObjects(driver).getpassword().sendKeys(("12345"));
+        new LoginPageObjects(driver).getlogin_button().click();
+        String validation_text = Wait.waitforelement().until(ExpectedConditions.visibilityOf( new LoginPageObjects(driver).getvalidation())).getText();
+        Assert.assertEquals(validation_text,"Either provided username or password is incorrect.");
     }
     public void Login_Case5() { //wrong username
         driver.navigate().refresh();
-        lpo.email.sendKeys("test");
-        lpo.password.sendKeys(("12345"));
-        lpo.login_button.click();
-        String validation_text = wait.until(ExpectedConditions.visibilityOf(lpo.validation)).getText();
-        if(validation_text.equalsIgnoreCase("Either provided username or password is incorrect.")){
-            System.out.println("Case 5 Passed");
-        }
-        else{ System.out.println("Case 5 Failed");}
-    }
+        new LoginPageObjects(driver).getemail().sendKeys("test");
+        new LoginPageObjects(driver).getpassword().sendKeys(("12345"));
+        new LoginPageObjects(driver).getlogin_button().click();
+        String validation_text = Wait.waitforelement().until(ExpectedConditions.visibilityOf( new LoginPageObjects(driver).getvalidation())).getText();
+        Assert.assertEquals(validation_text,"Either provided username or password is incorrect.");
 
+}
 }
 

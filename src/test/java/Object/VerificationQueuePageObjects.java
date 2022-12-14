@@ -1,9 +1,16 @@
 package Object;
 
+import Utilities.Wait;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class VerificationQueuePageObjects {
+    public VerificationQueuePageObjects(WebDriver driver) {
+        Wait.driver = driver;
+        PageFactory.initElements(driver,this);
+    }
 
     @FindBy(xpath ="//span[contains(text(),'Verification Queue')]")
         public WebElement Select_VQ_leftpanel;
