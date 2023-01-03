@@ -3,10 +3,10 @@ package Pages;
 import Utilities.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class Base extends Wait {
-
-
 
 //    public Base(WebDriver driver) {
 //        this.driver=driver;
@@ -14,7 +14,7 @@ public class Base extends Wait {
 
 
     public WebDriver driver() {
-        System.setProperty("webdriver.chrome.driver","/Users/farhanahmedsheikh/Downloads/chromedriver");
+        System.setProperty("webdriver.chrome.driver","/Users/farhanahmedsheikh/Downloads/chromedriver 3");
         driver = new ChromeDriver();
         driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
         driver.manage().window().maximize();
@@ -32,10 +32,8 @@ public class Base extends Wait {
         return driver;
     }
 
-
-
-
-
-
+    public void teardown() {
+        driver.quit();
+    }
 
 }

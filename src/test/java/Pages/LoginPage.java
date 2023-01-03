@@ -2,67 +2,88 @@ package Pages;
 
 import Object.LoginPageObjects;
 import Utilities.Wait;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+
+import static Utilities.Wait.*;
 
 
 public class LoginPage extends Wait {
 
-    public void Check_Login_Displayed() {
-       Assert.assertEquals(new LoginPageObjects(driver).getLog_in_text().getText(),"Log in");
+    protected String pwd = ")<6zRZvD!S";
+    protected String username = "techadmin";
+
+
+
+
+   public void Check_Login_Displayed() {
+       Assert.assertEquals(new LoginPageObjects(driver).Log_in_text.getText(),"Log in");
     }
 
 
     public void CheckLogo() {
-       Assert.assertTrue(new LoginPageObjects(driver).getlogo().isDisplayed());
+       Assert.assertTrue(new LoginPageObjects(driver).logo.isDisplayed());
     }
 
     public void Verifyfootertext() {
-     Assert.assertEquals(new LoginPageObjects(driver).getfooter_text().getText(), "All rights reserved © Daraz2022.");
+        LoginPageObjects lpo = new LoginPageObjects(driver);
+               String footer_text_verify=lpo.footer_text.getText();
+     Assert.assertEquals(footer_text_verify, "All rights reserved © Daraz2023.");
 
     }
 
 
     public void Login_Case1() {//Successful Login
-
+        LoginPageObjects lpo = new LoginPageObjects(driver);
         driver.navigate().refresh();
-        new LoginPageObjects(driver).getemail().sendKeys("techadmin");//input username
-        new LoginPageObjects(driver).getunhide_password().click();//Check view password icon
-        new LoginPageObjects(driver).getpassword().sendKeys(")<6zRZvD!S");//input Password
-        new LoginPageObjects(driver).getrememberme_checkbox().click();//Check remember me
-        new LoginPageObjects(driver).getlogin_button().click();//click login button
+        lpo.email.sendKeys(username);//input username
+        lpo.unhide_password.click();//Check view password icon
+        lpo.password.sendKeys(pwd);//input Password
+        lpo.rememberme_checkbox.click();//Check remember me
+        lpo.login_button.click();//click login button
     }
-    public void  Login_Case2() {//Empty Login and Verify validation
+    public void  Login_Case2() {//Empty Login and Verify  username validation
+        LoginPageObjects lpo = new LoginPageObjects(driver);
         driver.navigate().refresh();
-        new LoginPageObjects(driver).getlogin_button().click();
-        Assert.assertEquals(new LoginPageObjects(driver).getusername_validation().getText(), "Email OR username is a required field; you cannot leave it as blank.");
-        Assert.assertEquals(new LoginPageObjects(driver).getpassword_validation().getText(), "Password is a required field; you cannot leave it as blank.");
+        lpo.login_button.click();
+        Assert.assertEquals(lpo.username_validation.getText(), "Email OR username is a required field; you cannot leave it as blank.");
     }
     public void Login_Case3(){//wrong password
+        LoginPageObjects lpo = new LoginPageObjects(driver);
         driver.navigate().refresh();
-        new LoginPageObjects(driver).getemail().sendKeys("admin");
-        new LoginPageObjects(driver).getpassword().sendKeys(("1234"));
-        new LoginPageObjects(driver).getlogin_button().click();
-        String validation_text = Wait.waitforelement().until(ExpectedConditions.visibilityOf( new LoginPageObjects(driver).getvalidation())).getText();
+        lpo.email.sendKeys("admin");
+        lpo.password.sendKeys(("1234"));
+        lpo.login_button.click();
+        String validation_text = waitforelement().until(ExpectedConditions.visibilityOf( lpo.validation)).getText();
         Assert.assertEquals(validation_text,"Either provided username or password is incorrect.");
     }
 
     public void Login_Case4(){ //wrong username
+        LoginPageObjects lpo = new LoginPageObjects(driver);
         driver.navigate().refresh();
-        new LoginPageObjects(driver).getemail().sendKeys("admi");
-        new LoginPageObjects(driver).getpassword().sendKeys(("12345"));
-        new LoginPageObjects(driver).getlogin_button().click();
-        String validation_text = Wait.waitforelement().until(ExpectedConditions.visibilityOf( new LoginPageObjects(driver).getvalidation())).getText();
+        lpo.email.sendKeys("admi");
+        lpo.password.sendKeys(("12345"));
+        lpo.login_button.click();
+        String validation_text = waitforelement().until(ExpectedConditions.visibilityOf(lpo.validation)).getText();
         Assert.assertEquals(validation_text,"Either provided username or password is incorrect.");
     }
-    public void Login_Case5() { //wrong username
+    public void Login_Case5() { //wrong username and password
+        LoginPageObjects lpo = new LoginPageObjects(driver);
         driver.navigate().refresh();
-        new LoginPageObjects(driver).getemail().sendKeys("test");
-        new LoginPageObjects(driver).getpassword().sendKeys(("12345"));
-        new LoginPageObjects(driver).getlogin_button().click();
-        String validation_text = Wait.waitforelement().until(ExpectedConditions.visibilityOf( new LoginPageObjects(driver).getvalidation())).getText();
+        lpo.email.sendKeys("test");
+        lpo.password.sendKeys(("12345"));
+        lpo.login_button.click();
+        String validation_text = waitforelement().until(ExpectedConditions.visibilityOf(lpo.validation)).getText();
         Assert.assertEquals(validation_text,"Either provided username or password is incorrect.");
 
 }
+    public void  Login_Case6() {//Empty Login and Verify Password validation
+        LoginPageObjects lpo = new LoginPageObjects(driver);
+        driver.navigate().refresh();
+        lpo.login_button.click();
+        Assert.assertEquals(lpo.password_validation.getText(), "Password is a required field; you cannot leave it as blank.");
+    }
 }
 

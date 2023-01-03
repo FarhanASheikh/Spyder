@@ -13,7 +13,10 @@ public class ScraperPageObjects {
         Wait.driver = driver;
         PageFactory.initElements(driver,this);
     }
-
+    @FindBy(xpath = "//a[@href='/scrapy-ui/scraper']")
+            public WebElement scraper_module_nav;
+    @FindBy(xpath = "//h2[@class='pageTitle']")
+        public WebElement pagetitle;
     @FindBy(xpath ="//*[@id='slectVenture' and @name='lang' and @class='my-0 w-80 form-control']")
             public WebElement venture_dropdown;
     @FindBy(xpath ="//*[contains(text(),'BD')]")
@@ -33,6 +36,8 @@ public class ScraperPageObjects {
     @FindBy(xpath = "//*[@id='scrapyDetailtable']/tbody/tr")
             public List<WebElement> rowelement;
     @FindBy(xpath ="//*[@id='scrapyDetailtable']/tbody/tr[1]/td")
+
+
             public List<WebElement> colelement;
     @FindBy(xpath = "//button[@class ='btn btn-lg btn-block transformbuttonbg btn btn-secondary']")
             public WebElement cancel_button;
@@ -44,4 +49,10 @@ public class ScraperPageObjects {
         public WebElement Success_msg;
     @FindBy(xpath = "//table[@id='scrapyDetailtable']//tbody//tr[last()]//td[1]")
             public WebElement last_id;
+    @FindBy(xpath = "//td[contains(text(),'_bd')]")
+        public WebElement check_bd;
+    @FindBy(xpath ="//select[@class ='custom-select custom-select-sm form-control form-control-sm']/option[contains(text(),'20')]")
+        public WebElement records_20;
+    @FindBy(xpath ="//select[@class ='custom-select custom-select-sm form-control form-control-sm']/option[contains(text(),'10')]")
+    public WebElement records_10;
 }
