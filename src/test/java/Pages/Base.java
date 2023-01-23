@@ -16,7 +16,7 @@ public class Base extends Wait {
     public WebDriver driver() {
         System.setProperty("webdriver.chrome.driver","/Users/farhanahmedsheikh/Downloads/chromedriver 3");
         driver = new ChromeDriver();
-        driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
+            driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
         driver.manage().window().maximize();
         String title = driver.getTitle();
         if (title.contains("Daraz App"))

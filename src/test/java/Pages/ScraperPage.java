@@ -59,7 +59,7 @@ public class ScraperPage extends Wait {
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.cancel_button)).click();
     }
 
-    public void Start_Scraping_Jobs() {
+        public void Start_Scraping_Jobs() {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
         spo.button_Initiate_Job.click();//Click intiate Job button
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.select_Pickaboo_bd)).click();//Select competitors to scrape
@@ -76,7 +76,6 @@ public class ScraperPage extends Wait {
         //Check and compare pop up text
         String Jobstart = Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.Success_msg)).getText();
         Assert.assertEquals(Jobstart, "IniateJob SUCCESSFULLY!");
-        Assert.assertNotEquals(Jobstart, "Something went wrong, try again later!");
     }
 
     public void pagination() throws InterruptedException {

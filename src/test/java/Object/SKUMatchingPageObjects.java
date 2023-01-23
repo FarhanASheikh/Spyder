@@ -15,7 +15,7 @@ public class SKUMatchingPageObjects {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//span[contains(text(),'Sku Matching')]")
+    @FindBy(xpath = "//a[@href='/scrapy-ui/skumatching?page=1&pageSize=10']")
     public WebElement SKU_Matching;
     @FindBy(xpath = "//*[@type='button' and @class='btn btnBlue inner btn btn-danger']")
     public WebElement create_task_btn;
@@ -31,17 +31,14 @@ public class SKUMatchingPageObjects {
         public WebElement Create_task_file_upload;
     @FindBy(css = " .create-btn.blue-shadow.btn-primary")
         public WebElement done_btn;
-    @FindBy(xpath = "//*[@for='6' and contains(text(),'Chaldal_bd')]")
+    @FindBy(xpath = "//label[@for='6' and contains(text(),'Chaldal_bd')]")
         public WebElement select_competitor_chaldal;
-    @FindBy(css ="ul.ks-cboxtags input[type=checkbox]:checked")
-        public  WebElement verify_after_check;
-    @FindBy(xpath = "//*[@for='7' and contains(text(),'PandaMart')]")
+    @FindBy(xpath = "//label[@for='7' and contains(text(),'PandaMart')]")
     public WebElement select_competitor_pandamart;
-    @FindBy(xpath = "//*[@for='10' and contains(text(),'Pickaboo_bd')]")
+    @FindBy(xpath = "//label[@for='10' and contains(text(),'Pickaboo_bd')]")
     public WebElement select_competitor_pickaboo;
-    @FindBy(xpath = "//*[@for='204' and contains(text(),'Shajgoj')]")
+    @FindBy(xpath = "//label[@for='204' and contains(text(),'Shajgoj')]")
     public WebElement select_competitor_shajgoj;
-
     @FindBy(xpath = "//button[@class = 'dropdown-btn btnBlue inner btn btn-secondary btn btn-secondary']")
         public  WebElement upload_matches_btn;
     @FindBy(xpath ="//button[@class='dropdown-item' and contains(text(),'Online match')]")
@@ -77,7 +74,7 @@ public class SKUMatchingPageObjects {
     @FindBy(xpath = "//*[@id='taskListTable']/tbody/tr[1]/td[6]")
     public WebElement table_created_time;
     @FindBy(xpath ="//*[@id='taskListTable']/tbody/tr[1]/td[7]/button[@class='row-btn']")
-    public WebElement task_details;
+    public WebElement task_details_btn;
     @FindBy(css = "div.task-info:nth-child(1) div.row:nth-child(2) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_matched_skus;
     @FindBy(css = "div.task-info:nth-child(1) div.row:nth-child(3) div.col-3:nth-child(1) strong")
@@ -92,6 +89,10 @@ public class SKUMatchingPageObjects {
     public WebElement label_created_time;
     @FindBy(css ="div.card.mt-20.p-3.task-info div.container-fluid div.row:nth-child(1) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_daraz_skus;
+    @FindBy(css= "strong.h6 span.errors")
+    public WebElement label_uploaded_file_name;
+    @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[1]/div[2]/strong")
+    public WebElement label_number_of_verified_skus;
     @FindBy(css = "div.scrappy-table.card.p-3.task-info tbody tr:nth-child(1) td:nth-child(4)")
     public WebElement match_competitor_name;
     @FindBy(css =".table.table-borderless.reportList tbody tr:nth-child(1) td:nth-child(9) button:nth-child(2)")
@@ -146,9 +147,81 @@ public class SKUMatchingPageObjects {
     public WebElement database_tab_select_sku;
     @FindBy(css= "div.tab-pane.active input.form-control")
     public WebElement database_tab_search_field;
+    @FindBy(css="div.form-row.flex-column.p-3.form-group select.form-control.custom-select")
+    public WebElement database_tab_competitor_dropdown_filters;
+    @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Chaldal_bd')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_chaldal;
+    @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'PandaMart')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_pandamart;
+    @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Pickaboo_bd')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_pickaboo;
+    @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Shajgoj')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_shajgoj;
     @FindBy(css = "div.tab-pane.active div.form-group button")
     public WebElement database_tab_search_button;
+    @FindBy(css= "div.modal-content div.paginationtabledata button:nth-child(2)")
+    public WebElement database_tab_pagination_next_btn;
     @FindBy(css="div.tab-content div.table-responsive.competitor-products:nth-child(1) tbody tr:nth-child(1) td:nth-child(1) a:nth-child(1)")
-    public WebElement database_sku_from_matched_items;
+    public WebElement database_tab_sku_from_matched_items;
+    @FindBy(css="div.modal-body table.table.table-borderless.reportList tbody tr:nth-child(3) td:nth-child(3)")
+    public WebElement database_tab_table_3rd_row_comp_bank_id;
+    @FindBy(css="div.modal-body table.table.table-borderless.reportList tbody tr:nth-child(6) td:nth-child(3)")
+    public WebElement database_tab_table_6rd_row_comp_bank_id;
+    @FindBy(css="div.modal-body table.table.table-borderless.reportList tbody tr:nth-child(8) td:nth-child(3)")
+    public WebElement database_tab_table_8rd_row_comp_bank_id;
+    @FindBy(xpath = "//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr")
+    public List<WebElement> database_tab_search_row;
+    @FindBy(css = "div.modal-content button.btn.btn-outline-primary.transformbuttonbg.float-right.btn.btn-secondary")
+    public WebElement database_tab_cancel_button;
+    @FindBy(css = "ul.nav.nav-tabs.nav-pills a.active.nav-link")
+    public  WebElement view_matched_item_active_tab;
+    @FindBy(css="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Pickaboo_bd')]")
+    public WebElement view_matched_item_pickaboo_tab;
+    @FindBy(css = "table.table.table-striped.table-hover tbody tr:nth-child(1)")
+    public WebElement view_matched_item_first_row_of_table;
+    //Mark accurate/inaccurate
+    @FindBy(css= "table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(10)")
+    public WebElement mark_verified_or_inaccurate_btn;
+    @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'Colour')]")
+    public WebElement mark_inaccurate_dropdown_reasons_colour_selection;
+    @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'Others')]")
+    public WebElement mark_inaccurate_dropdown_reasons_others_selection;
+    @FindBy(css = "div.modal-dialog.custom-reason.modal-md.modal-dialog-centered div.modal-content")
+    public List <WebElement> mark_inaccurate_others_popup;
+    @FindBy(css ="div.modal-dialog.custom-reason.modal-md.modal-dialog-centered div.modal-content textarea")
+    public WebElement mark_inaccurate_other_input;
+    @FindBy(css = "div.modal-dialog.custom-reason.modal-md.modal-dialog-centered div.modal-content button.btn.create-btn.blue-shadow.float-right")
+    public WebElement mark_inaccurate_other_popup_submit_button;
+    @FindBy(css="div.modal-dialog.custom-reason.modal-md.modal-dialog-centered div.modal-content button.btn.btn-outline-primary.float-right")
+    public WebElement mark_inaccurate_other_popup_cancel_button;
+    @FindBy(css ="div.modal-dialog.custom-reason.modal-md.modal-dialog-centered div.modal-content span")
+    public WebElement mark_inaccurate_other_popup_cancel_icon;
+    @FindBy(xpath = "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']")
+    public WebElement mark_inaccurate_dropdown_reasons;
+    @FindBy(css= "table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(9) p.reason")
+    public WebElement status_column;
+    @FindBy(css="table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(9) div.tooltip p")
+    public WebElement status_column_reason;
+    //Task Details
+    @FindBy(xpath ="//select[@class ='custom-select custom-select-sm form-control form-control-sm']")
+    public WebElement table_show_records_dropdown;
+    @FindBy(css="div.scrappy-table table.table.table-borderless.reportList tbody tr td  p.table-product-id")
+    public List <WebElement> task_details_table_sku_id;
+    @FindBy(css = "tbody td:nth-child(7) p")
+    public List <WebElement> task_details_table_no_of_matched_skus;
+    @FindBy(xpath = "//div[@class='form-row flex-column p-3'][2]/select")
+    public WebElement filter_sku_current;
+    @FindBy(xpath = "//div[@class='form-row flex-column p-3'][2]/select/option")
+    public List <WebElement> filter_sku_current_all_options;
+    @FindBy(xpath = "//div[@class='form-row flex-column p-3'][5]/select/option")
+    public List<WebElement> filter_matching_status_all_options;
+    @FindBy(xpath = "//div[@class='form-row flex-column p-3'][5]/select")
+    public WebElement filter_matching_status;
+    @FindBy(xpath = "//div[@class='form-row flex-column p-3'][2]/select/option[contains(text(),'In Active')]")
+    public WebElement filter_sku_current_inactive;
+    @FindBy(css ="div.card.mt-20.p-3.task-info button.btn.form-control.btn-primary.blue-shadow")
+    public WebElement filter_filter_btn;
+    @FindBy(css = "div.notfound")
+    public WebElement task_details_no_data_found;
 }
 

@@ -36,8 +36,6 @@ public class ScraperPageObjects {
     @FindBy(xpath = "//*[@id='scrapyDetailtable']/tbody/tr")
             public List<WebElement> rowelement;
     @FindBy(xpath ="//*[@id='scrapyDetailtable']/tbody/tr[1]/td")
-
-
             public List<WebElement> colelement;
     @FindBy(xpath = "//button[@class ='btn btn-lg btn-block transformbuttonbg btn btn-secondary']")
             public WebElement cancel_button;

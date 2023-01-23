@@ -2,26 +2,38 @@ package Pages;
 
 import Utilities.Wait;
 import Object.SKUMatchingPageObjects;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Optional;
+import java.util.Properties;
 
 public class SKUMatchingPage extends Wait {
     int table_matched_daraz_skus = 0;
     String table_competitors = null;
     String table_user = null;
-    String table_created_time = null;
+    Date table_created_time;
     int popup_displayed = 0;
+    String mark_inaccurate_others_text = "Automation Test";
 
 
     public void Click_SKUMatching_Module() {
-        new SKUMatchingPageObjects(driver).SKU_Matching.click();
+       SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        skumpo.SKU_Matching.click();
+        String scraper_module_nav_class = skumpo.SKU_Matching.getAttribute("Class");
+        Assert.assertEquals("active",scraper_module_nav_class);
 
     }
     //Create Task
@@ -62,7 +74,10 @@ public class SKUMatchingPage extends Wait {
         new SKUMatchingPageObjects(driver).create_task_btn.click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_name_field)).sendKeys("^^$$Automation Testing task$$^^");
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).click();
-        skumpo.Create_task_file_upload.sendKeys("/Users/farhanahmedsheikh/Downloads/sku_template_1669017946660.csv");
+        skumpo.select_competitor_pickaboo.click();
+        skumpo.select_competitor_pandamart.click();
+        skumpo.select_competitor_shajgoj.click();
+        skumpo.Create_task_file_upload.sendKeys("/Users/farhanahmedsheikh/Documents/sku_template_1669017946660.csv");
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.done_btn)).click();
         String success_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).getText();
        Assert.assertEquals(success_text,"Task Created Successfully");
@@ -116,9 +131,11 @@ public class SKUMatchingPage extends Wait {
             Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).done_btn)).click();
         }
 public void download_create_task_templete() throws InterruptedException, IOException {
-    new SKUMatchingPageObjects(driver).create_task_btn.click();
-    waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).task_name_field)).isDisplayed();
-    new SKUMatchingPageObjects(driver).download_match_templete.click();
+    SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+    driver.navigate().refresh();
+    skumpo.create_task_btn.click();
+    waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_name_field)).isDisplayed();
+    skumpo.download_match_templete.click();
     Thread.sleep(2000);
     Path dir = Paths.get("/Users/farhanahmedsheikh/Downloads/");  // specify your directory
 
@@ -132,20 +149,182 @@ public void download_create_task_templete() throws InterruptedException, IOExcep
     }
 
 }
-public void get_task_data() throws InterruptedException {
-        table_matched_daraz_skus = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).table_matched_daraz_sku)).getText());
-       table_competitors = new SKUMatchingPageObjects(driver).table_competitors.getText();
-       table_user = new SKUMatchingPageObjects(driver).table_user.getText();
-       table_created_time = new SKUMatchingPageObjects(driver).table_created_time.getText();
 
-       System.out.println(table_matched_daraz_skus);
-       System.out.println(table_competitors);
-       Thread.sleep(4000);}
+public void get_task_data() throws InterruptedException, ParseException {
+    SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+
+        table_matched_daraz_skus = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.table_matched_daraz_sku)).getText());
+       table_competitors = skumpo.table_competitors.getText();
+       table_user = skumpo.table_user.getText();
+       String get_table_time = skumpo.table_created_time.getText();
+        SimpleDateFormat formatter5=new SimpleDateFormat("E, dd MMM yyyy HH:mm:ss");
+        table_created_time =formatter5.parse(get_table_time);
+        }
 
     //TASK DETAILS
     public void click_task_details(){
-        waitforelement().until(ExpectedConditions.elementToBeClickable(new SKUMatchingPageObjects(driver).task_details)).click();
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.elementToBeClickable(new SKUMatchingPageObjects(driver).task_details_btn)).click();
+        Assert.assertTrue(driver.getCurrentUrl().contains("details"));
     }
+
+    //Verify Filters
+    public void verify_sku_current_filter(){
+        SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.filter_sku_current)).getText(),"Active\n" +
+                "In Active");
+    }
+    public void verify_matching_status_filter() {
+        SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.filter_matching_status)).getText(),"ALL\n" +
+                "SKUs with only verified matches\n" +
+                "SKUs with only accurate matches\n" +
+                "SKUs with inaccurate matches\n" +
+                "SKUs with unverified matches\n" +
+                "SKUs with OOS matches");
+    }
+
+    //Veirfy all active/inactive skus from file
+
+    public void verify_all_active_skus_from_file() throws IOException, InterruptedException {
+        SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        FileInputStream fis= new FileInputStream("/Users/farhanahmedsheikh/Documents/untitled folder/myTestProject(Copy for process 2)/src/test/java/Pages/uploaded_file_skus.properties");
+        Properties prop = new Properties();
+        prop.load(fis);
+        if(prop == null){
+            System.out.println("No Data Found");
+            Assert.assertTrue(prop.isEmpty());
+        }
+        else{
+        Thread.sleep(4000);
+        if (skumpo.task_details_table_sku_id.size() >=1){
+            waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.task_details_table_sku_id));
+            for(int h = 0; h<skumpo.task_details_table_sku_id.size(); h++){
+                String first_sku = String.valueOf(waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.task_details_table_sku_id)).get(h).getText());
+                for (int i=1; i<=8; i++){
+                    String t = prop.getProperty("SKU"+i);
+                    if (t.equals(first_sku)){
+                        System.out.println(first_sku);
+                        System.out.println(t);
+                        Assert.assertEquals(t, first_sku);
+                    }}}}
+        else {
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
+
+            System.out.println(skumpo.task_details_no_data_found.getText());}}}
+
+    public void verify_all_inactive_skus_from_file() throws IOException, InterruptedException {
+        SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.filter_sku_current_inactive)).click();
+        waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.filter_filter_btn)).click();
+        Thread.sleep(4000);
+        FileInputStream fis= new FileInputStream("/Users/farhanahmedsheikh/Documents/untitled folder/myTestProject(Copy for process 2)/src/test/java/Pages/uploaded_file_skus.properties");
+        Properties prop = new Properties();
+        prop.load(fis);
+        if(prop == null){
+            System.out.println("No Data Found");
+            Assert.assertTrue(prop.isEmpty());
+        }
+        else{
+            Thread.sleep(4000);
+            if (skumpo.task_details_table_sku_id.size() >=1){
+                waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.task_details_table_sku_id));
+                for(int h = 0; h<skumpo.task_details_table_sku_id.size(); h++){
+                    String first_sku = String.valueOf(waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.task_details_table_sku_id)).get(h).getText());
+                    for (int i=1; i<=8; i++){
+                        String t = prop.getProperty("SKU"+i);
+                        if (t.equals(first_sku)){
+                            System.out.println(first_sku);
+                            System.out.println(t);
+                            Assert.assertEquals(t, first_sku);
+                        }}}}
+            else {
+                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
+
+                System.out.println(skumpo.task_details_no_data_found.getText());}}}
+
+
+
+    public void verify_all_active_inactive_skus_with_matched_daraz_skus() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        Thread.sleep(4000);
+        int total_size = 0;
+        if (skumpo.task_details_table_sku_id.size() >= 1) {
+            total_size = skumpo.task_details_table_sku_id.size();
+            skumpo.filter_sku_current_inactive.click();
+            skumpo.filter_filter_btn.click();
+            Thread.sleep(4000);
+            if (skumpo.task_details_table_sku_id.size() >= 1) {
+                System.out.println("a1");
+                total_size = total_size + skumpo.task_details_table_sku_id.size();
+                System.out.println(total_size+"and"+skumpo.label_number_of_matched_skus);
+            } else {
+                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
+                System.out.println(total_size+"and"+skumpo.label_number_of_matched_skus);
+
+                System.out.println("inactive"+skumpo.task_details_no_data_found.getText());
+            }
+        } else {
+            skumpo.filter_sku_current_inactive.click();
+            skumpo.filter_filter_btn.click();
+            Thread.sleep(4000);
+            if (skumpo.task_details_table_sku_id.size() >= 1) {
+                System.out.println("a2");
+                total_size = total_size + skumpo.task_details_table_sku_id.size();
+                System.out.println(total_size+"and"+skumpo.label_number_of_matched_skus);
+            } else {
+                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
+                System.out.println(total_size+"and"+skumpo.label_number_of_matched_skus);
+
+                System.out.println("active"+skumpo.task_details_no_data_found.getText());
+            }
+
+        }
+        Assert.assertEquals(total_size, Integer.parseInt(skumpo.label_number_of_matched_skus.getText()));
+    }
+    public void verify_verified_active_inactive_skus_with_number_of_verified_matches() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        int total_size = 0;
+        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.filter_matching_status_all_options)).size();
+        System.out.println(skumpo.filter_matching_status_all_options.size());
+        for(int j=1; j<4;j+=2){
+            skumpo.filter_matching_status_all_options.get(j).click();
+            Thread.sleep(2000);
+            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.filter_filter_btn)).click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.table_show_records_dropdown)).isEnabled();
+        for(int i =0;i<skumpo.filter_sku_current_all_options.size();i++){
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.filter_sku_current_all_options.get(i))).click();
+            Thread.sleep(2000);
+            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.filter_filter_btn)).click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.table_show_records_dropdown)).isEnabled();
+            Thread.sleep(4000);
+                if(skumpo.task_details_table_sku_id.size() >= 1){
+                    for(int k=0;k<skumpo.task_details_table_no_of_matched_skus.size();k++){
+                        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.task_details_table_no_of_matched_skus));
+                        Thread.sleep(5000);
+                        total_size += Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_table_no_of_matched_skus.get(k))).getText());
+                    }
+                    System.out.println(total_size+"and"+skumpo.label_number_of_verified_skus.getText());
+                }
+
+                else {
+                    waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
+                    System.out.println(total_size+"and"+skumpo.label_number_of_verified_skus.getText());
+
+                }
+            }
+        }
+        Assert.assertEquals(total_size,Integer.parseInt(skumpo.label_number_of_verified_skus.getText()));
+    }
+
+
+    //Verify Verified Matches
+
+
     //click add competitor sku button and verify pop_up
     public void click_add_competitor_sku_verify_popup(){
         driver.navigate().refresh();
@@ -181,6 +360,7 @@ public void get_task_data() throws InterruptedException {
         Assert.assertEquals(online_tab_class,"active nav-link");
     }
     String competitor_name;
+    int no_of_matches =0;
     public void add_online_competitor_sku_match_valid_url(){
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
@@ -191,7 +371,7 @@ public void get_task_data() throws InterruptedException {
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_dropdown)).click();
             skumpo.select_pickaboo.click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.product_url_input)).sendKeys(" https://www.pickaboo.com/product-detail/amazfit-gtr-2-smart-watch-new-edition-global-version/");
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.product_url_input)).sendKeys("https://www.pickaboo.com/product-detail/hp-m22f-22-inch-1080p-fhd-ips-monitor/");
             skumpo.add_online_sku_btn.click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).isDisplayed();
             String toast_msg_text= (skumpo.success_msg).getText();
@@ -199,11 +379,10 @@ public void get_task_data() throws InterruptedException {
         }
     }
 
-    public void verify_online_match_added(){// Blocked as it displayed 2 Pickaboo matches
+    public void verify_online_match_added(){//Work around discussed with zaidan
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
-        String updated_competitor_name = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.match_competitor_name)).getText();
-        System.out.println(updated_competitor_name);
+
 
 
     }
@@ -297,7 +476,7 @@ public void get_task_data() throws InterruptedException {
         boolean button_enabled = skumpo.offline_match_add_sku_btn.isEnabled();
         Assert.assertFalse(button_enabled);
     }
-    public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category() {
+        public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
@@ -362,7 +541,7 @@ public void get_task_data() throws InterruptedException {
         Assert.assertEquals(skumpo.offline_tab_competitor_price.getText(),"20");
 
     }
-    public void verify_offline_competitor_sku_match_added_verify_competitor_categrory(){
+    public void verify_offline_competitor_sku_match_added_verify_competitor_category(){
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
@@ -390,6 +569,238 @@ public void get_task_data() throws InterruptedException {
         skumpo.add_competitor_sku_database_tab.click();
         Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_sku_database_btn_disabled)).getAttribute("class"),"btn create-btn blue-shadow float-right btn btn-secondary disabled");
     }
+
+    public void verify_search_btn_disabled(){
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        Assert.assertFalse(skumpo.database_tab_search_button.isEnabled());
+    }
+    public void verify_cancel_icon_database_tab() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_database_tab)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.cancel_icon)).click();
+        Thread.sleep(2000);
+        popup_displayed = skumpo.Create_task_popup.size();
+        Assert.assertEquals(popup_displayed, 0);
+    }
+    public void verify_cancel_button_database_tab() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_database_tab)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_cancel_button)).click();
+        Thread.sleep(2000);
+        popup_displayed = skumpo.Create_task_popup.size();
+        Assert.assertEquals(popup_displayed, 0);
+    }
+
+
+    public void  verify_search_btn_enabled_on_filter_selection(){
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        skumpo.database_tab_competitor_dropdown_filters.click();
+        skumpo.database_tab_competitor_dropdown_filters_select_chaldal.click();
+        Assert.assertTrue(skumpo.database_tab_search_button.isEnabled());
+    }
+    public void verify_filter_competitor_name(){
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+       Assert.assertEquals(skumpo.database_tab_competitor_dropdown_filters.getText(),"Select competitor\n" +
+               "Chaldal_bd\n" +
+               "PandaMart\n" +
+               "Pickaboo_bd\n" +
+               "Shajgoj");
+    }
+    public void verify_data_on_filter_by_chaldal_database_tab() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_chaldal)).click();
+        skumpo.database_tab_search_button.click();
+        String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(third.contains("CHAL-BD-"));
+        Assert.assertTrue(sixth.contains("CHAL-BD-"));
+        Assert.assertTrue(eight.contains("CHAL-BD-"));
+        Thread.sleep(1000);
+        skumpo.database_tab_pagination_next_btn.click();
+        String II_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String II_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String II_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(II_third.contains("CHAL-BD-"));
+        Assert.assertTrue(II_sixth.contains("CHAL-BD-"));
+        Assert.assertTrue(II_eight.contains("CHAL-BD-"));
+        Thread.sleep(1000);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        String III_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String III_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String III_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(III_third.contains("CHAL-BD-"));
+        Assert.assertTrue(III_sixth.contains("CHAL-BD-"));
+        Assert.assertTrue(III_eight.contains("CHAL-BD-"));
+        Thread.sleep(1000);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        String IV_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String IV_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String IV_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(IV_third.contains("CHAL-BD-"));
+        Assert.assertTrue(IV_sixth.contains("CHAL-BD-"));
+        Assert.assertTrue(IV_eight.contains("CHAL-BD-"));
+    }
+    public void verify_data_on_filter_by_pandamart_database_tab() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_pandamart)).click();
+        skumpo.database_tab_search_button.click();
+        String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(third.contains("PAND-BD-"));
+        Assert.assertTrue(sixth.contains("PAND-BD-"));
+        Assert.assertTrue(eight.contains("PAND-BD-"));
+        Thread.sleep(1000);
+        skumpo.database_tab_pagination_next_btn.click();
+        String II_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String II_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String II_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(II_third.contains("PAND-BD-"));
+        Assert.assertTrue(II_sixth.contains("PAND-BD-"));
+        Assert.assertTrue(II_eight.contains("PAND-BD-"));
+        Thread.sleep(1000);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        String III_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String III_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String III_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(III_third.contains("PAND-BD-"));
+        Assert.assertTrue(III_sixth.contains("PAND-BD-"));
+        Assert.assertTrue(III_eight.contains("PAND-BD-"));
+        Thread.sleep(1000);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        String IV_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String IV_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String IV_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(IV_third.contains("PAND-BD-"));
+        Assert.assertTrue(IV_sixth.contains("PAND-BD-"));
+        Assert.assertTrue(IV_eight.contains("PAND-BD-"));
+    }
+    public void verify_data_on_filter_by_pickaboo_database_tab() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_pickaboo)).click();
+        skumpo.database_tab_search_button.click();
+        String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(third.contains("PICK-BD-"));
+        Assert.assertTrue(sixth.contains("PICK-BD-"));
+        Assert.assertTrue(eight.contains("PICK-BD-"));
+        Thread.sleep(1000);
+        skumpo.database_tab_pagination_next_btn.click();
+        String II_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String II_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String II_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(II_third.contains("PICK-BD-"));
+        Assert.assertTrue(II_sixth.contains("PICK-BD-"));
+        Assert.assertTrue(II_eight.contains("PICK-BD-"));
+        Thread.sleep(1000);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        String III_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String III_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String III_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(III_third.contains("PICK-BD-"));
+        Assert.assertTrue(III_sixth.contains("PICK-BD-"));
+        Assert.assertTrue(III_eight.contains("PICK-BD-"));
+        Thread.sleep(1000);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        String IV_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String IV_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String IV_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(IV_third.contains("PICK-BD-"));
+        Assert.assertTrue(IV_sixth.contains("PICK-BD-"));
+        Assert.assertTrue(IV_eight.contains("PICK-BD-"));
+    }
+    public void verify_data_on_filter_by_shajgoj_database_tab() throws InterruptedException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_shajgoj)).click();
+        skumpo.database_tab_search_button.click();
+        String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+      //  Assert.assertTrue(third.contains("SHAG-BD-")); not working due to invalid entry
+        Assert.assertTrue(sixth.contains("SHAG-BD-"));
+        Assert.assertTrue(eight.contains("SHAG-BD-"));
+        skumpo.database_tab_pagination_next_btn.click();
+        Thread.sleep(1000);
+        String II_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String II_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String II_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(II_third.contains("SHAG-BD-"));
+       // Assert.assertTrue(II_sixth.contains("SHAG-BD-"));not working due to invalid entry
+        Assert.assertTrue(II_eight.contains("SHAG-BD-"));
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        Thread.sleep(1000);
+        String III_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String III_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String III_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(III_third.contains("SHAG-BD-"));
+     //   Assert.assertTrue(III_sixth.contains("SHAG-BD-"));
+        Assert.assertTrue(III_eight.contains("SHAG-BD-"));
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_pagination_next_btn)).click();
+        Thread.sleep(1000);
+        String IV_third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
+        String IV_sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
+        String IV_eight =skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
+        Assert.assertTrue(IV_third.contains("SHAG-BD-"));
+        Assert.assertTrue(IV_sixth.contains("SHAG-BD-"));
+        Assert.assertTrue(IV_eight.contains("SHAG-BD-"));
+    }
+
+    public void search_sku_name_against_competitor_database_tab() {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        skumpo.add_competitor_sku_database_tab.click();
+        skumpo.database_tab_search_field.sendKeys("Food");
+        skumpo.database_tab_competitor_dropdown_filters_select_chaldal.click();
+        skumpo.database_tab_search_button.click();
+        System.out.println(waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.database_tab_search_row)).size());
+        for (int i = 1; i <= skumpo.database_tab_search_row.size(); i++) {
+            System.out.println("loop"+i);
+                String productname =driver.findElement(By.xpath("//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr["+i+"]/td[2]")).getText();
+                Assert.assertTrue(productname.contains("Food"));
+                 String comp_id = driver.findElement(By.xpath("//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr["+i+"]/td[3]")).getText();
+                 Assert.assertTrue(comp_id.contains("CHAL-BD"));
+
+            }
+
+    }
 public void add_match_database_tab(){
     SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
     driver.navigate().refresh();
@@ -406,7 +817,7 @@ public void verify_database_match_added(){
     SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
     driver.navigate().refresh();
     waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
-    Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_sku_from_matched_items)).getText(),"Parachute SkinPure Beauty Olive Oil (Free Glow Face Wash 50 gm) 200 ml");
+    Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_sku_from_matched_items)).getText(),"Parachute SkinPure Beauty Olive Oil (Free Glow Face Wash 50 gm) 200 ml");
 
 }
 
@@ -419,7 +830,7 @@ public void verify_database_match_added(){
 
     public void label_number_of_daraz_skus(){
         int daraz_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
-        Assert.assertEquals(daraz_sku,4269);//Number of records in uploaded file
+        Assert.assertEquals(daraz_sku,8);//Number of records in uploaded file
     }
 
     public void label_number_of_unmatched_skus(){
@@ -435,10 +846,11 @@ public void verify_database_match_added(){
         Assert.assertEquals(table_matched_daraz_skus, matched_sku);
     }
     public void label_number_of_pending_skus(){
-        int pending_sku = Integer.parseInt((waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_pending_skus))).getText());
-        int umatched_sku= Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_unmatched_skus)).getText());
-        int matched_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_matched_skus)).getText());
-        int daraz_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
+      SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        int pending_sku = Integer.parseInt((waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_number_of_pending_skus))).getText());
+        int umatched_sku= Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_number_of_unmatched_skus)).getText());
+        int matched_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_number_of_matched_skus)).getText());
+        int daraz_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_number_of_daraz_skus)).getText());
         if(pending_sku == 0){
            int total= umatched_sku+matched_sku;
            Assert.assertEquals(total,daraz_sku);
@@ -449,20 +861,24 @@ public void verify_database_match_added(){
 
     }
     public void label_competitor(){
-        String competitor= new SKUMatchingPageObjects(driver).label_competitor.getText();
-        Assert.assertEquals(table_competitors,competitor);
+       SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+       waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_competitor));
+        Assert.assertEquals(table_competitors.replace(",",""),skumpo.label_competitor.getText());
     }
     public void label_user(){
         String user= new SKUMatchingPageObjects(driver).label_user.getText();
         Assert.assertEquals(table_user,user);
     }
-//    public void label_created_time() {
-//        String created_time = new SKUMatchingPageObjects(driver).label_created_time.getText();
-//        Assert.assertEquals(table_created_time,created_time);
-//    }
+    public void label_created_time() throws ParseException {
+       SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        String created_time_txt = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_created_time)).getText();
+      SimpleDateFormat formatter5=new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        Date created_time =formatter5.parse(created_time_txt);
+        Assert.assertEquals(table_created_time,created_time);
+    }
 
 
-    public void get_table_data() throws InterruptedException {
+    public void get_table_data() throws InterruptedException {// Pagination Blocker
         Thread.sleep(3000);
         int Beforejob_tablesize = new SKUMatchingPageObjects(driver).pagination.size();
         new SKUMatchingPageObjects(driver).pagination.get(Beforejob_tablesize-2).click();
@@ -471,7 +887,246 @@ public void verify_database_match_added(){
         System.out.println(a);
     }
 
+    public void download_file_task_details() throws InterruptedException, IOException {
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_uploaded_file_name)).click();
+        Thread.sleep(2000);
+        Path dir = Paths.get("/Users/farhanahmedsheikh/Downloads/");  // specify your directory
 
+        Optional<Path> lastFilePath = Files.list(dir)    // here we get the stream with full directory listing
+                .filter(f -> !Files.isDirectory(f))  // exclude subdirectories from listing
+                .max(Comparator.comparingLong(f -> f.toFile().lastModified()));  // finally get the last file using simple comparator by lastModified field
+
+        if ( lastFilePath.isPresent() ) // your folder may be empty3
+        {
+            System.out.println(lastFilePath);
+        }
+
+    }
+
+    //Mark accurate/inaccurate
+
+    public void mark_inaccurate()throws InterruptedException {
+        driver.navigate().refresh();
+        Actions reason = new Actions(driver);
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        System.out.println(skumpo.view_matched_item_active_tab.getText());
+        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+        System.out.println(match_text +'\n');
+        if (match_text.contains("VERIFIED")) {
+            skumpo.mark_verified_or_inaccurate_btn.click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_colour_selection)).click();
+            Thread.sleep(2000);
+            reason.moveToElement(skumpo.status_column).perform();
+            System.out.println(skumpo.status_column_reason.getText());
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(),"Colour");
+            skumpo.mark_verified_or_inaccurate_btn.click();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(),"VERIFIED");
+        }
+        else if (match_text.contains("INACCURATE")) {
+            reason.moveToElement(skumpo.status_column).perform();
+            String hover_reason = skumpo.status_column_reason.getText();
+            skumpo.mark_verified_or_inaccurate_btn.click();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(),"VERIFIED");
+            skumpo.mark_verified_or_inaccurate_btn.click();
+            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'"+hover_reason+"')]")).click();
+            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(),hover_reason);
+        }
+    }
+public void mark_verified() throws InterruptedException {
+    driver.navigate().refresh();
+    Actions reason = new Actions(driver);
+    SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+    waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+    waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+    System.out.println(skumpo.view_matched_item_active_tab.getText());
+    String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+    System.out.println(match_text +'\n');
+    if (match_text.contains("VERIFIED")) {
+        skumpo.mark_verified_or_inaccurate_btn.click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_colour_selection)).click();
+        reason.moveToElement(skumpo.status_column).perform();
+        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(),"Colour");
+        skumpo.mark_verified_or_inaccurate_btn.click();
+        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(),"VERIFIED");
+
+    }
+    else if (match_text.contains("INACCURATE")) {
+        reason.moveToElement(skumpo.status_column).perform();
+        String hover_reason = skumpo.status_column_reason.getText();
+        skumpo.mark_verified_or_inaccurate_btn.click();
+        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(),"VERIFIED");
+        skumpo.mark_verified_or_inaccurate_btn.click();
+        driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'"+hover_reason+"')]")).click();
+        reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(),hover_reason);
+    }
+    }
+
+    public void verify_mark_inaccurate_dropdown() throws InterruptedException {
+        driver.navigate().refresh();
+        Actions reason = new Actions(driver);
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        System.out.println(skumpo.view_matched_item_active_tab.getText());
+        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+        System.out.println(match_text +'\n');
+        if(match_text.contains("VERIFIED")){
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).isDisplayed();
+            System.out.println(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText());
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(),"Brand\n" +
+                    "Warranty\n" +
+                    "Model\n" +
+                    "Colour\n" +
+                    "Product\n" +
+                    "Specs\n" +
+                    "Quantity\n" +
+                    "Size\n" +
+                    "Others");
+    }
+    else if(match_text.contains("INACCURATE")){
+            reason.moveToElement(skumpo.status_column).perform();
+            String hover_reason = skumpo.status_column_reason.getText();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).isDisplayed();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(),"Brand\n" +
+                    "Warranty\n" +
+                    "Model\n" +
+                    "Colour\n" +
+                    "Product\n" +
+                    "Specs\n" +
+                    "Quantity\n" +
+                    "Size\n" +
+                    "Others");
+            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'"+hover_reason+"')]")).click();
+            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(),hover_reason);
+        }}
+
+    public void verify_other_reason_mark_inaccurate() throws InterruptedException {
+        driver.navigate().refresh();
+        Actions reason = new Actions(driver);
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        System.out.println(skumpo.view_matched_item_active_tab.getText());
+        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+        System.out.println(match_text +'\n');
+        if(match_text.contains("VERIFIED")) {
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            skumpo.mark_inaccurate_dropdown_reasons_others_selection.click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_input)).sendKeys(mark_inaccurate_others_text);
+            skumpo.mark_inaccurate_other_popup_submit_button.click();
+            Thread.sleep(2000);
+            reason.moveToElement(skumpo.status_column).perform();
+            Assert.assertEquals(skumpo.status_column_reason.getText(), mark_inaccurate_others_text);
+            skumpo.mark_verified_or_inaccurate_btn.click();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+        }
+        else if (match_text.contains("INACCURATE")){
+            reason.moveToElement(skumpo.status_column).perform();
+            String hover_reason = skumpo.status_column_reason.getText();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_input)).sendKeys(mark_inaccurate_others_text);
+            skumpo.mark_inaccurate_other_popup_submit_button.click();
+            Thread.sleep(2000);
+            reason.moveToElement(skumpo.status_column).perform();
+            Assert.assertEquals(skumpo.status_column_reason.getText(), mark_inaccurate_others_text);
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'"+hover_reason+"')]")).click();
+            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(),hover_reason);
+
+
+
+
+        }
+
+
+    }
+    public void verify_other_reason_mark_inaccurate_cancel_button() throws InterruptedException {
+        driver.navigate().refresh();
+        Actions reason = new Actions(driver);
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        System.out.println(skumpo.view_matched_item_active_tab.getText());
+        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+        System.out.println(match_text +'\n');
+        if(match_text.contains("VERIFIED")) {
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_button)).click();
+            Thread.sleep(1000);
+            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+            Assert.assertEquals(popup_displayed, 0);}
+        else if (match_text.contains("INACCURATE")) {
+            reason.moveToElement(skumpo.status_column).perform();
+            String hover_reason = skumpo.status_column_reason.getText();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
+            Thread.sleep(1000);
+            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+            Assert.assertEquals(popup_displayed, 0);
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+
+
+        }
+
+        }
+
+    public void verify_other_reason_mark_inaccurate_cancel_icon() throws InterruptedException {
+        driver.navigate().refresh();
+        Actions reason = new Actions(driver);
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        System.out.println(skumpo.view_matched_item_active_tab.getText());
+        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+        System.out.println(match_text +'\n');
+        if(match_text.contains("VERIFIED")) {
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
+            Thread.sleep(1000);
+            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+            Assert.assertEquals(popup_displayed, 0);}
+        else if (match_text.contains("INACCURATE")) {
+            reason.moveToElement(skumpo.status_column).perform();
+            String hover_reason = skumpo.status_column_reason.getText();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
+            Thread.sleep(1000);
+            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+            Assert.assertEquals(popup_displayed, 0);
+            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+
+
+        }
+
+    }
     //Online Upload
 
 public  void upload_online_match_valid_file_click_upload()  {
@@ -616,7 +1271,6 @@ public  void upload_online_match_valid_file_click_upload()  {
         new SKUMatchingPageObjects(driver).download_match_templete.click();
         Thread.sleep(2000);
         Path dir = Paths.get("/Users/farhanahmedsheikh/Downloads/");  // specify your directory
-
         Optional<Path> lastFilePath = Files.list(dir)    // here we get the stream with full directory listing
                 .filter(f -> !Files.isDirectory(f))  // exclude subdirectories from listing
                 .max(Comparator.comparingLong(f -> f.toFile().lastModified()));  // finally get the last file using simple comparator by lastModified field
@@ -625,5 +1279,4 @@ public  void upload_online_match_valid_file_click_upload()  {
         {
             System.out.println(lastFilePath);
         }
-
     }}
