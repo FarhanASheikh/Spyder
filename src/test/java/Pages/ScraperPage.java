@@ -24,8 +24,9 @@ public class ScraperPage extends Wait {
     }
     public void select20records() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
-        spo.records_20.click();
-        Thread.sleep(2000);
+
+        waitforelement().until(ExpectedConditions.visibilityOf(spo.records_20)).click();
+        Thread.sleep(19000);
         int rec_20 = Integer.parseInt(spo.last_id.getText());
         Assert.assertEquals(20,rec_20);
         spo.records_10.click();
@@ -38,7 +39,7 @@ public class ScraperPage extends Wait {
 
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.venture_dropdown)).click();
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.select_venture)).click();
-        Thread.sleep(3000);
+        Thread.sleep(6000);
     }
 
     public void Get_Table_Data() {
@@ -80,24 +81,26 @@ public class ScraperPage extends Wait {
 
     public void pagination() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
+        Thread.sleep(5000);
         boolean ispresent = Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.check_bd)).isDisplayed();
         Assert.assertTrue(ispresent);
-        Thread.sleep(3000);
         int Beforejob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
             spo.pagination.get(Beforejob_tablesize-2).click();
-            Thread.sleep(3000);
+            Thread.sleep(30000);
             a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
         System.out.println(a);
         }
     public void getandcomparedata() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
-        Thread.sleep(3000);
+        Thread.sleep(9000);
         int Afterjob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
-            Thread.sleep(3000);
+            Thread.sleep(9000);
             spo.pagination.get(Afterjob_tablesize-2).click();
-        Thread.sleep(3000);
+        Thread.sleep(20000);
              b = Integer.parseInt(spo.last_id.getText());
             Assert.assertEquals(b, a + 4);
+        spo.pagination.get(Afterjob_tablesize-8).click();
+        Thread.sleep(10000);
 
         }
     }

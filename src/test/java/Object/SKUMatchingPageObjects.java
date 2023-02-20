@@ -29,6 +29,8 @@ public class SKUMatchingPageObjects {
             public WebElement task_name_field;
     @FindBy(id ="inputFile")
         public WebElement Create_task_file_upload;
+    @FindBy(css="div.modal-content p.filename")
+    public WebElement uploaded_file_name;
     @FindBy(css = " .create-btn.blue-shadow.btn-primary")
         public WebElement done_btn;
     @FindBy(xpath = "//label[@for='6' and contains(text(),'Chaldal_bd')]")
@@ -53,7 +55,7 @@ public class SKUMatchingPageObjects {
         public WebElement cancel_icon;
     @FindBy(xpath = "//img[@class ='tick'and @id ='imgCheck']")
         public WebElement file_validation;
-    @FindBy(css = "div.alert.alert-success.fade.show")
+    @FindBy(css = "div.alert.fade.show")
     public WebElement success_msg;
     @FindBy(className = "modal-content")
     public WebElement popup;
@@ -75,14 +77,15 @@ public class SKUMatchingPageObjects {
     public WebElement table_created_time;
     @FindBy(xpath ="//*[@id='taskListTable']/tbody/tr[1]/td[7]/button[@class='row-btn']")
     public WebElement task_details_btn;
+    //label
     @FindBy(css = "div.task-info:nth-child(1) div.row:nth-child(2) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_matched_skus;
     @FindBy(css = "div.task-info:nth-child(1) div.row:nth-child(3) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_unmatched_skus;
     @FindBy(css = "div.task-info:nth-child(1) div.row:nth-child(4) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_pending_skus;
-    @FindBy(css = "div.task-info:nth-child(1)  div.container-fluid div.col-6.wrap-text strong")
-    public WebElement label_competitor;
+    @FindBy(css = "div.task-info:nth-child(1)  div.container-fluid div.col-6.wrap-text strong span")
+    public List <WebElement> label_competitor;
     @FindBy(css = "div.task-info:nth-child(1)  div.row:nth-child(2) div.col-6 strong")
     public  WebElement label_user;
     @FindBy(css = "div.task-info:nth-child(1)  div.row:nth-child(3) div.col-6 strong")
@@ -92,9 +95,16 @@ public class SKUMatchingPageObjects {
     @FindBy(css= "strong.h6 span.errors")
     public WebElement label_uploaded_file_name;
     @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[1]/div[2]/strong")
-    public WebElement label_number_of_verified_skus;
+    public WebElement label_number_of_verified_matches;
+    @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[2]/div[2]/strong")
+    public WebElement label_number_of_unverified_matches;
+    @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[4]/div[2]/strong")
+    public WebElement label_total_error_value;
+
+
+
     @FindBy(css = "div.scrappy-table.card.p-3.task-info tbody tr:nth-child(1) td:nth-child(4)")
-    public WebElement match_competitor_name;
+    public WebElement table_match_competitor_name;
     @FindBy(css =".table.table-borderless.reportList tbody tr:nth-child(1) td:nth-child(9) button:nth-child(2)")
     public  WebElement add_competitor_sku_btn;
     @FindBy(xpath ="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Online')]")
@@ -133,16 +143,22 @@ public class SKUMatchingPageObjects {
     public WebElement offline_match_add_sku_btn;
     @FindBy(css = ".table.table-borderless.reportList tbody tr:nth-child(1) td:nth-child(9) button:nth-child(1)")
     public WebElement view_matched_item_btn;
-    @FindBy(css = "div.modal-content ul.nav.nav-tabs.nav-pills li.nav-item:nth-child(2) a")
+    @FindBy(css="table.table-borderless.reportList tbody tr:nth-child(1) td:nth-child(4) p:nth-child(1)")
+    public WebElement table_competior_name;
+    @FindBy(xpath = "//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")
     public WebElement matches_popup_offline_tab;
+    @FindBy(xpath = "//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Pickaboo_bd')]")
+    public WebElement matches_popup_pikaboo_tab;
     @FindBy(css = "div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody td a.link.product-name")
-    public WebElement offline_tab_competitor_sku;
-    @FindBy(css = "div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody td p span.promo_price")
-    public WebElement offline_tab_competitor_price;
-    @FindBy(css = "div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody td:nth-child(5)")
-    public WebElement offline_tab_competitor_categrory;
-    @FindBy(css = "div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody td:nth-child(7)")
-    public WebElement offline_tab_competitor_name;
+    public WebElement online_matched_sku_first_row_competitor_sku;
+    @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/a[contains(text(),'TD-122211')]")
+    public WebElement offline_matched_sku_first_row_competitor_sku;
+    @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/p/span[contains(text(),'20')]")
+    public WebElement matched_sku_first_row_competitor_price;
+    @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/p[contains(text(),'Cameras')]")
+    public WebElement matched_sku_first_row_competitor_categrory;
+    @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/p[contains(text(),'test competitor')]")
+    public WebElement matched_skucompetitor_name;
     @FindBy(css = "div.scrappy-table  tbody tr:nth-child(1) td:nth-child(1) input")
     public WebElement database_tab_select_sku;
     @FindBy(css= "div.tab-pane.active input.form-control")
@@ -177,10 +193,10 @@ public class SKUMatchingPageObjects {
     public  WebElement view_matched_item_active_tab;
     @FindBy(css="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Pickaboo_bd')]")
     public WebElement view_matched_item_pickaboo_tab;
-    @FindBy(css = "table.table.table-striped.table-hover tbody tr:nth-child(1)")
+    @FindBy(css = "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(9) p.reason")
     public WebElement view_matched_item_first_row_of_table;
     //Mark accurate/inaccurate
-    @FindBy(css= "table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(10)")
+    @FindBy(css= "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(10) button")
     public WebElement mark_verified_or_inaccurate_btn;
     @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'Colour')]")
     public WebElement mark_inaccurate_dropdown_reasons_colour_selection;
@@ -207,8 +223,12 @@ public class SKUMatchingPageObjects {
     public WebElement table_show_records_dropdown;
     @FindBy(css="div.scrappy-table table.table.table-borderless.reportList tbody tr td  p.table-product-id")
     public List <WebElement> task_details_table_sku_id;
+    @FindBy(css = "div.scrappy-table table.table.table-borderless.reportList tbody tr td  a.table-product-name")
+    public List<WebElement> task_details_table_sku_name;
     @FindBy(css = "tbody td:nth-child(7) p")
     public List <WebElement> task_details_table_no_of_matched_skus;
+    @FindBy(css = "tbody td:nth-child(8) p")
+    public List <WebElement> task_details_table_no_of_unverified_skus;
     @FindBy(xpath = "//div[@class='form-row flex-column p-3'][2]/select")
     public WebElement filter_sku_current;
     @FindBy(xpath = "//div[@class='form-row flex-column p-3'][2]/select/option")
@@ -221,6 +241,10 @@ public class SKUMatchingPageObjects {
     public WebElement filter_sku_current_inactive;
     @FindBy(css ="div.card.mt-20.p-3.task-info button.btn.form-control.btn-primary.blue-shadow")
     public WebElement filter_filter_btn;
+    @FindBy(css = "div.card.mt-20.p-3.task-info form.form-inline div.form-row.flex-column.p-3:nth-child(5) input.form-control")
+    public WebElement filter_sku_name_search_field;
+    @FindBy(css = "div.card.mt-20.p-3.task-info form.form-inline div.form-row.flex-column.p-3:nth-child(4) input.form-control")
+    public WebElement filter_sku_id_search_field;
     @FindBy(css = "div.notfound")
     public WebElement task_details_no_data_found;
 }

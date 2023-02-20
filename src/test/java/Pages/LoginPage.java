@@ -35,7 +35,7 @@ public class LoginPage extends Wait {
     }
 
 
-    public void Login_Case1() {//Successful Login
+    public void Login_Case1() throws InterruptedException {//Successful Login
         LoginPageObjects lpo = new LoginPageObjects(driver);
         driver.navigate().refresh();
         lpo.email.sendKeys(username);//input username
@@ -43,6 +43,8 @@ public class LoginPage extends Wait {
         lpo.password.sendKeys(pwd);//input Password
         lpo.rememberme_checkbox.click();//Check remember me
         lpo.login_button.click();//click login button
+        Thread.sleep(5000);
+        Assert.assertEquals(driver.getCurrentUrl(),"https://stage-spyder.daraz.com/scrapy-ui/scraper");
     }
     public void  Login_Case2() {//Empty Login and Verify  username validation
         LoginPageObjects lpo = new LoginPageObjects(driver);

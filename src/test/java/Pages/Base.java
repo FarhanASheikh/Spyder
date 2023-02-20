@@ -8,9 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class Base extends Wait {
 
-//    public Base(WebDriver driver) {
-//        this.driver=driver;
-//    }
+
 
 
     public WebDriver driver() {
