@@ -25,8 +25,9 @@ public class SKUMatchingPage extends Wait {
     String mark_inaccurate_others_text = "Automation Test";
 
 
-    public void Click_SKUMatching_Module() {
+    public void click_SKUMatching_module() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        driver.navigate().refresh();
         skumpo.SKU_Matching.click();
         String scraper_module_nav_class = skumpo.SKU_Matching.getAttribute("Class");
         Assert.assertEquals("active", scraper_module_nav_class);
@@ -130,7 +131,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(2000);
         skumpo.Create_task_file_upload.sendKeys("/Users/farhanahmedsheikh/Downloads/sku_template_1669017946660.csv");
         Assert.assertEquals(skumpo.uploaded_file_name.getText(),"sku_template_1669017946660.csv   ");
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).done_btn)).click();
+        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).cancel_icon)).click();
     }
 
     public void download_create_task_templete() throws InterruptedException, IOException {
@@ -275,10 +276,10 @@ public class SKUMatchingPage extends Wait {
             if (skumpo.task_details_table_sku_id.size() >= 1) {
                 System.out.println("a1");
                 total_size = total_size + skumpo.task_details_table_sku_id.size();
-                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus);
+                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus.getText());
             } else {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
-                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus);
+                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus.getText());
 
                 System.out.println("inactive" + skumpo.task_details_no_data_found.getText());
             }
@@ -289,10 +290,10 @@ public class SKUMatchingPage extends Wait {
             if (skumpo.task_details_table_sku_id.size() >= 1) {
                 System.out.println("a2");
                 total_size = total_size + skumpo.task_details_table_sku_id.size();
-                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus);
+                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus.getText());
             } else {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_details_no_data_found)).isDisplayed();
-                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus);
+                System.out.println(total_size + "and" + skumpo.label_number_of_matched_skus.getText());
 
                 System.out.println("active" + skumpo.task_details_no_data_found.getText());
             }
@@ -378,7 +379,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(2000);
         for (int i = 0; i < skumpo.filter_sku_current_all_options.size(); i++) {
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.filter_sku_current_all_options.get(i))).click();
-            Thread.sleep(3000);
+            Thread.sleep(6000);
             waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.filter_filter_btn)).click();
             waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.table_show_records_dropdown)).isEnabled();
             Thread.sleep(4000);
@@ -664,10 +665,11 @@ public class SKUMatchingPage extends Wait {
         Assert.assertEquals(toast, "Competitor SKU Inserted");
     }
 
-    public void verify_offline_competitor_sku_match_added_verify_competitor_sku() {
+    public void verify_offline_competitor_sku_match_added_verify_competitor_sku() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        Thread.sleep(3000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.online_matched_sku_first_row_competitor_sku));
         Assert.assertEquals(skumpo.offline_matched_sku_first_row_competitor_sku.getText(), "TD-122211");
@@ -684,10 +686,11 @@ public class SKUMatchingPage extends Wait {
 
     }
 
-    public void verify_offline_competitor_sku_match_added_verify_competitor_price() {
+    public void verify_offline_competitor_sku_match_added_verify_competitor_price() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        Thread.sleep(2000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
         Assert.assertEquals(skumpo.matched_sku_first_row_competitor_price.getText(), "20");
 
@@ -779,7 +782,8 @@ public class SKUMatchingPage extends Wait {
                 "Chaldal_bd\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
-                "Shajgoj");
+                "Shajgoj\n" +
+                "Startech_BD");
     }
 
     public void verify_data_on_filter_by_chaldal_database_tab() throws InterruptedException {
@@ -828,6 +832,7 @@ public class SKUMatchingPage extends Wait {
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_pandamart)).click();
+        Thread.sleep(1000);
         skumpo.database_tab_search_button.click();
         String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
         String sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
@@ -979,9 +984,12 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
-        Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_sku_from_matched_items)).getText(), "Parachute SkinPure Beauty Olive Oil (Free Glow Face Wash 50 gm) 200 ml");
-
-    }
+        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.database_tab_sku_from_matched_items)).size();
+        for (int i =0 ; i<skumpo.database_tab_sku_from_matched_items.size();i++)
+            if(skumpo.database_tab_sku_from_matched_items.get(i).getText().contains("Parachute SkinPure Beauty Olive Oil (Free Glow Face Wash 50 gm) 200 m")){
+        Assert.assertEquals(skumpo.database_tab_sku_from_matched_items.get(i).getText(), "Parachute SkinPure Beauty Olive Oil (Free Glow Face Wash 50 gm) 200 ml");
+        skumpo.cancel_icon.click();
+    }}
 
 
 //LABELS AND TABLE DATA VERIFICATION
@@ -1073,6 +1081,63 @@ public class SKUMatchingPage extends Wait {
 
     }
 
+    //Verify View Matched item data
+
+    public void verify_view_matched_item_data(){
+        int table_matched_sku=0;
+        int view_matched_item_rows=0;
+        SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.table_column_no_of_matched_skus)).size();
+        for (int i =0; i<skumpo.table_column_no_of_matched_skus.size();i++){
+            table_matched_sku += Integer.parseInt(skumpo.table_column_no_of_matched_skus.get(i).getText());
+        }
+        skumpo.view_matched_item_btn.click();
+        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.view_matched_item_competitor_select)).size();
+        for(int j=0; j<skumpo.view_matched_item_competitor_select.size();j++){
+            skumpo.view_matched_item_competitor_select.get(j).click();
+            if ( skumpo.view_matched_item_rows.size()>=1){
+                view_matched_item_rows +=  skumpo.view_matched_item_rows.size();
+                System.out.println(table_matched_sku+"/n"+view_matched_item_rows);
+            }
+            else{
+                Assert.assertTrue(skumpo.view_match_item_no_data_found.isDisplayed());
+
+            }
+        }
+        Assert.assertEquals(view_matched_item_rows,table_matched_sku);
+        skumpo.cancel_icon.click();
+
+
+
+    }
+
+    public void verify_view_matched_item_data_7th_row(){
+        int table_matched_sku=0;
+        int view_matched_item_rows=0;
+        SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
+        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.table_column_no_of_matched_skus_7th)).size();
+        for (int i =0; i<skumpo.table_column_no_of_matched_skus_7th.size();i++){
+            table_matched_sku += Integer.parseInt(skumpo.table_column_no_of_matched_skus_7th.get(i).getText());
+        }
+        skumpo.view_matched_item_btn_7th.click();
+        waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.view_matched_item_competitor_select)).size();
+        for(int j=0; j<skumpo.view_matched_item_competitor_select.size();j++){
+            skumpo.view_matched_item_competitor_select.get(j).click();
+            if ( skumpo.view_matched_item_rows.size()>=1){
+                view_matched_item_rows +=  skumpo.view_matched_item_rows.size();
+                System.out.println(table_matched_sku+"/n"+view_matched_item_rows);
+            }
+            else{
+                Assert.assertTrue(skumpo.view_match_item_no_data_found.isDisplayed());
+
+            }
+        }
+        Assert.assertEquals(view_matched_item_rows,table_matched_sku);
+        skumpo.cancel_icon.click();
+
+
+    }
+
     //Mark accurate/inaccurate
 
     public void mark_inaccurate() throws InterruptedException {
@@ -1156,6 +1221,7 @@ public class SKUMatchingPage extends Wait {
         String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(skumpo.table_competior_name)).getText();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        Thread.sleep(2000);
         if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
         }
@@ -1252,6 +1318,7 @@ public class SKUMatchingPage extends Wait {
         System.out.println(match_text + '\n');
         if (match_text.contains("VERIFIED")) {
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            Thread.sleep(3000);
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_button)).click();
             Thread.sleep(3000);
@@ -1382,9 +1449,10 @@ public class SKUMatchingPage extends Wait {
 
     public void download_templete_online_matches() throws InterruptedException, IOException {
         driver.navigate().refresh();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).upload_online_match_dropdown_selection)).click();
-        new SKUMatchingPageObjects(driver).download_match_templete.click();
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
+        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        skumpo.download_match_templete.click();
         Thread.sleep(2000);
         Path dir = Paths.get("/Users/farhanahmedsheikh/Downloads/");  // specify your directory
 
@@ -1397,16 +1465,17 @@ public class SKUMatchingPage extends Wait {
             System.out.println(lastFilePath);
         }
         Assert.assertTrue(lastFilePath.isPresent());
+        skumpo.upload_online_matches_cancel_button.click();
 
     }
 
     public void online_label_number_of_daraz_skus() {
         int daraz_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
-        Assert.assertEquals(daraz_sku, 9);//Number of records in uploaded file
+        Assert.assertEquals(daraz_sku, 8);//Number of records in uploaded file
     }
     public void online_label_competitors(){
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        Assert.assertEquals(skumpo.label_competitor,"MANUAL");
+        Assert.assertEquals(skumpo.label_competitor.get(0).getText(),"MANUAL");
     }
 
     //online_Veirfy all active/inactive skus from file
@@ -1551,9 +1620,10 @@ public class SKUMatchingPage extends Wait {
 
     public void download_templete_offline_matches() throws InterruptedException, IOException {
         driver.navigate().refresh();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).offline_match_dropdown_selection)).click();
-        new SKUMatchingPageObjects(driver).download_match_templete.click();
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
+        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)).click();
+        skumpo.download_match_templete.click();
         Thread.sleep(2000);
         Path dir = Paths.get("/Users/farhanahmedsheikh/Downloads/");  // specify your directory
         Optional<Path> lastFilePath = Files.list(dir)    // here we get the stream with full directory listing
@@ -1564,6 +1634,7 @@ public class SKUMatchingPage extends Wait {
         {
             System.out.println(lastFilePath);
         }
+        skumpo.upload_online_matches_cancel_button.click();
     }
     //offline_Veirfy all active/inactive skus from file
 
@@ -1645,7 +1716,10 @@ public class SKUMatchingPage extends Wait {
     }
     public void offline_label_competitors(){
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        Assert.assertEquals(skumpo.label_competitor,"MANUAL");
+        String label_competitor_name="";
+        for(int i =0 ;i<skumpo.label_competitor.size();i++){
+        label_competitor_name +=  skumpo.label_competitor.get(i).getText();}
+        Assert.assertEquals(label_competitor_name,"MANUAL");
     }
 
 

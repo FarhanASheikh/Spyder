@@ -42,7 +42,7 @@ public class ScraperPage extends Wait {
         Thread.sleep(6000);
     }
 
-    public void Get_Table_Data() {
+    public void get_table_data() {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
 
         for (int i = 1; i <= spo.rowelement.size(); i++) {
@@ -85,7 +85,7 @@ public class ScraperPage extends Wait {
         boolean ispresent = Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.check_bd)).isDisplayed();
         Assert.assertTrue(ispresent);
         int Beforejob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
-            spo.pagination.get(Beforejob_tablesize-2).click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Beforejob_tablesize-2))).click();
             Thread.sleep(30000);
             a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
         System.out.println(a);

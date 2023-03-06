@@ -12,7 +12,7 @@ public class Base extends Wait {
 
 
     public WebDriver driver() {
-        System.setProperty("webdriver.chrome.driver","/Users/farhanahmedsheikh/Downloads/chromedriver 3");
+        System.setProperty("webdriver.chrome.driver","//Users/farhanahmedsheikh/Downloads/chromedriver");
         driver = new ChromeDriver();
             driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
         driver.manage().window().maximize();

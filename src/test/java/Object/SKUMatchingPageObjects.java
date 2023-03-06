@@ -149,6 +149,16 @@ public class SKUMatchingPageObjects {
     public WebElement matches_popup_offline_tab;
     @FindBy(xpath = "//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Pickaboo_bd')]")
     public WebElement matches_popup_pikaboo_tab;
+    @FindBy(css = "ul.nav.nav-tabs.nav-pills li")
+    public List <WebElement> view_matched_item_competitor_select;
+    @FindBy(css= ".table.table-borderless.reportList tbody tr:nth-child(1) td:nth-child(7)  p")
+    public List<WebElement> table_column_no_of_matched_skus;
+    @FindBy(css= ".table.table-borderless.reportList tbody tr:nth-child(7) td:nth-child(7)  p")
+    public List<WebElement> table_column_no_of_matched_skus_7th;
+    @FindBy(css = ".table.table-borderless.reportList tbody tr:nth-child(7) td:nth-child(9) button:nth-child(1)")
+    public WebElement view_matched_item_btn_7th;
+    @FindBy(css="div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody tr")
+    public List<WebElement> view_matched_item_rows;
     @FindBy(css = "div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody td a.link.product-name")
     public WebElement online_matched_sku_first_row_competitor_sku;
     @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/a[contains(text(),'TD-122211')]")
@@ -177,8 +187,8 @@ public class SKUMatchingPageObjects {
     public WebElement database_tab_search_button;
     @FindBy(css= "div.modal-content div.paginationtabledata button:nth-child(2)")
     public WebElement database_tab_pagination_next_btn;
-    @FindBy(css="div.tab-content div.table-responsive.competitor-products:nth-child(1) tbody tr:nth-child(1) td:nth-child(1) a:nth-child(1)")
-    public WebElement database_tab_sku_from_matched_items;
+    @FindBy(css="div.tab-content div.tab-pane.active div.table-responsive.competitor-products:nth-child(1) tbody tr td:nth-child(1) a")
+    public List<WebElement> database_tab_sku_from_matched_items;
     @FindBy(css="div.modal-body table.table.table-borderless.reportList tbody tr:nth-child(3) td:nth-child(3)")
     public WebElement database_tab_table_3rd_row_comp_bank_id;
     @FindBy(css="div.modal-body table.table.table-borderless.reportList tbody tr:nth-child(6) td:nth-child(3)")
@@ -247,5 +257,7 @@ public class SKUMatchingPageObjects {
     public WebElement filter_sku_id_search_field;
     @FindBy(css = "div.notfound")
     public WebElement task_details_no_data_found;
+    @FindBy(css="div.tab-pane.active div.notfound")
+    public WebElement view_match_item_no_data_found;
 }
 
