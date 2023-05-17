@@ -21,7 +21,7 @@ public class ScraperPageObjects {
             public WebElement venture_dropdown;
     @FindBy(xpath ="//*[contains(text(),'BD')]")
             public WebElement select_venture;
-    @FindBy(css = ".btnBlue.btn-danger")
+    @FindBy(css = "div.col-md-12.d-sm-flex.align-items-center.p-0.pageHead div.ml-sm-auto .btnBlue.btn-danger")
             public WebElement button_Initiate_Job;
     @FindBy(xpath = "//*[@for='204']")
             public WebElement select_Shajgoj;

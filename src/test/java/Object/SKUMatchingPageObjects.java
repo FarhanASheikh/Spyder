@@ -47,7 +47,7 @@ public class SKUMatchingPageObjects {
         public  WebElement upload_online_match_dropdown_selection;
     @FindBy(css = "#inputFile.form-control-file.text-danger.font-weight-bold.d-none.form-control-file")
        public WebElement add_file;
-    @FindBy(xpath = "//button[@class ='btn create-btn blue-shadow btn btn-secondary' and contains(text(),'Upload matches')]")
+    @FindBy(xpath = "//div[@class='modal-content']/div[@class='modal-footer']/div/button[contains(text(),'Upload matches')]")
         public  WebElement upload_matches_button;
     @FindBy(xpath="//button[@class ='btn btn-outline-primary btn-block transformbuttonbg btn btn-secondary' and contains(text(),'Cancel')]")
         public WebElement upload_online_matches_cancel_button;
@@ -100,6 +100,11 @@ public class SKUMatchingPageObjects {
     public WebElement label_number_of_unverified_matches;
     @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[4]/div[2]/strong")
     public WebElement label_total_error_value;
+    @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[3]/div[2]/strong")
+    public WebElement label_invalid_daraz_sku_value;
+    @FindBy(xpath = "//div[@class= 'container-fluid p-2']/div[4]/div[1]/strong")
+    public  WebElement label_pending_skus_value;
+
 
 
 
@@ -206,10 +211,12 @@ public class SKUMatchingPageObjects {
     @FindBy(css = "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(9) p.reason")
     public WebElement view_matched_item_first_row_of_table;
     //Mark accurate/inaccurate
+    @FindBy(css ="div.tab-pane.active tbody tr:nth-child(1) td:nth-child(1)")
+    public WebElement view_matched_item_first_row_product_name;
     @FindBy(css= "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(10) button")
     public WebElement mark_verified_or_inaccurate_btn;
-    @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'Colour')]")
-    public WebElement mark_inaccurate_dropdown_reasons_colour_selection;
+    @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[1]/button[4]")
+    public WebElement mark_inaccurate_dropdown_reasons_quantity_selection;
     @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'Others')]")
     public WebElement mark_inaccurate_dropdown_reasons_others_selection;
     @FindBy(css = "div.modal-dialog.custom-reason.modal-md.modal-dialog-centered div.modal-content")
@@ -259,5 +266,9 @@ public class SKUMatchingPageObjects {
     public WebElement task_details_no_data_found;
     @FindBy(css="div.tab-pane.active div.notfound")
     public WebElement view_match_item_no_data_found;
+    @FindBy(css="div.modal-content div.sku.d-flex")
+    public List<WebElement> pendig_skus;
+    @FindBy(css="div.modal-content button.nextPrevious.btn-secondary:nth-child(2)")
+    public WebElement next_button;
 }
 

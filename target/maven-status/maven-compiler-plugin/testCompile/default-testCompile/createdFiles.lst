@@ -1,0 +1,14 @@
+Object/VerificationQueuePageObjects.class
+Pages/Base.class
+Object/ScraperPageObjects.class
+Object/LoginPageObjects.class
+Pages/SKUMatchingPage.class
+Object/DarazPricingDatabasePageObjects.class
+Object/SKUMatchingPageObjects.class
+Tests/Regression_Suit.class
+Pages/DarazPricingDatabasePage.class
+Tests/demo.class
+Pages/LoginPage.class
+Utilities/MyScreenRecorder.class
+Utilities/Wait.class
+Pages/ScraperPage.class

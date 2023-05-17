@@ -212,26 +212,31 @@ public class DarazPricingDatabasePage extends Wait {
         else {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
         }
-        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
-        System.out.println(match_text + '\n');
-        if (match_text.contains("VERIFIED")) {
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_colour_selection)).click();
-            Thread.sleep(2000);
-            reason.moveToElement(skumpo.status_column).perform();
-            System.out.println(skumpo.status_column_reason.getText());
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Colour");
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-        } else if (match_text.contains("INACCURATE")) {
-            reason.moveToElement(skumpo.status_column).perform();
-            String hover_reason = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText();
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
-            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+        if (skumpo.view_matched_item_first_row_product_name.getText().contains("Scraping in Progress")) {
+            System.out.println("Scraping in Progress");
+        } else {
+            String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+            System.out.println(match_text + '\n');
+
+            if (match_text.contains("VERIFIED")) {
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
+                Thread.sleep(2000);
+                reason.moveToElement(skumpo.status_column).perform();
+                System.out.println(skumpo.status_column_reason.getText());
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Quantity");
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+            } else if (match_text.contains("INACCURATE")) {
+                reason.moveToElement(skumpo.status_column).perform();
+                String hover_reason = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText();
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+                reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+            }
         }
     }
 
@@ -250,28 +255,32 @@ public class DarazPricingDatabasePage extends Wait {
         else {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
         }
-        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
-        System.out.println(match_text + '\n');
-        if (match_text.contains("VERIFIED")) {
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            Thread.sleep(4000);
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_colour_selection)).click();
-            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Colour");
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+        System.out.println(skumpo.view_matched_item_active_tab.getText());
+        if (skumpo.view_matched_item_first_row_product_name.getText().contains("Scraping in Progress")) {
+            System.out.println("Scraping in Progress");
+        } else {
+            String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+            System.out.println(match_text + '\n');
+            if (match_text.contains("VERIFIED")) {
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                Thread.sleep(4000);
+                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
+                reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Quantity");
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
 
-        } else if (match_text.contains("INACCURATE")) {
-            reason.moveToElement(skumpo.status_column).perform();
-            String hover_reason = skumpo.status_column_reason.getText();
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-            skumpo.mark_verified_or_inaccurate_btn.click();
-            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
-            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
-        }
-    }
+            } else if (match_text.contains("INACCURATE")) {
+                reason.moveToElement(skumpo.status_column).perform();
+                String hover_reason = skumpo.status_column_reason.getText();
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+                skumpo.mark_verified_or_inaccurate_btn.click();
+                driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+                reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+                Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+            }
+        }}
     public void verify_mark_inaccurate_dropdown() throws InterruptedException {
         driver.navigate().refresh();
         Actions reason = new Actions(driver);
@@ -292,30 +301,42 @@ public class DarazPricingDatabasePage extends Wait {
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).isDisplayed();
             System.out.println(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText());
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(), "Brand\n" +
-                    "Warranty\n" +
-                    "Model\n" +
-                    "Colour\n" +
-                    "Product\n" +
-                    "Specs\n" +
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(), "Model/Variant\n" +
+                    "Brand\n" +
+                    "Free Product/Combo Offer\n" +
                     "Quantity\n" +
+                    "Specification\n" +
                     "Size\n" +
-                    "Others");
+                    "Flavor\n" +
+                    "Packaging\n" +
+                    "Design\n" +
+                    "Replica Product/Copy/Old/2nd hand\n" +
+                    "Quality/Material\n" +
+                    "Registration Issues (PTA approved)/Warranty\n" +
+                    "Product\n" +
+                    "Daraz Link Not Working\n" +
+                    "Competitor Link Not Working");
         } else if (match_text.contains("INACCURATE")) {
             reason.moveToElement(skumpo.status_column).perform();
             String hover_reason = skumpo.status_column_reason.getText();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).isDisplayed();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(), "Brand\n" +
-                    "Warranty\n" +
-                    "Model\n" +
-                    "Colour\n" +
-                    "Product\n" +
-                    "Specs\n" +
+            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(), "Model/Variant\n" +
+                    "Brand\n" +
+                    "Free Product/Combo Offer\n" +
                     "Quantity\n" +
+                    "Specification\n" +
                     "Size\n" +
-                    "Others");
+                    "Flavor\n" +
+                    "Packaging\n" +
+                    "Design\n" +
+                    "Replica Product/Copy/Old/2nd hand\n" +
+                    "Quality/Material\n" +
+                    "Registration Issues (PTA approved)/Warranty\n" +
+                    "Product\n" +
+                    "Daraz Link Not Working\n" +
+                    "Competitor Link Not Working");
             driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
             reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
             Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
@@ -324,142 +345,142 @@ public class DarazPricingDatabasePage extends Wait {
 
 
 
-    public void verify_other_reason_mark_inaccurate() throws InterruptedException {
-        driver.navigate().refresh();
-        Actions reason = new Actions(driver);
-        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
-        String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
-        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
-        if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
-            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
-        }
-        else {
-            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
-        }
-        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
-        System.out.println(match_text + '\n');
-        if (match_text.contains("VERIFIED")) {
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            skumpo.mark_inaccurate_dropdown_reasons_others_selection.click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_input)).sendKeys(mark_inaccurate_others_text);
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_submit_button)).click();
-            Thread.sleep(5000);
-            reason.moveToElement(skumpo.status_column).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), mark_inaccurate_others_text);
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-        } else if (match_text.contains("INACCURATE")) {
-            reason.moveToElement(skumpo.status_column).perform();
-            String hover_reason = skumpo.status_column_reason.getText();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_input)).sendKeys(mark_inaccurate_others_text);
-            skumpo.mark_inaccurate_other_popup_submit_button.click();
-            Thread.sleep(2000);
-            reason.moveToElement(skumpo.status_column).perform();
-            Assert.assertEquals(skumpo.status_column_reason.getText(), mark_inaccurate_others_text);
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
-            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
-
-
-        }
-
-
-    }
-
-    public void verify_other_reason_mark_inaccurate_cancel_button() throws InterruptedException {
-        driver.navigate().refresh();
-        Actions reason = new Actions(driver);
-        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
-        String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
-        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
-        Thread.sleep(4000);
-        if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
-            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
-        }
-        else {
-            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
-        }
-        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
-        System.out.println(match_text + '\n');
-        if (match_text.contains("VERIFIED")) {
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_button)).click();
-            Thread.sleep(3000);
-            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
-            Assert.assertEquals(popup_displayed, 0);
-        } else if (match_text.contains("INACCURATE")) {
-            reason.moveToElement(skumpo.status_column).perform();
-            String hover_reason = skumpo.status_column_reason.getText();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
-            Thread.sleep(3000);
-            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
-            Assert.assertEquals(popup_displayed, 0);
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
-            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
-
-
-        }
-
-    }
-
-    public void verify_other_reason_mark_inaccurate_cancel_icon() throws InterruptedException {
-        driver.navigate().refresh();
-        Actions reason = new Actions(driver);
-        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
-        String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
-        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
-        if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
-            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
-        }
-        else {
-            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
-        }
-        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
-        System.out.println(match_text + '\n');
-        if (match_text.contains("VERIFIED")) {
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
-            Thread.sleep(8000);
-            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
-            Assert.assertEquals(popup_displayed, 0);
-        } else if (match_text.contains("INACCURATE")) {
-            reason.moveToElement(skumpo.status_column).perform();
-            String hover_reason = skumpo.status_column_reason.getText();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
-            Thread.sleep(2000);
-            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
-            Assert.assertEquals(popup_displayed, 0);
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
-            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
-            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
-            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
-
-
-        }
-
-    }
+//    public void verify_other_reason_mark_inaccurate() throws InterruptedException {
+//        driver.navigate().refresh();
+//        Actions reason = new Actions(driver);
+//        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+//        DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
+//        String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
+//        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
+//        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+//        if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
+//            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
+//        }
+//        else {
+//            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
+//        }
+//        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+//        System.out.println(match_text + '\n');
+//        if (match_text.contains("VERIFIED")) {
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            skumpo.mark_inaccurate_dropdown_reasons_others_selection.click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_input)).sendKeys(mark_inaccurate_others_text);
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_submit_button)).click();
+//            Thread.sleep(5000);
+//            reason.moveToElement(skumpo.status_column).perform();
+//            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), mark_inaccurate_others_text);
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+//        } else if (match_text.contains("INACCURATE")) {
+//            reason.moveToElement(skumpo.status_column).perform();
+//            String hover_reason = skumpo.status_column_reason.getText();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_input)).sendKeys(mark_inaccurate_others_text);
+//            skumpo.mark_inaccurate_other_popup_submit_button.click();
+//            Thread.sleep(2000);
+//            reason.moveToElement(skumpo.status_column).perform();
+//            Assert.assertEquals(skumpo.status_column_reason.getText(), mark_inaccurate_others_text);
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+//            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+//            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+//
+//
+//        }
+//
+//
+//    }
+//
+//    public void verify_other_reason_mark_inaccurate_cancel_button() throws InterruptedException {
+//        driver.navigate().refresh();
+//        Actions reason = new Actions(driver);
+//        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+//        DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
+//        String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
+//        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
+//        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+//        Thread.sleep(4000);
+//        if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
+//            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
+//        }
+//        else {
+//            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
+//        }
+//        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+//        System.out.println(match_text + '\n');
+//        if (match_text.contains("VERIFIED")) {
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_button)).click();
+//            Thread.sleep(3000);
+//            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+//            Assert.assertEquals(popup_displayed, 0);
+//        } else if (match_text.contains("INACCURATE")) {
+//            reason.moveToElement(skumpo.status_column).perform();
+//            String hover_reason = skumpo.status_column_reason.getText();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
+//            Thread.sleep(3000);
+//            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+//            Assert.assertEquals(popup_displayed, 0);
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+//            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+//            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+//
+//
+//        }
+//
+//    }
+//
+//    public void verify_other_reason_mark_inaccurate_cancel_icon() throws InterruptedException {
+//        driver.navigate().refresh();
+//        Actions reason = new Actions(driver);
+//        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+//        DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
+//        String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
+//        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
+//        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+//        if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
+//            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
+//        }
+//        else {
+//            driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Offline')]")).click();
+//        }
+//        String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
+//        System.out.println(match_text + '\n');
+//        if (match_text.contains("VERIFIED")) {
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
+//            Thread.sleep(8000);
+//            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+//            Assert.assertEquals(popup_displayed, 0);
+//        } else if (match_text.contains("INACCURATE")) {
+//            reason.moveToElement(skumpo.status_column).perform();
+//            String hover_reason = skumpo.status_column_reason.getText();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_others_selection)).click();
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_other_popup_cancel_icon)).click();
+//            Thread.sleep(2000);
+//            popup_displayed = skumpo.mark_inaccurate_others_popup.size();
+//            Assert.assertEquals(popup_displayed, 0);
+//            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+//            driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
+//            reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
+//            Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
+//
+//
+//        }
+//
+//    }
 
 
     //click add competitor sku button and verify pop_up

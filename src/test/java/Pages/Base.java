@@ -3,17 +3,20 @@ package Pages;
 import Utilities.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.util.Scanner;
 
 
 public class Base extends Wait {
 
 
 
-
     public WebDriver driver() {
         System.setProperty("webdriver.chrome.driver","//Users/farhanahmedsheikh/Downloads/chromedriver");
-        driver = new ChromeDriver();
+          ChromeOptions options = new ChromeOptions();
+          options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080", "--window-position=0,0");
+            driver = new ChromeDriver(options);
             driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
         driver.manage().window().maximize();
         String title = driver.getTitle();
@@ -22,15 +25,11 @@ public class Base extends Wait {
         else{
             System.out.println("Web Page Not Displayed");
         }
-//        String Url = driver.getCurrentUrl();
-//        String source = driver.getPageSource();
-//        System.out.println(title);
-//        System.out.println(Url);
-//        System.out.println(source);
+
         return driver;
     }
 
-    public void teardown() {
+    public  void teardown() {
         driver.quit();
     }
 

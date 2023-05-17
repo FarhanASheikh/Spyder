@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import io.qameta.allure.Allure;
 import org.monte.media.Format;
 import org.monte.media.FormatKeys.MediaType;
 import org.monte.media.Registry;
@@ -42,7 +43,7 @@ public class MyScreenRecorder extends ScreenRecorder {
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
         return new File(movieFolder,
-                name + "-" + dateFormat.format(new Date()) + "." + Registry.getInstance().getExtension(fileFormat));
+                name + "." + Registry.getInstance().getExtension(fileFormat));
 
     }
 
@@ -73,5 +74,8 @@ public class MyScreenRecorder extends ScreenRecorder {
 
     public static void stopRecording() throws Exception {
         screenRecorder.stop();
-    }}
+    }
+
+
+}
 
