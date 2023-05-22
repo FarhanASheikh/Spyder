@@ -1,105 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Tests.Regression_Suit]" verbose="0">
+<suite name="Failed suite [Tests.demo]" verbose="0">
   <test thread-count="5" name="Command line test(failed)" verbose="0">
     <classes>
-      <class name="Tests.Regression_Suit">
+      <class name="Tests.demo">
         <methods>
-          <include name="online_add_offline_competitor_sku_match_valid_data_click_add_sku_button"/>
-          <include name="online_verify_all_inactive_skus_from_file"/>
-          <include name="add_offline_competitor_sku_match_valid_data_click_add_sku_button"/>
-          <include name="offline_verify_all_inactive_skus_from_file"/>
-          <include name="offline_verify_online_selection"/>
-          <include name="online_label_competitors"/>
-          <include name="download_templete_online_matches"/>
-          <include name="online_add_match_database_tab"/>
-          <include name="upload_online_match_without_file"/>
-          <include name="offline_verify_data_on_filter_by_chaldal_database_tab"/>
-          <include name="online_search_sku_name_against_competitor_database_tab"/>
-          <include name="upload_offline_match_valid_file_click_cancel_icon"/>
-          <include name="online_verify_offline_competitor_sku_match_added_verify_competitor_category"/>
-          <include name="upload_online_match_invalid_image_file"/>
-          <include name="offline_verify_database_tab_add_btn_disabled"/>
-          <include name="verify_offline_competitor_sku_match_added_verify_competitor_sku"/>
-          <include name="online_get_task_data"/>
-          <include name="verify_offline_competitor_sku_match_added_verify_competitor_name"/>
-          <include name="offline_add_match_database_tab"/>
-          <include name="upload_offline_match_invalid_image_file"/>
-          <include name="offline_verify_offline_competitor_sku_match_added_verify_competitor_sku"/>
-          <include name="online_add_offline_competitor_sku_match_valid_data_verify_button_enabled"/>
-          <include name="offline_mark_verified"/>
-          <include name="online_verify_offline_competitor_sku_match_added_verify_competitor_name"/>
-          <include name="online_verify_offline_competitor_sku_match_added_verify_competitor_price"/>
-          <include name="add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category"/>
-          <include name="offline_verify_offline_competitor_sku_match_added_verify_competitor_category"/>
-          <include name="upload_offline_match_valid_file_click_upload"/>
-          <include name="offline_verify_data_on_filter_by_pandamart_database_tab"/>
-          <include name="upload_online_match_invalid_excel_file"/>
-          <include name="upload_online_match_valid_file_click_upload"/>
-          <include name="online_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category"/>
-          <include name="upload_offline_match_invalid_excel_file"/>
-          <include name="online_verify_offline_competitor_sku_match_added_verify_competitor_sku"/>
-          <include name="offline_label_competitors"/>
-          <include name="offline_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category"/>
-          <include name="offline_verify_cancel_icon_database_tab"/>
-          <include name="offline_verify_search_btn_disabled"/>
-          <include name="offline_click_add_competitor_sku_verify_popup"/>
-          <include name="offline_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name"/>
-          <include name="offline_verify_filter_competitor_name"/>
-          <include name="offline_verify_mark_inaccurate_dropdown"/>
-          <include name="offline_verify_data_on_filter_by_pickaboo_database_tab"/>
-          <include name="offline_verify_offline_competitor_sku_match_added_verify_competitor_price"/>
-          <include name="mark_inaccurate"/>
-          <include name="afterMethod"/>
-          <include name="offline_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name"/>
-          <include name="offline_verify_offline_competitor_sku_match_added_verify_competitor_name"/>
-          <include name="verify_mark_inaccurate_dropdown"/>
-          <include name="offline_click_task_details"/>
-          <include name="mark_verified"/>
-          <include name="online_verify_all_active_skus_from_file"/>
-          <include name="online_verify_mark_inaccurate_dropdown"/>
-          <include name="offline_add_offline_competitor_sku_match_valid_data_click_add_sku_button"/>
-          <include name="online_verify_database_match_added"/>
-          <include name="verify_offline_competitor_sku_match_added_verify_competitor_category"/>
-          <include name="offline_label_number_of_daraz_skus"/>
-          <include name="offline_label_total_errors"/>
-          <include name="offline_verify_all_active_skus_from_file"/>
-          <include name="online_mark_verified"/>
-          <include name="offline_verify_search_btn_enabled_on_filter_selection"/>
-          <include name="upload_online_match_valid_file_click_cancel_icon"/>
-          <include name="offline_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price"/>
-          <include name="online_label_total_errors"/>
-          <include name="offline_click_cancel_popup"/>
-          <include name="online_mark_inaccurate"/>
-          <include name="upload_offline_match_valid_file_click_cancel_button"/>
-          <include name="add_offline_competitor_sku_match_valid_data_verify_button_enabled"/>
-          <include name="offline_verify_online_match_added"/>
-          <include name="offline_mark_inaccurate"/>
-          <include name="offline_verify_cancel_button_database_tab"/>
-          <include name="offline_verify_database_match_added"/>
-          <include name="verify_offline_competitor_sku_match_added_verify_competitor_price"/>
-          <include name="offline_verify_data_on_filter_by_shajgoj_database_tab"/>
-          <include name="offline_get_task_data"/>
-          <include name="offline_verify_add_sku_btn_disable_on_competitor_select"/>
-          <include name="offline_add_online_competitor_sku_invalid_url"/>
-          <include name="offline_verify_add_sku_btn_disable_on_add_url"/>
-          <include name="offline_verify_add_sku_btn_disable_on_popup_display"/>
-          <include name="offline_add_offline_competitor_sku_match_valid_data_verify_button_enabled"/>
-          <include name="verify_all_inactive_skus_from_file"/>
-          <include name="click_task_details"/>
-          <include name="download_templete_offline_matches"/>
-          <include name="offline_add_online_competitor_sku_match_valid_url"/>
-          <include name="offline_verify_database_tab_selection"/>
-          <include name="online_verify_view_matched_item_data"/>
-          <include name="upload_offline_match_without_file"/>
-          <include name="offline_verify_offline_selection"/>
-          <include name="verify_all_active_skus_from_file"/>
-          <include name="offline_search_sku_name_against_competitor_database_tab"/>
-          <include name="offline_verify_view_matched_item_data"/>
-          <include name="upload_online_match_valid_file_click_cancel_button"/>
-          <include name="BeforeSuite"/>
+          <include name="driverIntialize"/>
+          <include name="click_skumatching_module"/>
         </methods>
-      </class> <!-- Tests.Regression_Suit -->
+      </class> <!-- Tests.demo -->
     </classes>
   </test> <!-- Command line test(failed) -->
-</suite> <!-- Failed suite [Tests.Regression_Suit] -->
+</suite> <!-- Failed suite [Tests.demo] -->
