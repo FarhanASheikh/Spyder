@@ -71,7 +71,7 @@ public class Regression_Suit {
 //    }
     @AfterMethod
     public void afterMethod(ITestResult result) throws Exception {
-        System.out.println("\n\n*************\n"+result.getStatus()+"\n\n****************\n");
+        System.out.println("\n\n****************\n"+result.getStatus()+"\n\n****************\n");
         if (result.getStatus() == ITestResult.FAILURE) {
             attachScreenshot();
 
