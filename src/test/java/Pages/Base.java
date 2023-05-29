@@ -29,6 +29,7 @@ public class Base extends Wait {
             driver = new ChromeDriver(service, options);
         }
         else {
+
             Runtime.getRuntime().exec("sudo apt-get install xvfb");
             WebDriverManager.chromedriver().setup();
             ChromeDriverService service = ChromeDriverService.createDefaultService();
