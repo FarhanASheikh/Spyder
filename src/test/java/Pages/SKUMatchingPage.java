@@ -1914,7 +1914,7 @@ public class SKUMatchingPage extends Wait {
     }
     public void offline_label_number_of_daraz_skus() {
         int daraz_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
-        Assert.assertEquals(daraz_sku, 7);//Number of records in uploaded file
+        Assert.assertEquals(daraz_sku, 8);//Number of records in uploaded file
     }
     public void offline_label_competitors(){
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);

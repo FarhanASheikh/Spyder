@@ -33,6 +33,7 @@ public class ScraperPage extends Wait {
         int rec_20 = Integer.parseInt(spo.last_id.getText());
         Assert.assertEquals(20,rec_20);
         spo.records_10.click();
+        System.out.println(rec_20);
 
 
     }
@@ -65,11 +66,12 @@ public class ScraperPage extends Wait {
         Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.cancel_button)).click();
     }
 
-        public void Start_Scraping_Jobs() {
+        public void Start_Scraping_Jobs() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
             jsExecutor.executeScript("arguments[0].click();", spo.button_Initiate_Job);
-        Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Pickaboo_bd)).click();//Select competitors to scrape
+            Thread.sleep(2000);
+            Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Pickaboo_bd)).click();//Select competitors to scrape
             Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Shajgoj)).click();//Select competitors to scrape
             Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Chaldal_bd)).click();//Select competitors to scrape
             Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_PandaMart)).click();///Select competitors to scrape
@@ -83,6 +85,7 @@ public class ScraperPage extends Wait {
         //Check and compare pop up text
         String Jobstart = Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.Success_msg)).getText();
         Assert.assertEquals(Jobstart, "IniateJob SUCCESSFULLY!");
+        System.out.println("Status -IniateJob SUCCESSFULLY ");
     }
 
     public void     get_table_data_before_job_start() throws InterruptedException {
@@ -106,9 +109,11 @@ public class ScraperPage extends Wait {
            waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-2))).click();
         Thread.sleep(20000);
              b = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
+        System.out.println(b);
             Assert.assertEquals(b, a + 4);
         spo.pagination.get(Afterjob_tablesize-8).click();
         Thread.sleep(10000);
+        System.out.println("Status-- "+b);
 
         }
     }
