@@ -39,6 +39,7 @@ public class SKUMatchingPage extends Wait {
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
         String scraper_module_nav_class = skumpo.SKU_Matching.getAttribute("Class");
         Assert.assertEquals("active", scraper_module_nav_class);
+        System.out.println("Stats - SKU Matching clicked");
 
     }
     //Create Task
@@ -51,6 +52,7 @@ public class SKUMatchingPage extends Wait {
         boolean popup_displayed = waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.Create_task_popup)).get(0).isDisplayed();
         Assert.assertTrue(popup_displayed);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_cancel_btn)).click();
+        System.out.println("Stats - Create_task_popup");
     }
 
     public void create_task_popup_cancel_btn() throws InterruptedException {
@@ -60,6 +62,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(2000);
         popup_displayed = skumpo.Create_task_popup.size();
         Assert.assertEquals(popup_displayed, 0);
+        System.out.println("Stats - create_task_popup_cancel_btn");
 
 
     }
@@ -71,6 +74,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(2000);
         popup_displayed = skumpo.Create_task_popup.size();
         Assert.assertEquals(popup_displayed, 0);
+        System.out.println("Stats - create_task_popup_cancel_icon");
     }
 
     public void get_table_data_before_create_task() throws InterruptedException {
@@ -82,7 +86,7 @@ public class SKUMatchingPage extends Wait {
         waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Beforejob_tablesize-2))).click();
         Thread.sleep(10000);
         a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.last_id)).getText());
-        System.out.println(a);
+        System.out.println("Status "+a);
         waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(1))).click();
     }
 
@@ -105,6 +109,7 @@ public class SKUMatchingPage extends Wait {
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.done_btn)).click();
         String success_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).getText();
         Assert.assertEquals(success_text, "Task Created Successfully");
+        System.out.println("Task Created Successfully");
     }
     public void verify_task_created() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
@@ -114,6 +119,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(20000);
         b = Integer.parseInt(skumpo.last_id.getText());
         Assert.assertEquals(b, a + 1);
+        System.out.println(b);
         skumpo.pagination.get(Afterjob_tablesize-8).click();
         Thread.sleep(10000);
 
@@ -130,6 +136,7 @@ public class SKUMatchingPage extends Wait {
         String checked_chaldal = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).getCssValue("background-color");
         Assert.assertEquals(checked_chaldal, "rgba(255, 255, 255, 0.9)");
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)).click();
+        System.out.println("Status double_click_chaldal_remove_selection");
 
 
     }
@@ -142,6 +149,7 @@ public class SKUMatchingPage extends Wait {
         String checked_pandamart = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pandamart)).getCssValue("background-color");
         Assert.assertEquals(checked_pandamart, "rgba(15, 149, 230, 1)");
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)).click();
+        System.out.println("Status check_single_competitor_selection");
 
     }
 
