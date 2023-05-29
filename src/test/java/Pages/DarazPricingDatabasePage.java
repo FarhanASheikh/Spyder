@@ -21,7 +21,11 @@ public class DarazPricingDatabasePage extends Wait {
     return sku_id;}
 
     public void click_daraz_pricing_database_module(){
+        SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
+        if(!(skumpo.Daraz_logo_left_pane.size() >0)){
+            skumpo.hamburger_icon.click();
+        }
         dpdpo.daraz_pricing_database_module_left_menu.click();
         Assert.assertEquals(driver.getCurrentUrl(),"https://stage-spyder.daraz.com/scrapy-ui/pricing-database?page=1&pageSize=10");
     }

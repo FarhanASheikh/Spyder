@@ -17,6 +17,11 @@ public class SKUMatchingPageObjects {
 
     @FindBy(xpath = "//a[@href='/scrapy-ui/skumatching?page=1&pageSize=10']")
     public WebElement SKU_Matching;
+    @FindBy(css ="div.sidebar-header")
+    public List<WebElement> Daraz_logo_left_pane;
+    @FindBy(css = "div.sidebar-header button")
+    public WebElement hamburger_icon;
+
     @FindBy(xpath = "//*[@type='button' and @class='btn btnBlue inner btn btn-danger']")
     public WebElement create_task_btn;
     @FindBy(css ="button.btn.transformbuttonbg.cancel-btn.btn-secondary")

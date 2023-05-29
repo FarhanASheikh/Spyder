@@ -34,6 +34,9 @@ public class SKUMatchingPage extends Wait {
     public void click_SKUMatching_module() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
+        if(!(skumpo.Daraz_logo_left_pane.size() >0)){
+            skumpo.hamburger_icon.click();
+        }
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
         String scraper_module_nav_class = skumpo.SKU_Matching.getAttribute("Class");
         Assert.assertEquals("active", scraper_module_nav_class);
