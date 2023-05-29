@@ -33,9 +33,7 @@ public class SKUMatchingPage extends Wait {
 
     public void click_SKUMatching_module() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.navigate().refresh();
-        js.executeScript("arguments[0].scrollIntoView();", skumpo.SKU_Matching);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
         String scraper_module_nav_class = skumpo.SKU_Matching.getAttribute("Class");
         Assert.assertEquals("active", scraper_module_nav_class);
