@@ -44,7 +44,7 @@ public class Base extends Wait {
             options.setExperimentalOption("useAutomationExtension", false);
             options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
             options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-component-update", "disable-default-apps", "disable-popup-blocking"));
-            Runtime.getRuntime().exec("xvfb-run -a -s \"-screen 0 1920x1080x24\" google-chrome");
+            Runtime.getRuntime().exec("xvfb-run -a -s \"-screen 0 1280x1024x24\" google-chrome");
             driver = new ChromeDriver(service, options);
 
         }
