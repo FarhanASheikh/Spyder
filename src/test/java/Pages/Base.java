@@ -26,7 +26,7 @@ public class Base extends Wait {
             ChromeDriverService service = ChromeDriverService.createDefaultService();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080", "--window-position=0,0", "--remote-allow-origins=*");
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(service, options);
         }
         else {
 
@@ -45,7 +45,7 @@ public class Base extends Wait {
             options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
             options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-component-update", "disable-default-apps", "disable-popup-blocking"));
             Runtime.getRuntime().exec("xvfb-run -a -s \"-screen 0 1920x1080x24\" google-chrome");
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(service, options);
 
         }
             driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
