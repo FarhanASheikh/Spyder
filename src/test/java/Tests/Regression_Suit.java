@@ -177,153 +177,153 @@ public class Regression_Suit {
     public void verify_select20records() throws Exception {
         sp.select20records();
     }
-//    @Test(priority = 19)
-//    public void verify_click_SKUMatching_module(){
-//            SKUmp.click_SKUMatching_module();
-//    }
-//    //Create task
-//    @Test(priority = 20)
-//    public void verify_Create_task_popup() throws InterruptedException {
-//        SKUmp.Create_task_popup();
-//    }
-//    @Test(priority = 21)
-//    public void verify_create_task_popup_cancel_btn() throws InterruptedException {
-//        SKUmp.create_task_popup_cancel_btn();
-//    }
-//    @Test(priority = 22)
-//    public void create_task_popup_cancel_icon() throws InterruptedException {
-//        SKUmp.create_task_popup_cancel_icon();
-//    }
-//    @Test(priority = 23)
-//    public void verify_double_click_chaldal_remove_selection() throws InterruptedException {
-//            SKUmp.double_click_chaldal_remove_selection();
-//    }
-//@Test(priority = 24)
-//public void verify_check_single_competitor_selection() throws InterruptedException {
-//            SKUmp.check_single_competitor_selection();
-//}
-//    @Test(priority = 25)
-//    public void verify_check_multiple_competitor_selection() throws InterruptedException {
-//        SKUmp.check_multiple_competitor_selection();
-//    }
-//    @Test(priority = 26)
-//    public void verify_Create_task_replace_file() throws InterruptedException {
-//        SKUmp.Create_task_replace_file();
-//    }
-//    @Test(priority = 27)
-//    public void download_create_task_templete() throws IOException, InterruptedException {
-//            SKUmp.download_create_task_templete();
-//    }
-//
-//    @Test(priority = 28)
-//    public void get_table_data_before_create_task() throws InterruptedException {
-//            SKUmp.get_table_data_before_create_task();
-//
-//    }
-//
-//    @Test(priority = 29)
-//    public void verify_create_task() throws InterruptedException {
-//            SKUmp.Create_task();
-//    }
-//    @Test(priority = 29)
-//    public void verify_task_created() throws InterruptedException {
-//        SKUmp.verify_task_created();
-//    }
-//    @Test(priority = 29)
-//    public void verify_get_task_data() throws InterruptedException, ParseException {
-//        SKUmp.get_task_data();
-//    }
-//    @Test(priority = 30)
-//    public void verify_click_task_details(){
-//            SKUmp.click_task_details();
-//    }
-//    @Test(priority = 31)
-//    public void label_competitor() throws InterruptedException {
-//        SKUmp.label_competitor();}
-//    @Test(priority = 31)
-//    public void verify_sku_current_filter(){
-//            SKUmp.verify_sku_current_filter();
-//    }
-//    @Test(priority = 32)
-//    public void verify_matching_status_filter(){
-//            SKUmp.verify_matching_status_filter();
-//    }
-//    @Test(priority = 33)
-//    public void verify_all_active_skus_from_file() throws IOException, InterruptedException {
-//            SKUmp.verify_all_active_skus_from_file();
-//
-//    }
-//    @Test(priority = 34)
-//    public void verify_all_inactive_skus_from_file() throws IOException, InterruptedException {
-//        SKUmp.verify_all_inactive_skus_from_file();
-//
-//    }
-//    @Test(priority = 35)
-//    public void verify_all_active_inactive_skus_with_matched_daraz_skus() throws InterruptedException {
-//        SKUmp.verify_all_active_inactive_skus_with_matched_daraz_skus();
-//
-//    }
-//    @Test(priority = 36)
-//    public void verify_verified_active_inactive_skus_with_number_of_checked_matches() throws InterruptedException {
-//        SKUmp.verify_verified_active_inactive_skus_with_number_of_checked_matches();
-//    }
-//    @Test(priority = 37)
-//    public void verify_number_of_unchecked_matches() throws InterruptedException {
-//        SKUmp.verify_number_of_unchecked_matches();
-//    }
-//    @Test(priority = 38)
-//    public void verify_search_by_sku_name_and_id() throws InterruptedException {
-//        SKUmp.verify_search_by_sku_name_and_id();
-//    }
-//    @Test(priority = 39)
-//    public void verify_search_by_sku_id() throws InterruptedException {
-//        SKUmp.verify_search_by_sku_id();
-//    }
-//    @Test(priority = 40)
-//    public void verify_search_by_sku_name() throws InterruptedException {
-//        SKUmp.verify_search_by_sku_name();
-//    }
-//    @Test(priority = 41)
-//    public void click_add_competitor_sku_verify_popup() throws InterruptedException {
-//        SKUmp.click_add_competitor_sku_verify_popup();
-//    }
-//    @Test(priority = 42)
-//    public void click_cancel_popup() throws InterruptedException {
-//        SKUmp.click_cancel_popup();
-//    }
-//
-//    @Test(priority = 43)
-//    public void verify_online_selection() throws InterruptedException {
-//        SKUmp.verify_online_selection();
-//    }
-//    @Test(priority = 44)
-//    public void add_online_competitor_sku_match_valid_url() throws InterruptedException {
-//        SKUmp.add_online_competitor_sku_match_valid_url();
-//    }
-//    @Test(priority = 45)
-//    public void verify_online_match_added(){
-//            SKUmp.verify_online_match_added();
-//    }
-//    @Test(priority = 46)
-//    public void add_online_competitor_sku_invalid_url(){
-//        SKUmp.add_online_competitor_sku_invalid_url();
-//    }
-//    @Test(priority = 47)
-//    public void verify_add_sku_btn_disable_on_popup_display(){
-//        SKUmp.verify_add_sku_btn_disable_on_popup_display();
-//    }
-//    @Test(priority = 48)
-//    public void verify_add_sku_btn_disable_on_competitor_select(){
-//        SKUmp.verify_add_sku_btn_disable_on_competitor_select();
-//    }
-//    @Test(priority = 49)
-//    public void verify_add_sku_btn_disable_on_add_url(){
-//        SKUmp.verify_add_sku_btn_disable_on_add_url();
-//    }
-//    @Test(priority = 50)
-//    public void verify_offline_selection(){
-//        SKUmp.verify_offline_selection();
-//    }
+    @Test(priority = 19)
+    public void verify_click_SKUMatching_module(){
+            SKUmp.click_SKUMatching_module();
+    }
+    //Create task
+    @Test(priority = 20)
+    public void verify_Create_task_popup() throws InterruptedException {
+        SKUmp.Create_task_popup();
+    }
+    @Test(priority = 21)
+    public void verify_create_task_popup_cancel_btn() throws InterruptedException {
+        SKUmp.create_task_popup_cancel_btn();
+    }
+    @Test(priority = 22)
+    public void create_task_popup_cancel_icon() throws InterruptedException {
+        SKUmp.create_task_popup_cancel_icon();
+    }
+    @Test(priority = 23)
+    public void verify_double_click_chaldal_remove_selection() throws InterruptedException {
+            SKUmp.double_click_chaldal_remove_selection();
+    }
+@Test(priority = 24)
+public void verify_check_single_competitor_selection() throws InterruptedException {
+            SKUmp.check_single_competitor_selection();
+}
+    @Test(priority = 25)
+    public void verify_check_multiple_competitor_selection() throws InterruptedException {
+        SKUmp.check_multiple_competitor_selection();
+    }
+    @Test(priority = 26)
+    public void verify_Create_task_replace_file() throws InterruptedException {
+        SKUmp.Create_task_replace_file();
+    }
+    @Test(priority = 27)
+    public void download_create_task_templete() throws IOException, InterruptedException {
+            SKUmp.download_create_task_templete();
+    }
+
+    @Test(priority = 28)
+    public void get_table_data_before_create_task() throws InterruptedException {
+            SKUmp.get_table_data_before_create_task();
+
+    }
+
+    @Test(priority = 29)
+    public void verify_create_task() throws InterruptedException {
+            SKUmp.Create_task();
+    }
+    @Test(priority = 29)
+    public void verify_task_created() throws InterruptedException {
+        SKUmp.verify_task_created();
+    }
+    @Test(priority = 29)
+    public void verify_get_task_data() throws InterruptedException, ParseException {
+        SKUmp.get_task_data();
+    }
+    @Test(priority = 30)
+    public void verify_click_task_details(){
+            SKUmp.click_task_details();
+    }
+    @Test(priority = 31)
+    public void label_competitor() throws InterruptedException {
+        SKUmp.label_competitor();}
+    @Test(priority = 31)
+    public void verify_sku_current_filter(){
+            SKUmp.verify_sku_current_filter();
+    }
+    @Test(priority = 32)
+    public void verify_matching_status_filter(){
+            SKUmp.verify_matching_status_filter();
+    }
+    @Test(priority = 33)
+    public void verify_all_active_skus_from_file() throws IOException, InterruptedException {
+            SKUmp.verify_all_active_skus_from_file();
+
+    }
+    @Test(priority = 34)
+    public void verify_all_inactive_skus_from_file() throws IOException, InterruptedException {
+        SKUmp.verify_all_inactive_skus_from_file();
+
+    }
+    @Test(priority = 35)
+    public void verify_all_active_inactive_skus_with_matched_daraz_skus() throws InterruptedException {
+        SKUmp.verify_all_active_inactive_skus_with_matched_daraz_skus();
+
+    }
+    @Test(priority = 36)
+    public void verify_verified_active_inactive_skus_with_number_of_checked_matches() throws InterruptedException {
+        SKUmp.verify_verified_active_inactive_skus_with_number_of_checked_matches();
+    }
+    @Test(priority = 37)
+    public void verify_number_of_unchecked_matches() throws InterruptedException {
+        SKUmp.verify_number_of_unchecked_matches();
+    }
+    @Test(priority = 38)
+    public void verify_search_by_sku_name_and_id() throws InterruptedException {
+        SKUmp.verify_search_by_sku_name_and_id();
+    }
+    @Test(priority = 39)
+    public void verify_search_by_sku_id() throws InterruptedException {
+        SKUmp.verify_search_by_sku_id();
+    }
+    @Test(priority = 40)
+    public void verify_search_by_sku_name() throws InterruptedException {
+        SKUmp.verify_search_by_sku_name();
+    }
+    @Test(priority = 41)
+    public void click_add_competitor_sku_verify_popup() throws InterruptedException {
+        SKUmp.click_add_competitor_sku_verify_popup();
+    }
+    @Test(priority = 42)
+    public void click_cancel_popup() throws InterruptedException {
+        SKUmp.click_cancel_popup();
+    }
+
+    @Test(priority = 43)
+    public void verify_online_selection() throws InterruptedException {
+        SKUmp.verify_online_selection();
+    }
+    @Test(priority = 44)
+    public void add_online_competitor_sku_match_valid_url() throws InterruptedException {
+        SKUmp.add_online_competitor_sku_match_valid_url();
+    }
+    @Test(priority = 45)
+    public void verify_online_match_added(){
+            SKUmp.verify_online_match_added();
+    }
+    @Test(priority = 46)
+    public void add_online_competitor_sku_invalid_url(){
+        SKUmp.add_online_competitor_sku_invalid_url();
+    }
+    @Test(priority = 47)
+    public void verify_add_sku_btn_disable_on_popup_display(){
+        SKUmp.verify_add_sku_btn_disable_on_popup_display();
+    }
+    @Test(priority = 48)
+    public void verify_add_sku_btn_disable_on_competitor_select(){
+        SKUmp.verify_add_sku_btn_disable_on_competitor_select();
+    }
+    @Test(priority = 49)
+    public void verify_add_sku_btn_disable_on_add_url(){
+        SKUmp.verify_add_sku_btn_disable_on_add_url();
+    }
+    @Test(priority = 50)
+    public void verify_offline_selection(){
+        SKUmp.verify_offline_selection();
+    }
 //    @Test(priority = 51)
 //    public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name(){
 //        SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name();
@@ -1061,10 +1061,10 @@ public class Regression_Suit {
 //    public void  dpdp_verify_mark_inaccurate_dropdown()throws InterruptedException {
 //        dpdp.verify_mark_inaccurate_dropdown();
 //    }
-
-
-
-
+//
+//
+//
+//
 
 
 
