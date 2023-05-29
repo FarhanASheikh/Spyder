@@ -31,7 +31,9 @@ public class Regression_Suit {
 
         @BeforeSuite
         public void BeforeSuite() throws Exception {
+            base.delete_allure_results();
             driver = base.driver();
+
         }
 
 

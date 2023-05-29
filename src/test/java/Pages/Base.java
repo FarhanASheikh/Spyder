@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
@@ -59,7 +62,27 @@ public class Base extends Wait {
 
         return driver;
     }
+    public void delete_allure_results() {
 
+            String folderPath = System.getProperty("user.dir")+"/allure-results";
+
+            // Create a Path object for the folder
+            Path folder = Paths.get(folderPath);
+
+            // Check if the folder exists
+            if (Files.exists(folder) && Files.isDirectory(folder)) {
+                try {
+                    // Delete the folder
+                    Files.delete(folder);
+                    System.out.println("Folder deleted: " + folderPath);
+                } catch (IOException e) {
+                    // Handle exception as needed
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Folder does not exist: " + folderPath);
+            }
+        }
     public  void teardown() {
         driver.quit();
     }
