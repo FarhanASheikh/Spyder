@@ -45,7 +45,7 @@ public class Base extends Wait {
             options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
             options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-component-update", "disable-default-apps", "disable-popup-blocking"));
             Runtime.getRuntime().exec("xvfb-run -a -s \"-screen 0 1920x1080x24\" google-chrome");
-            driver = new ChromeDriver(service, options);
+            driver = new ChromeDriver();
 
         }
             driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
