@@ -414,7 +414,7 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
         SKUmp.verify_data_on_filter_by_pandamart_database_tab();
     }
     @Test(priority = 72)
-    public void search_sku_name_against_competitor_database_tab(){
+    public void search_sku_name_against_competitor_database_tab() throws InterruptedException {
         SKUmp.search_sku_name_against_competitor_database_tab();
     }
     @Test(priority = 73)
@@ -693,7 +693,7 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
         SKUmp.verify_data_on_filter_by_pandamart_database_tab();
     }
     @Test(priority = 141)
-    public void online_search_sku_name_against_competitor_database_tab(){
+    public void online_search_sku_name_against_competitor_database_tab() throws InterruptedException {
         SKUmp.search_sku_name_against_competitor_database_tab();
     }
     @Test(priority = 142)
@@ -963,7 +963,7 @@ public void click_SKUMatching_module3() throws InterruptedException {
         SKUmp.verify_data_on_filter_by_pandamart_database_tab();
     }
     @Test(priority = 210)
-    public void offline_search_sku_name_against_competitor_database_tab(){
+    public void offline_search_sku_name_against_competitor_database_tab() throws InterruptedException {
         SKUmp.search_sku_name_against_competitor_database_tab();
     }
     @Test(priority = 211)
