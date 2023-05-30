@@ -1745,11 +1745,11 @@ public class SKUMatchingPage extends Wait {
 
     public void upload_offline_match_valid_file_click_cancel_button() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        skumpo.SKU_Matching.click();
         driver.navigate().refresh();
         Thread.sleep(10000);
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/uploaded_file_794_1674827353544.csv";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1762,8 +1762,9 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         Thread.sleep(5000);
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).offline_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/uploaded_file_794_1674827353544.csv";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1774,8 +1775,9 @@ public class SKUMatchingPage extends Wait {
 
     public void upload_offline_match_without_file() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        skumpo.upload_matches_btn.click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).offline_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)));
         waitforelement().until(ExpectedConditions.elementToBeClickable(new SKUMatchingPageObjects(driver).upload_matches_button)).click();
         boolean popup = new SKUMatchingPageObjects(driver).popup.isDisplayed();
         Assert.assertTrue(popup);
@@ -1785,8 +1787,9 @@ public class SKUMatchingPage extends Wait {
 
     public void upload_offline_match_invalid_excel_file() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_online_1671527738208.xlsx";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1801,8 +1804,9 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         Thread.sleep(5000);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/camera_test_apple_563728.jpeg";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1815,8 +1819,9 @@ public class SKUMatchingPage extends Wait {
     public void download_templete_offline_matches() throws InterruptedException, IOException {
         driver.navigate().refresh();
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)));
         skumpo.download_match_templete.click();
         Thread.sleep(2000);
         Path dir = Paths.get("/home/qaautomation/Downloads/");  // specify your directory
