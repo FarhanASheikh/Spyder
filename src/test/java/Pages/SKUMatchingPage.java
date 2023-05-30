@@ -107,7 +107,7 @@ public class SKUMatchingPage extends Wait {
         File file = new File(absoluteFilePath);
         skumpo.Create_task_file_upload.sendKeys(file.getAbsolutePath());
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.done_btn)).click();
-        String success_text  = (String) jsExecutor.executeScript("arguments[0].gettext();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)));
+        String success_text  = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).getText();
         Assert.assertEquals(success_text, "Task Created Successfully");
         System.out.println("Task Created Successfully");
     }
