@@ -107,8 +107,7 @@ public class SKUMatchingPage extends Wait {
         File file = new File(absoluteFilePath);
         skumpo.Create_task_file_upload.sendKeys(file.getAbsolutePath());
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.done_btn)).click();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.success_msg);
-        String success_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).getText();
+        String success_text  = (String) jsExecutor.executeScript("arguments[0].gettext();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)));
         Assert.assertEquals(success_text, "Task Created Successfully");
         System.out.println("Task Created Successfully");
     }
@@ -192,11 +191,9 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
-        skumpo.create_task_btn.click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_btn)));
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_name_field)).isDisplayed();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.download_match_templete);
-        waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.download_match_templete)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.download_match_templete)));
         Thread.sleep(2000);
         Path dir = Paths.get("/home/qaautomation/Downloads");  // specify your directory
 
