@@ -697,13 +697,14 @@ public class SKUMatchingPage extends Wait {
 
     public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_offline_tab)).click();
         ;
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
         skumpo.offline_match_competitor_name_input.sendKeys("test competitor");
-        skumpo.offline_match_l1_category_dropdown.click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_l1_category_dropdown)));
         skumpo.offline_match_l1_category_dropdown_select_cameras.click();
         boolean button_enabled = skumpo.offline_match_add_sku_btn.isEnabled();
         Assert.assertFalse(button_enabled);
@@ -711,13 +712,15 @@ public class SKUMatchingPage extends Wait {
 
     public void add_offline_competitor_sku_match_valid_data_verify_button_enabled() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
         skumpo.offline_match_competitor_name_input.sendKeys("test competitor");
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_sku_price_input)));
         skumpo.offline_match_sku_price_input.sendKeys("20");
-        skumpo.offline_match_l1_category_dropdown.click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_l1_category_dropdown)));
         skumpo.offline_match_l1_category_dropdown_select_cameras.click();
         boolean button_enabled = skumpo.offline_match_add_sku_btn.isEnabled();
         Assert.assertTrue(button_enabled);
@@ -726,12 +729,13 @@ public class SKUMatchingPage extends Wait {
     public void add_offline_competitor_sku_match_valid_data_click_add_sku_button() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
         skumpo.offline_match_competitor_name_input.sendKeys("test competitor");
         skumpo.offline_match_sku_price_input.sendKeys("20");
-        skumpo.offline_match_l1_category_dropdown.click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_l1_category_dropdown)));
         skumpo.offline_match_l1_category_dropdown_select_cameras.click();
         skumpo.offline_match_add_sku_btn.click();
         String toast = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).getText();
@@ -740,10 +744,11 @@ public class SKUMatchingPage extends Wait {
 
     public void verify_offline_competitor_sku_match_added_verify_competitor_sku() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
         Thread.sleep(3000);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)));
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.online_matched_sku_first_row_competitor_sku));
         Assert.assertEquals(skumpo.offline_matched_sku_first_row_competitor_sku.getText(), "TD-122211");
 
