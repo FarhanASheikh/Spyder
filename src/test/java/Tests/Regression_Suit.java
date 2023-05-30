@@ -73,7 +73,7 @@ public class Regression_Suit {
 //    }
     @AfterMethod
     public void afterMethod(ITestResult result) throws Exception {
-        System.out.println("\n\n****************\n"+result.getStatus()+"\n\n****************\n");
+        System.out.println("\n\n****************\n"+result.getName()+"     \n"+result.getStatus()+"\n\n****************\n");
         if (result.getStatus() == ITestResult.FAILURE) {
             attachScreenshot();
 
@@ -85,7 +85,7 @@ public class Regression_Suit {
 
 
     @AfterSuite
-    public void aftertest() throws Exception {
+    public void aftertest()  {
         base.teardown();
     }
 
