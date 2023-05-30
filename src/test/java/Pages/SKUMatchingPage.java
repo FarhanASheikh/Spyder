@@ -239,7 +239,7 @@ public class SKUMatchingPage extends Wait {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
         Thread.sleep(4000 );
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.table_matched_daraz_sku)l
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.table_matched_daraz_sku);
         table_matched_daraz_skus = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.table_matched_daraz_sku)).getText());
         table_competitors = skumpo.table_competitors.getText();
         System.out.println(table_competitors);
