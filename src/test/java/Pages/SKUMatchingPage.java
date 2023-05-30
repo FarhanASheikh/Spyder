@@ -114,12 +114,10 @@ public class SKUMatchingPage extends Wait {
     public void verify_task_created() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.pagination);
         int Afterjob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.pagination)).size();
         Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.pagination.get(Afterjob_tablesize-2))).click();
         Thread.sleep(20000);
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.last_id);
         b = Integer.parseInt(skumpo.last_id.getText());
         Assert.assertEquals(b, a + 1);
         System.out.println(b);
