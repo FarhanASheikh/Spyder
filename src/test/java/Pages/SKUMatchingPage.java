@@ -133,61 +133,48 @@ public class SKUMatchingPage extends Wait {
     public void double_click_chaldal_remove_selection() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
-        skumpo.create_task_btn.click();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.select_competitor_chaldal);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)));
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).click();
         skumpo.select_competitor_pickaboo.click();
         Thread.sleep(4000);
         String checked_chaldal = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).getCssValue("background-color");
         Assert.assertEquals(checked_chaldal, "rgba(255, 255, 255, 0.9)");
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_cancel_icon);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)).click();
-        System.out.println("Status double_click_chaldal_remove_selection");
-
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)));
 
     }
 
     public void check_single_competitor_selection() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
-        skumpo.create_task_btn.click();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.select_competitor_pandamart);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pandamart)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pandamart)));
         Thread.sleep(2000);
         String checked_pandamart = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pandamart)).getCssValue("background-color");
         Assert.assertEquals(checked_pandamart, "rgba(15, 149, 230, 1)");
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_cancel_icon);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)).click();
-        System.out.println("Status check_single_competitor_selection");
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)));
 
     }
 
     public void check_multiple_competitor_selection() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
-        waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_btn)).click();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.select_competitor_chaldal);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)));
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pickaboo)).click();
         Thread.sleep(2000);
         String checked_chaldal = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).getCssValue("background-color");
         String checked_pickaboo = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pickaboo)).getCssValue("background-color");
         Assert.assertEquals(checked_chaldal, "rgba(15, 149, 230, 1)");
         Assert.assertEquals(checked_pickaboo, "rgba(15, 149, 230, 1)");
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_cancel_icon);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)));
     }
 
     public void Create_task_replace_file() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
-        waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_btn)).click();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.task_name_field);
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_name_field)));
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.task_name_field)).sendKeys("$$Testing task");
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).click();
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_1669017946660.csv";
@@ -198,8 +185,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(2000);
         skumpo.Create_task_file_upload.sendKeys(file.getAbsolutePath());
         Assert.assertEquals(skumpo.uploaded_file_name.getText(),"sku_template_1669017946660.csv   ");
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.cancel_icon);
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.cancel_icon)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.cancel_icon)));
     }
 
     public void download_create_task_templete() throws InterruptedException, IOException {
