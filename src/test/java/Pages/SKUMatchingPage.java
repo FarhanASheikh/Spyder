@@ -1024,9 +1024,10 @@ public class SKUMatchingPage extends Wait {
         Assert.assertTrue(IV_eight.contains("SHAG-BD-"));
     }
 
-    public void search_sku_name_against_competitor_database_tab() {
+    public void search_sku_name_against_competitor_database_tab() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
+        Thread.sleep(1000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         skumpo.add_competitor_sku_database_tab.click();
