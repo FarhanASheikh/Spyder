@@ -177,8 +177,6 @@ public class DarazPricingDatabasePage extends Wait {
         int view_matched_item_rows=0;
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", dpdpo.table_column_no_of_matched_skus_7th_row);
         waitforelement().until(ExpectedConditions.visibilityOfAllElements(dpdpo.table_column_no_of_matched_skus_7th_row)).size();
         for (int i =0; i<dpdpo.table_column_no_of_matched_skus_7th_row.size();i++){
             table_matched_sku += Integer.parseInt(dpdpo.table_column_no_of_matched_skus_7th_row.get(i).getText());

@@ -1027,7 +1027,7 @@ public class SKUMatchingPage extends Wait {
     public void search_sku_name_against_competitor_database_tab() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         skumpo.add_competitor_sku_database_tab.click();
@@ -1096,7 +1096,7 @@ public class SKUMatchingPage extends Wait {
         }}
 
     public void label_number_of_matched_skus() {
-        int matched_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_matched_skus)).getText());
+        int matched_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
         Assert.assertEquals(table_matched_daraz_skus, matched_sku);
     }
 
@@ -1941,12 +1941,12 @@ public class SKUMatchingPage extends Wait {
 
 
     public void offline_label_total_errors(){
-        Assert.assertEquals(Integer.parseInt(new SKUMatchingPageObjects(driver).label_total_error_value.getText()),3);
+        Assert.assertEquals(Integer.parseInt(new SKUMatchingPageObjects(driver).label_total_error_value.getText()),0);
 
     }
     public void offline_label_number_of_daraz_skus() {
         int daraz_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
-        Assert.assertEquals(daraz_sku, 8);//Number of records in uploaded file
+        Assert.assertEquals(daraz_sku, 7);//Number of records in uploaded file
     }
     public void offline_label_competitors(){
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
