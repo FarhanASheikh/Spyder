@@ -47,7 +47,7 @@ public class SKUMatchingPage extends Wait {
     public void Create_task_popup() throws InterruptedException {//CHeCK again
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
+        jsExecutor.executeScript("arguments[0].click();", skumpo.create_task_btn);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_btn)).click();
         boolean popup_displayed = waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.Create_task_popup)).get(0).isDisplayed();
         Assert.assertTrue(popup_displayed);
@@ -58,9 +58,9 @@ public class SKUMatchingPage extends Wait {
     public void create_task_popup_cancel_btn() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
+        jsExecutor.executeScript("arguments[0].click();", skumpo.create_task_btn);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_btn)).click();
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_cancel_btn);
+        jsExecutor.executeScript("arguments[0].click();", skumpo.create_task_cancel_btn);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_cancel_btn)).click();
         Thread.sleep(2000);
         popup_displayed = skumpo.Create_task_popup.size();
