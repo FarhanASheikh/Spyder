@@ -47,11 +47,12 @@ public class SKUMatchingPage extends Wait {
 
     public void Create_task_popup() throws InterruptedException {//CHeCK again
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
-        driver.navigate().refresh();
-        Thread.sleep(10000);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_btn)).click();
         boolean popup_displayed = waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.Create_task_popup)).get(0).isDisplayed();
         Assert.assertTrue(popup_displayed);
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_cancel_btn);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.create_task_cancel_btn)).click();
         System.out.println("Stats - Create_task_popup");
     }
