@@ -1507,7 +1507,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(10000);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_online_1671527738208.csv";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1523,7 +1523,7 @@ public class SKUMatchingPage extends Wait {
        Thread.sleep(10000);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
-        Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.upload_online_match_dropdown_selection)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_online_1671527738208.csv";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1536,7 +1536,7 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_online_1671527738208.csv";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1551,7 +1551,7 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.upload_matches_button)).click();
         boolean popup = skumpo.popup.isDisplayed();
         Assert.assertTrue(popup);
@@ -1565,7 +1565,7 @@ public class SKUMatchingPage extends Wait {
         Thread.sleep(10000);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_online_1671527738208.xlsx";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1580,8 +1580,9 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         Thread.sleep(5000);
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/camera_test_apple_563728.jpeg";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
@@ -1595,8 +1596,7 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)));
-        skumpo.upload_online_matches_cancel_button.click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_online_match_dropdown_selection)));
         skumpo.download_match_templete.click();
         Thread.sleep(2000);
         Path dir = Paths.get("/home/qaautomation/Downloads/");  // specify your directory
