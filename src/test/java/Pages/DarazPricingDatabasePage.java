@@ -151,7 +151,7 @@ public class DarazPricingDatabasePage extends Wait {
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         waitforelement().until(ExpectedConditions.visibilityOfAllElements(dpdpo.table_column_no_of_matched_skus)).size();
-        table_matched_sku += Integer.parseInt(dpdpo.table_column_no_of_matched_skus.get(1).getText());
+        table_matched_sku += Integer.parseInt(dpdpo.table_column_no_of_matched_skus.get(0).getText());
         for (int i =0; i<dpdpo.table_column_no_of_matched_skus.size();i++){
             table_matched_sku += Integer.parseInt(dpdpo.table_column_no_of_matched_skus.get(i).getText());
         }
