@@ -13,8 +13,21 @@ public class ScraperPage extends Wait {
     static int a = 0;
     static int b = 0;
 
+    public void click_scraper_module() {
+        ScraperPageObjects spo = new ScraperPageObjects(driver);
+        driver.navigate().refresh();
+        if(!(spo.Daraz_logo_left_pane.size() >0)){
+            spo.hamburger_icon.click();
+        }
+        waitforelement().until(ExpectedConditions.elementToBeClickable(spo.scraper_module_nav)).click();
+        String scraper_module_nav_class = spo.scraper_module_nav.getAttribute("Class");
+        Assert.assertEquals("active", scraper_module_nav_class);
+
+    }
+
     public void left_menu_scraper_selection(){
        ScraperPageObjects spo = new ScraperPageObjects(driver);
+
        String scraper_module_nav_class = spo.scraper_module_nav.getAttribute("Class");
        Assert.assertEquals("active",scraper_module_nav_class);
 

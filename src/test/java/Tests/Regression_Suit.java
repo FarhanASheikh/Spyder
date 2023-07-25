@@ -148,6 +148,7 @@ public class Regression_Suit {
     }
     @Test(priority = 11)
     public void left_menu_scraper_selection() {
+        sp.click_scraper_module();
         sp.left_menu_scraper_selection();
 
     }

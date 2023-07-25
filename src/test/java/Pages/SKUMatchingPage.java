@@ -1096,7 +1096,7 @@ public class SKUMatchingPage extends Wait {
         }}
 
     public void label_number_of_matched_skus() {
-        int matched_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_daraz_skus)).getText());
+        int matched_sku = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(new SKUMatchingPageObjects(driver).label_number_of_matched_skus)).getText());
         Assert.assertEquals(table_matched_daraz_skus, matched_sku);
     }
 

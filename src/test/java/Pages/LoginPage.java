@@ -44,7 +44,7 @@ public class LoginPage extends Wait {
         lpo.rememberme_checkbox.click();//Check remember me
         lpo.login_button.click();//click login button
         Thread.sleep(5000);
-        Assert.assertEquals(driver.getCurrentUrl(),"https://stage-spyder.daraz.com/scrapy-ui/scraper");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://stage-spyder.daraz.com/scrapy-ui/skumatching?page=1&pageSize=10");
         System.out.println("Status"+driver.getCurrentUrl());
     }
     public void  Login_Case2() {//Empty Login and Verify  username validation

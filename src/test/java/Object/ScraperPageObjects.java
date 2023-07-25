@@ -15,6 +15,10 @@ public class ScraperPageObjects {
     }
     @FindBy(xpath = "//a[@href='/scrapy-ui/scraper']")
             public WebElement scraper_module_nav;
+    @FindBy(css ="div.show-sidebar")
+    public List<WebElement> Daraz_logo_left_pane;
+    @FindBy(css = "div.sidebar-header button")
+    public WebElement hamburger_icon;
     @FindBy(xpath = "//h2[@class='pageTitle']")
         public WebElement pagetitle;
     @FindBy(xpath ="//*[@id='slectVenture' and @name='lang' and @class='my-0 w-80 form-control']")
