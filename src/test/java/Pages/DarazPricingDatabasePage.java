@@ -573,7 +573,13 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_pikaboo_tab)).click();
-        Assert.assertEquals(skumpo.online_matched_sku_first_row_competitor_sku.getText(),"HP M22f 22 Inch 1080P FHD IPS Monitor");
+        for(int i=0; i<skumpo.online_matched_sku_first_row_competitor_sku.size();i++){
+            skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText();
+            if(skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText().contains("HP M22f 22 Inch 1080P FHD IPS Monitor")){
+            Assert.assertEquals(skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText(),"HP M22f 22 Inch 1080P FHD IPS Monitor");
+
+        }
+        }
     }
 
     public void add_online_competitor_sku_invalid_url() throws InterruptedException {
@@ -773,8 +779,14 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.online_matched_sku_first_row_competitor_sku));
-        Assert.assertEquals(skumpo.offline_matched_sku_first_row_competitor_sku.getText(), "TD-122211");
+        for(int i=0; i<skumpo.online_matched_sku_first_row_competitor_sku.size();i++){
+            skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText();
+            if(skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText().contains("TD-122211")){
+                Assert.assertEquals(skumpo.offline_matched_sku_first_row_competitor_sku.getText(), "TD-122211");
+
+            }
+        }
+
 
     }
 

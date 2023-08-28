@@ -172,7 +172,7 @@ public class SKUMatchingPageObjects {
     @FindBy(css="div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody tr")
     public List<WebElement> view_matched_item_rows;
     @FindBy(css = "div.modal-content div.tab-pane.active div.table-responsive.competitor-products tbody td a.link.product-name")
-    public WebElement online_matched_sku_first_row_competitor_sku;
+    public List<WebElement> online_matched_sku_first_row_competitor_sku;
     @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/a[contains(text(),'TD-122211')]")
     public WebElement offline_matched_sku_first_row_competitor_sku;
     @FindBy(xpath = "//div[@class='modal-content']/div/div/div[@class='tab-content']/div[@class='tab-pane active']/div/table/tbody/tr/td/p/span[contains(text(),'20')]")
