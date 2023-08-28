@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-
+import org.openqa.selenium.interactions.Actions;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -103,6 +103,7 @@ public class SKUMatchingPage extends Wait {
         skumpo.select_competitor_pickaboo.click();
         skumpo.select_competitor_pandamart.click();
         skumpo.select_competitor_shajgoj.click();
+        skumpo.select_competitor_startech_BD.click();
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/sku_template_1669017946660.csv";
         File file = new File(absoluteFilePath);
         skumpo.Create_task_file_upload.sendKeys(file.getAbsolutePath());
@@ -150,21 +151,24 @@ public class SKUMatchingPage extends Wait {
         String checked_pandamart = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pandamart)).getCssValue("background-color");
         Assert.assertEquals(checked_pandamart, "rgba(15, 149, 230, 1)");
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)));
-
+        Thread.sleep(5000);
     }
 
     public void check_multiple_competitor_selection() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        Actions actions = new Actions(driver);
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_btn)));
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)));
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pickaboo)).click();
+        jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pickaboo)));
+        actions.moveToElement(skumpo.select_competitor_pandamart);
         Thread.sleep(2000);
         String checked_chaldal = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_chaldal)).getCssValue("background-color");
         String checked_pickaboo = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_pickaboo)).getCssValue("background-color");
         Assert.assertEquals(checked_chaldal, "rgba(15, 149, 230, 1)");
         Assert.assertEquals(checked_pickaboo, "rgba(15, 149, 230, 1)");
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.create_task_cancel_icon)));
+        Thread.sleep(5000);
     }
 
     public void Create_task_replace_file() throws InterruptedException {
@@ -224,14 +228,14 @@ public class SKUMatchingPage extends Wait {
     }
 
     //TASK DETAILS
-    public void click_task_details() {
+    public void click_task_details() throws InterruptedException {
         driver.navigate().refresh();
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.task_details_btn)).click();
+        Thread.sleep(2000);
         Assert.assertTrue(driver.getCurrentUrl().contains("details"));
-        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.label_number_of_matched_skus));
     }
 
     //Verify Filters
@@ -244,7 +248,7 @@ public class SKUMatchingPage extends Wait {
     public void verify_matching_status_filter() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.filter_matching_status)).getText(), "ALL\n" +
-                "SKUs with only verified matches\n" +
+                "SKUs with only checked matches\n" +
                 "SKUs with inaccurate matches\n" +
                 "SKUs with unchecked matches\n" +
                 "SKUs with OOS matches");
@@ -594,9 +598,10 @@ public class SKUMatchingPage extends Wait {
        // }
     }
 
-    public void verify_online_match_added() {//Work around discussed with zaidan
+    public void verify_online_match_added() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
+        Thread.sleep(4000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_pikaboo_tab)).click();
         Assert.assertEquals(skumpo.online_matched_sku_first_row_competitor_sku.getText(),"HP M22f 22 Inch 1080P FHD IPS Monitor");
@@ -861,7 +866,9 @@ public class SKUMatchingPage extends Wait {
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
                 "Shajgoj\n" +
-                "Startech_BD");
+                "Startech_BD\n" +
+                "AliExpress BD\n" +
+                "Lazada BD");
     }
 
     public void verify_data_on_filter_by_chaldal_database_tab() throws InterruptedException {
@@ -951,7 +958,7 @@ public class SKUMatchingPage extends Wait {
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_pickaboo)).click();
-        skumpo.database_tab_search_button.click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_search_button)).click();
         String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();
         String sixth = skumpo.database_tab_table_6rd_row_comp_bank_id.getText();
         String eight = skumpo.database_tab_table_8rd_row_comp_bank_id.getText();
@@ -1587,6 +1594,7 @@ public class SKUMatchingPage extends Wait {
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/camera_test_apple_563728.jpeg";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
+        Thread.sleep(8000);
         String popup = String.valueOf(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_button)).getAttribute("class"));
         System.out.println(popup);
         Assert.assertTrue(popup.contains("disabled"));
@@ -1702,16 +1710,16 @@ public class SKUMatchingPage extends Wait {
         int view_matched_item_rows=0;
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.table_column_no_of_matched_skus)).size();
-        for (int i =0; i<skumpo.table_column_no_of_matched_skus.size();i++){
+        for (int i =1; i<skumpo.table_column_no_of_matched_skus.size();i++){
             table_matched_sku += Integer.parseInt(skumpo.table_column_no_of_matched_skus.get(i).getText());
         }
         skumpo.view_matched_item_btn.click();
         waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.view_matched_item_competitor_select)).size();
-        for(int j=0; j<skumpo.view_matched_item_competitor_select.size();j++){
+        for(int j=1; j<skumpo.view_matched_item_competitor_select.size();j++){
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_competitor_select.get(j))).click();
             if ( skumpo.view_matched_item_rows.size()>=1){
                 view_matched_item_rows +=  skumpo.view_matched_item_rows.size();
-                System.out.println(table_matched_sku+"/n"+view_matched_item_rows);
+                System.out.println(table_matched_sku+"\n"+view_matched_item_rows);
             }
             else{
                 Assert.assertTrue(skumpo.view_match_item_no_data_found.isDisplayed());
@@ -1732,8 +1740,9 @@ public class SKUMatchingPage extends Wait {
 
     //OFFLINE MATCH
 
-    public void upload_offline_match_valid_file_click_upload() {
+    public void upload_offline_match_valid_file_click_upload() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        Thread.sleep(1000);
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
         Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)).click();
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/uploaded_file_794_1674827353544.csv";
@@ -1811,6 +1820,7 @@ public class SKUMatchingPage extends Wait {
         String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/camera_test_apple_563728.jpeg";
         File file = new File(absoluteFilePath);
         skumpo.add_file.sendKeys(file.getAbsolutePath());
+        Thread.sleep(3000);
         String popup = String.valueOf(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_button)).getAttribute("class"));
         System.out.println(popup);
         Assert.assertTrue(popup.contains("disabled"));

@@ -29,7 +29,7 @@ public class Base extends Wait {
             ChromeDriverService service = ChromeDriverService.createDefaultService();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080", "--window-position=0,0", "--remote-allow-origins=*");
-            driver = new ChromeDriver(service, options);
+            driver = new ChromeDriver();
         }
         else {
 
@@ -51,8 +51,7 @@ public class Base extends Wait {
             driver = new ChromeDriver(service, options);
 
         }
-            driver.get("https://stage-spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
-        driver.manage().window().maximize();
+            driver.get("https://spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
         String title = driver.getTitle();
         if (title.contains("Daraz App"))
             System.out.println("Web Page Displayed");

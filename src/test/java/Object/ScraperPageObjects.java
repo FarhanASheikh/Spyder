@@ -15,7 +15,7 @@ public class ScraperPageObjects {
     }
     @FindBy(xpath = "//a[@href='/scrapy-ui/scraper']")
             public WebElement scraper_module_nav;
-    @FindBy(css ="div.show-sidebar")
+    @FindBy(css ="div.logo-img")
     public List<WebElement> Daraz_logo_left_pane;
     @FindBy(css = "div.sidebar-header button")
     public WebElement hamburger_icon;

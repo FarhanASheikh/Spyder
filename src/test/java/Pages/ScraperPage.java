@@ -13,11 +13,12 @@ public class ScraperPage extends Wait {
     static int a = 0;
     static int b = 0;
 
-    public void click_scraper_module() {
+    public void click_scraper_module() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
-        driver.navigate().refresh();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         if(!(spo.Daraz_logo_left_pane.size() >0)){
-            spo.hamburger_icon.click();
+            jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.hamburger_icon);
+           spo.hamburger_icon.click();
         }
         waitforelement().until(ExpectedConditions.elementToBeClickable(spo.scraper_module_nav)).click();
         String scraper_module_nav_class = spo.scraper_module_nav.getAttribute("Class");
@@ -40,11 +41,13 @@ public class ScraperPage extends Wait {
     public void select20records() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        waitforelement().until(ExpectedConditions.visibilityOf(spo.records_20)).click();
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.records_20);
+        spo.records_20.click();
         Thread.sleep(25000);
         jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.last_id);
         int rec_20 = Integer.parseInt(spo.last_id.getText());
         Assert.assertEquals(20,rec_20);
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.records_10);
         spo.records_10.click();
         System.out.println(rec_20);
 
@@ -103,10 +106,11 @@ public class ScraperPage extends Wait {
 
     public void     get_table_data_before_job_start() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
-        Thread.sleep(30000);
+        Thread.sleep(40000);
         boolean ispresent = Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.check_bd)).isDisplayed();
         Assert.assertTrue(ispresent);
         int Beforejob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
+        Thread.sleep(20000);
             waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Beforejob_tablesize-2))).click();
             Thread.sleep(30000);
             a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
@@ -118,13 +122,14 @@ public class ScraperPage extends Wait {
         Thread.sleep(10000);
         jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.pagination.get(1));
         int Afterjob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
-            Thread.sleep(19000);
+            Thread.sleep(29000);
            waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-2))).click();
         Thread.sleep(20000);
              b = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
         System.out.println(b);
             Assert.assertEquals(b, a + 4);
-        spo.pagination.get(Afterjob_tablesize-8).click();
+        Thread.sleep(29000);
+        waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-8))).click();
         Thread.sleep(10000);
         System.out.println("Status-- "+b);
 

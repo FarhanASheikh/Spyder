@@ -17,7 +17,7 @@ public class SKUMatchingPageObjects {
 
     @FindBy(xpath = "//a[@href='/scrapy-ui/skumatching?page=1&pageSize=10']")
     public WebElement SKU_Matching;
-    @FindBy(css ="div.show-sidebar")
+    @FindBy(css ="div.logo-img")
     public List<WebElement> Daraz_logo_left_pane;
     @FindBy(css = "div.sidebar-header button")
     public WebElement hamburger_icon;
@@ -46,6 +46,8 @@ public class SKUMatchingPageObjects {
     public WebElement select_competitor_pickaboo;
     @FindBy(xpath = "//label[@for='204' and contains(text(),'Shajgoj')]")
     public WebElement select_competitor_shajgoj;
+    @FindBy(xpath = "//label[@for='233' and contains(text(),'Startech_BD')]")
+    public WebElement select_competitor_startech_BD;
     @FindBy(xpath = "//button[@class = 'dropdown-btn btnBlue inner btn btn-secondary btn btn-secondary']")
         public  WebElement upload_matches_btn;
     @FindBy(xpath ="//button[@class='dropdown-item' and contains(text(),'Online match')]")
@@ -89,11 +91,11 @@ public class SKUMatchingPageObjects {
     public WebElement label_number_of_unmatched_skus;
     @FindBy(css = "div.task-info:nth-child(1) div.row:nth-child(4) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_pending_skus;
-    @FindBy(css = "div.task-info:nth-child(1)  div.container-fluid div.col-6.wrap-text strong span")
+    @FindBy(css = "div.task-info:nth-child(1)  div.container-fluid div.col-sm-4:nth-child(9) strong span")
     public List <WebElement> label_competitor;
-    @FindBy(css = "div.task-info:nth-child(1)  div.row:nth-child(2) div.col-6 strong")
+    @FindBy(css = "div.task-info:nth-child(1)  div.container-fluid div.row:nth-child(1) div:nth-child(8) strong")
     public  WebElement label_user;
-    @FindBy(css = "div.task-info:nth-child(1)  div.row:nth-child(3) div.col-6 strong")
+    @FindBy(css = "div.task-info:nth-child(1)  div.container-fluid div.row:nth-child(1) div:nth-child(9) strong")
     public WebElement label_created_time;
     @FindBy(css ="div.card.mt-20.p-3.task-info div.container-fluid div.row:nth-child(1) div.col-3:nth-child(1) strong")
     public WebElement label_number_of_daraz_skus;

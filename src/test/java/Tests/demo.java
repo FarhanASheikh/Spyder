@@ -32,9 +32,8 @@ public class demo {
         lpg.Login_Case1();
         sp.Change_venture();
         SKUmp.click_SKUMatching_module();
-        SKUmp.get_table_data_before_create_task();
-        SKUmp.Create_task();
-        SKUmp.verify_task_created();
+
+
 
 
 
@@ -43,21 +42,7 @@ public class demo {
 
     @Test(priority = 10)
     public void click_skumatching_module() throws InterruptedException {
-       dpdp.click_daraz_pricing_database_module();
-       dpdp.get_sku_id();
-       dpdp.verify_search_sku_name_lower_case();
-       dpdp.verify_search_sku_name_upper_case();
-       dpdp.verify_search_sku_id_and_name();
-        dpdp.verify_search_sku_id();
-                dpdp.filter_verify_option();
-        dpdp.filter_by_defualt_option_all();
-        dpdp.filter_by_higher_than();
-        dpdp.filter_by_lower_than();
-        dpdp.dpd_verify_view_matched_item_data();
-                dpdp.dpd_verify_view_matched_item_data_7th_row();
-                dpdp.mark_inaccurate();
-                dpdp.mark_verified();
-                dpdp.verify_mark_inaccurate_dropdown();
+      SKUmp.Create_task();
 
     }
 //    @Test(priority = 11)

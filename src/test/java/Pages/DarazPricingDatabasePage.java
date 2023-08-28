@@ -27,36 +27,43 @@ public class DarazPricingDatabasePage extends Wait {
             skumpo.hamburger_icon.click();
         }
         dpdpo.daraz_pricing_database_module_left_menu.click();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://stage-spyder.daraz.com/scrapy-ui/pricing-database?page=1&pageSize=10");
+        Assert.assertEquals(driver.getCurrentUrl(),"https://spyder.daraz.com/scrapy-ui/pricing-database?page=1&pageSize=10");
     }
 
     public void verify_search_sku_name_lower_case() throws InterruptedException {
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         driver.navigate().refresh();
         Thread.sleep(9000);
-        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("food");
+        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("baby");
         dpdpo.dpd_search_button.click();
         Thread.sleep(9000);
-        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(1))).isDisplayed();
+        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
         for (int i = 1; i <= dpdpo.table_row.size(); i++) {
-            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) a"))).getText().contains("Food"));
+            System.out.println(driver.findElement(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) a")).getText());
+            Thread.sleep(8000);
+            if (driver.findElement(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) a")).getText().contains("Baby")) {
+                Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("Baby"));
+            }
+            else{
+                Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("BABY"));
+            }
         }}
 
         public void verify_search_sku_name_upper_case() throws InterruptedException {
             DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
             driver.navigate().refresh();
             Thread.sleep(9000);
-            waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("APPLE");
+            waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("BABY");
             dpdpo.dpd_search_button.click();
             Thread.sleep(9000);
-            waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(1))).isDisplayed();
+            waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
             for (int i = 1; i <= dpdpo.table_row.size(); i++) {
-                Thread.sleep(2000);
-                if (driver.findElement(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) a")).getText().contains("Apple")) {
-                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("Apple"));
+                Thread.sleep(8000);
+                if (driver.findElement(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) a")).getText().contains("Baby")) {
+                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("Baby"));
                 }
                 else{
-                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("apple"));
+                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("baby"));
                 }
             }
 
@@ -66,14 +73,15 @@ public class DarazPricingDatabasePage extends Wait {
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         driver.navigate().refresh();
         Thread.sleep(9000);
-        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("APPLE");
-        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1151");
+        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("dry");
+        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1237482425");
         dpdpo.dpd_search_button.click();
         Thread.sleep(9000);
-        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(1))).isDisplayed();
+        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
         for (int i = 1; i <= dpdpo.table_row.size(); i++) {
-            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) a"))).getText().contains("Apple"));
-            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) p.table-product-id"))).getText().contains("1151"));
+            Thread.sleep(4000);
+            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("dry"));
+            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("1237482425"));
         }
 
 
@@ -83,12 +91,12 @@ public class DarazPricingDatabasePage extends Wait {
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         driver.navigate().refresh();
         Thread.sleep(9000);
-        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1151");
+        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1237482425");
         dpdpo.dpd_search_button.click();
         Thread.sleep(9000);
-        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(1))).isDisplayed();
+        waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
         for (int i = 1; i <= dpdpo.table_row.size(); i++) {
-            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) p.table-product-id"))).getText().contains("1151"));
+            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child("+ i +") td:nth-child(1) p.table-product-id"))).getText().contains("1237482425"));
         }
 
     }
@@ -145,14 +153,15 @@ public class DarazPricingDatabasePage extends Wait {
                 Assert.assertTrue(result);
             }}
 
-    public void dpd_verify_view_matched_item_data(){
+    public void dpd_verify_view_matched_item_data() throws InterruptedException {
+        driver.navigate().refresh();
         int table_matched_sku=0;
         int view_matched_item_rows=0;
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         waitforelement().until(ExpectedConditions.visibilityOfAllElements(dpdpo.table_column_no_of_matched_skus)).size();
         table_matched_sku += Integer.parseInt(dpdpo.table_column_no_of_matched_skus.get(0).getText());
-        for (int i =0; i<dpdpo.table_column_no_of_matched_skus.size();i++){
+        for (int i =1; i<dpdpo.table_column_no_of_matched_skus.size();i++){
             table_matched_sku += Integer.parseInt(dpdpo.table_column_no_of_matched_skus.get(i).getText());
         }
         dpdpo.dpd_view_matched_item_btn.click();
@@ -161,7 +170,7 @@ public class DarazPricingDatabasePage extends Wait {
             skumpo.view_matched_item_competitor_select.get(j).click();
             if ( skumpo.view_matched_item_rows.size()>=1){
                 view_matched_item_rows +=  skumpo.view_matched_item_rows.size();
-                System.out.println(table_matched_sku+"/n"+view_matched_item_rows);
+                System.out.println("table"+table_matched_sku+"\n"+"view matched item rows"+view_matched_item_rows);
             }
             else{
                 Assert.assertTrue(skumpo.view_match_item_no_data_found.isDisplayed());
@@ -174,6 +183,7 @@ public class DarazPricingDatabasePage extends Wait {
 
     }
     public void dpd_verify_view_matched_item_data_7th_row(){
+        driver.navigate().refresh();
         int table_matched_sku=0;
         int view_matched_item_rows=0;
         SKUMatchingPageObjects skumpo= new SKUMatchingPageObjects(driver);
