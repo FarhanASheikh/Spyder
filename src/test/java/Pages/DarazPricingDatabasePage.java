@@ -20,7 +20,7 @@ public class DarazPricingDatabasePage extends Wait {
         sku_id= waitforelement().until(ExpectedConditions.visibilityOf(new DarazPricingDatabasePageObjects(driver).table_product_id)).getText();
     return sku_id;}
 
-    public void click_daraz_pricing_database_module(){
+    public void click_daraz_pricing_database_module() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
