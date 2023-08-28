@@ -7,7 +7,7 @@ public class Wait{
     public static WebDriver driver;
     public static WebDriver wait =null;
     public static WebDriverWait waitforelement() {
-         return new WebDriverWait(driver, 120);
+         return new WebDriverWait(driver, 60);
     }
 
 
