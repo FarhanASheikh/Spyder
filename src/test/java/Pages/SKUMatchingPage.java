@@ -33,11 +33,19 @@ public class SKUMatchingPage extends Wait {
 
     public void click_SKUMatching_module() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         driver.navigate().refresh();
-        if(!(skumpo.Daraz_logo_left_pane.size() >0)){
-            skumpo.hamburger_icon.click();
+//        if(!(skumpo.Daraz_logo_left_pane.size() >0)){
+//            skumpo.hamburger_icon.click();
+//        }
+        try{
+            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
         }
-        waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
+        catch (Exception e ){
+            jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.hamburger_icon);
+            skumpo.hamburger_icon.click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
+        }
         String scraper_module_nav_class = skumpo.SKU_Matching.getAttribute("Class");
         Assert.assertEquals("active", scraper_module_nav_class);
 

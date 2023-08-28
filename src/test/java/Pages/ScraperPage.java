@@ -16,11 +16,19 @@ public class ScraperPage extends Wait {
     public void click_scraper_module() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        if(!(spo.Daraz_logo_left_pane.size() >0)){
-            jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.hamburger_icon);
-           spo.hamburger_icon.click();
-        }
+//        if(!(spo.Daraz_logo_left_pane.size() >0)){
+//            jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.hamburger_icon);
+//           spo.hamburger_icon.click();
+//        }
+
+        try{
         waitforelement().until(ExpectedConditions.elementToBeClickable(spo.scraper_module_nav)).click();
+        }
+        catch (Exception e ){
+            jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.hamburger_icon);
+            spo.hamburger_icon.click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(spo.scraper_module_nav)).click();
+        }
         String scraper_module_nav_class = spo.scraper_module_nav.getAttribute("Class");
         Assert.assertEquals("active", scraper_module_nav_class);
 
