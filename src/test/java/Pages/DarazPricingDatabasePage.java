@@ -12,7 +12,6 @@ import org.testng.asserts.SoftAssert;
 
 public class DarazPricingDatabasePage extends Wait {
     SoftAssert softAssert = new SoftAssert();
-    String mark_inaccurate_others_text = "Automation Test";
     int popup_displayed = 0;
     String sku_id= null;
 
@@ -24,7 +23,7 @@ public class DarazPricingDatabasePage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
-        Thread.sleep(6000);
+        Thread.sleep(9000);
         try{
             waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
         }
