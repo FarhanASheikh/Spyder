@@ -1146,7 +1146,8 @@ public class SKUMatchingPage extends Wait {
         Assert.assertEquals(label_competitor_name,table_competitors.replace(",", ""));
     }
 
-    public void label_user() {
+    public void label_user() throws InterruptedException {
+        Thread.sleep(2000);
         String user = new SKUMatchingPageObjects(driver).label_user.getText();
         Assert.assertEquals(table_user, user);
     }

@@ -991,7 +991,7 @@ public void click_SKUMatching_module3() throws InterruptedException {
 //        SKUmp.offline_label_total_errors();
 //    }
     @Test(priority = 217)
-    public void offline_label_user(){
+    public void offline_label_user() throws InterruptedException {
         SKUmp.label_user();
     }  @Test(priority = 218)
     public void offline_label_created_time() throws ParseException {

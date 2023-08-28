@@ -24,6 +24,7 @@ public class DarazPricingDatabasePage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
+        Thread.sleep(6000);
         try{
             waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
         }
