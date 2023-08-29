@@ -32,7 +32,6 @@ public class DarazPricingDatabasePage extends Wait {
             skumpo.hamburger_icon.click();
             waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.daraz_pricing_database_module_left_menu)).click();
         }
-        dpdpo.daraz_pricing_database_module_left_menu.click();
         Assert.assertEquals(driver.getCurrentUrl(),"https://spyder.daraz.com/scrapy-ui/pricing-database?page=1&pageSize=10");
     }
 
