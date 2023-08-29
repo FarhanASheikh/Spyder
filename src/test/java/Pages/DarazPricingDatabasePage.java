@@ -25,12 +25,12 @@ public class DarazPricingDatabasePage extends Wait {
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         Thread.sleep(9000);
         try{
-            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.daraz_pricing_database_module_left_menu)).click();
         }
         catch (Exception e ){
             jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.hamburger_icon);
             skumpo.hamburger_icon.click();
-            waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.SKU_Matching)).click();
+            waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.daraz_pricing_database_module_left_menu)).click();
         }
         dpdpo.daraz_pricing_database_module_left_menu.click();
         Assert.assertEquals(driver.getCurrentUrl(),"https://spyder.daraz.com/scrapy-ui/pricing-database?page=1&pageSize=10");
