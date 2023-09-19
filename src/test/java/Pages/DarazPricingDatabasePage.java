@@ -286,6 +286,7 @@ public class DarazPricingDatabasePage extends Wait {
                 dpdpo.mark_verified_or_inaccurate_btn.click();
                 Thread.sleep(4000);
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
+                Thread.sleep(2000);
                 reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Quantity");
                 dpdpo.mark_verified_or_inaccurate_btn.click();
