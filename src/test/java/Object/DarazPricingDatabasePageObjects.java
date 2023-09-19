@@ -49,6 +49,11 @@ public class DarazPricingDatabasePageObjects {
     public List<WebElement> table_column_no_of_matched_skus;
     @FindBy(css= ".table.table-borderless.reportList tbody tr:nth-child(7) td:nth-child(6)")
     public List<WebElement> table_column_no_of_matched_skus_7th_row;
+    @FindBy(css = "div.modal-body div.tab-content div.active table.table-hover tbody tr:nth-child(1) td:nth-child(10)")
+    public WebElement mark_verified_or_inaccurate_btn;
+    @FindBy(css= "div.modal-body div.tab-content div.active table.table-hover tbody tr:nth-child(1) td:nth-child(10) button:nth-child(4)")
+    public WebElement mark_inaccurate_dropdown_reasons_quantity_selection;
+
 
 
 

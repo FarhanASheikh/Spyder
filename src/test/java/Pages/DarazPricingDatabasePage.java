@@ -240,20 +240,20 @@ public class DarazPricingDatabasePage extends Wait {
             System.out.println(match_text + '\n');
 
             if (match_text.contains("VERIFIED")) {
-                skumpo.mark_verified_or_inaccurate_btn.click();
-                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
+                waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
                 Thread.sleep(2000);
                 reason.moveToElement(skumpo.status_column).perform();
                 System.out.println(skumpo.status_column_reason.getText());
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Quantity");
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
             } else if (match_text.contains("INACCURATE")) {
                 reason.moveToElement(skumpo.status_column).perform();
                 String hover_reason = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText();
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
                 reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
@@ -283,20 +283,20 @@ public class DarazPricingDatabasePage extends Wait {
             String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
             System.out.println(match_text + '\n');
             if (match_text.contains("VERIFIED")) {
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 Thread.sleep(4000);
-                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
+                waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.mark_inaccurate_dropdown_reasons_quantity_selection)).click();
                 reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), "Quantity");
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
 
             } else if (match_text.contains("INACCURATE")) {
                 reason.moveToElement(skumpo.status_column).perform();
                 String hover_reason = skumpo.status_column_reason.getText();
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column)).getText(), "VERIFIED");
-                skumpo.mark_verified_or_inaccurate_btn.click();
+                dpdpo.mark_verified_or_inaccurate_btn.click();
                 driver.findElement(By.xpath("//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'" + hover_reason + "')]")).click();
                 reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
                 Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
@@ -319,7 +319,7 @@ public class DarazPricingDatabasePage extends Wait {
         String match_text = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_first_row_of_table)).getText();
         System.out.println(match_text + '\n');
         if (match_text.contains("VERIFIED")) {
-            waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_verified_or_inaccurate_btn)).click();
+            waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.mark_verified_or_inaccurate_btn)).click();
             waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).isDisplayed();
             System.out.println(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText());
             Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.mark_inaccurate_dropdown_reasons)).getText(), "Model/Variant\n" +
