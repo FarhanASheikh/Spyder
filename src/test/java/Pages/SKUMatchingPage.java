@@ -887,8 +887,9 @@ public class SKUMatchingPage extends Wait {
                 "Pickaboo_bd\n" +
                 "Shajgoj\n" +
                 "Startech_BD\n" +
-                "AliExpress BD\n");
+                "AliExpress BD");
     }
+
 
     public void verify_data_on_filter_by_chaldal_database_tab() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
