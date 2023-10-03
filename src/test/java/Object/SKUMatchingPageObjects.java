@@ -213,8 +213,8 @@ public class SKUMatchingPageObjects {
     public WebElement database_tab_cancel_button;
     @FindBy(css = "ul.nav.nav-tabs.nav-pills a.active.nav-link")
     public  WebElement view_matched_item_active_tab;
-    @FindBy(css="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Pickaboo_bd')]")
-    public WebElement view_matched_item_pickaboo_tab;
+    @FindBy(css="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Chaldal_bd')]")
+    public WebElement view_matched_item_chaldal_tab;
     @FindBy(css = "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(9) p.reason")
     public WebElement view_matched_item_first_row_of_table;
     //Mark accurate/inaccurate

@@ -1090,6 +1090,7 @@ public class SKUMatchingPage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+        waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_chaldal_tab)).click();
         waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.database_tab_sku_from_matched_items)).size();
         for (int i =0 ; i<skumpo.database_tab_sku_from_matched_items.size();i++)
             if(skumpo.database_tab_sku_from_matched_items.get(i).getText().contains("Parachute SkinPure Beauty Olive Oil (Free Glow Face Wash 50 gm) 200 m")){

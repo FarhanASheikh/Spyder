@@ -29,7 +29,7 @@ public class Base extends Wait {
             ChromeDriverService service = ChromeDriverService.createDefaultService();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080", "--window-position=0,0", "--remote-allow-origins=*");
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(service, options);
         }
         else {
 
