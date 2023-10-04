@@ -1275,7 +1275,6 @@ public class SKUMatchingPage extends Wait {
         String competitor_name = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.table_competior_name)).getText();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
-        System.out.println(skumpo.view_matched_item_active_tab.getText());
         if (competitor_name.contains("Chaldal_bd") || competitor_name.contains("Pickaboo_bd") || competitor_name.contains("Shajgoj") || competitor_name.contains("PandaMart")) {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
         } else {
