@@ -222,7 +222,7 @@ public class SKUMatchingPageObjects {
     public WebElement view_matched_item_first_row_product_name;
     @FindBy(css= "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(10) button")
     public WebElement mark_verified_or_inaccurate_btn;
-    @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[1]/button[4]")
+    @FindBy(xpath= "//div[@class='tab-pane active']/div/table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[1]/button[4]")
     public WebElement mark_inaccurate_dropdown_reasons_quantity_selection;
     @FindBy(xpath= "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']/button[contains(text(),'Others')]")
     public WebElement mark_inaccurate_dropdown_reasons_others_selection;
@@ -238,9 +238,9 @@ public class SKUMatchingPageObjects {
     public WebElement mark_inaccurate_other_popup_cancel_icon;
     @FindBy(xpath = "//table[@class='table table-striped table-hover']/tbody/tr[1]/td[10]/div//div[@class='dropdown-menu dropdown-menu-right dropdown-menu show']")
     public WebElement mark_inaccurate_dropdown_reasons;
-    @FindBy(css= "table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(9) p.reason")
+    @FindBy(css= "div.tab-pane.active table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(9) p.reason")
     public WebElement status_column;
-    @FindBy(css="table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(9) div.tooltip p")
+    @FindBy(css="div.tab-pane.active table.table.table-striped.table-hover tbody tr:nth-child(1) td:nth-child(9) div.tooltip p")
     public WebElement status_column_reason;
     //Task Details
     @FindBy(xpath ="//select[@class ='custom-select custom-select-sm form-control form-control-sm']")
