@@ -40,12 +40,16 @@ public class VerificationQueuePage extends Wait {
     public void Select_SortBy_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         Thread.sleep(6000);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_SortBy_filter);
         waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_SortBy_filter)).click();
         vqpo.select_SortBy_Exposure.click();
 
     }
     public void verify_Competitors_filters(){
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_Competitor_filter);
         vqpo.select_Competitor_filter.click();
         Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
                 "AliExpress BD\n" +
@@ -101,6 +105,8 @@ public class VerificationQueuePage extends Wait {
     }
     public void select_l1_cateogry(){
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_l1_category_filter);
         waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_l1_category_filter)).click();
         waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_all_l1_category_checkbox)).click();
         Assert.assertTrue(vqpo.select_all_l1_category_checkbox.getAttribute("class").contains("selected"));
