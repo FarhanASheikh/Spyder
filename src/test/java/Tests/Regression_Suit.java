@@ -1131,7 +1131,10 @@ public void click_SKUMatching_module3() throws InterruptedException {
     public void verify_stock_filter() throws InterruptedException {
         vqp.verify_stock_filter();
     }
-
+    @Test(priority = 253)
+    public void click_filter_button() throws InterruptedException {
+        vqp.click_filter_button();
+    }
 
 
 
