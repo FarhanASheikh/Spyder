@@ -35,6 +35,7 @@ public class VerificationQueuePage extends Wait {
         Assert.assertEquals( vqpo.select_SortBy_filter.getText(),"Select Criteria\n" +
                 "Exposure\n" +
                 "GMV");
+        driver.findElement(By.xpath("//footer[@class='mt-5 footerScrapy']")).click();
     }
     public void Select_SortBy_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
