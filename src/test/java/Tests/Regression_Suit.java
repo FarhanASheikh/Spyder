@@ -1087,47 +1087,47 @@ public void click_SKUMatching_module3() throws InterruptedException {
     public void verify_sortby_filter() throws InterruptedException {
         vqp.verify_sortby_filter();
     }
-    @Test(priority = 240)
+    @Test(priority = 242)
     public void Select_SortBy_filters() throws InterruptedException {
         vqp.Select_SortBy_filters();
     }
-    @Test(priority = 242)
+    @Test(priority = 243)
     public void verify_Competitors_filters() throws InterruptedException {
         vqp.verify_Competitors_filters();
     }
-    @Test(priority = 243)
+    @Test(priority = 244)
     public void select_competitors() throws InterruptedException {
         vqp.select_competitors();
     }
-    @Test(priority = 244)
+    @Test(priority = 245)
     public void verify_l1_cateogry_filter() throws InterruptedException {
         vqp.verify_l1_cateogry_filter();
     }
-    @Test(priority = 245)
+    @Test(priority = 246)
     public void select_l1_cateogry() throws InterruptedException {
         vqp.select_l1_cateogry();
     }
-    @Test(priority = 246)
+    @Test(priority = 247)
     public void verify_business_type_filter() throws InterruptedException {
         vqp.verify_business_type_filter();
     }
-    @Test(priority = 247)
+    @Test(priority = 248)
     public void select_business_type_filter() throws InterruptedException {
         vqp.select_business_type_filter();
     }
-    @Test(priority = 248)
+    @Test(priority = 249)
     public void verify_match_age_filter()  {
         vqp.verify_match_age_filter();
     }
-    @Test(priority = 249)
+    @Test(priority = 250)
     public void select_match_age_filter()  {
         vqp.select_match_age_filter();
     }
-    @Test(priority = 250)
+    @Test(priority = 251)
     public void verify_industry_filter() {
         vqp.verify_industry_filter();
     }
-    @Test(priority = 251)
+    @Test(priority = 252)
     public void verify_stock_filter() throws InterruptedException {
         vqp.verify_stock_filter();
     }
