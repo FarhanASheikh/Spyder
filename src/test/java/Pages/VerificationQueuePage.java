@@ -14,11 +14,11 @@ public class VerificationQueuePage extends Wait {
 
 
 
-    public void click_verfication_queue_module() throws InterruptedException {
+    public void click_verfication_queue_module() {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        Thread.sleep(2000);
+        driver.navigate().refresh();
         try{
             waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_VQ_leftpanel)).click();
         }
@@ -63,7 +63,7 @@ public class VerificationQueuePage extends Wait {
 
     }
 
-    public void verify_l1_cateogry_filter() throws InterruptedException {
+    public void verify_l1_cateogry_filter() {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
        waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_l1_category_filter)).click();
 
@@ -158,6 +158,8 @@ public class VerificationQueuePage extends Wait {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         System.out.println(vqpo.filter_button.getText());
         vqpo.filter_button.click();
+        Assert.assertTrue(vqpo.spinner.isDisplayed());
+
     }
 
 

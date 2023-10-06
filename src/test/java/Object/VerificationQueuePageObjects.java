@@ -40,5 +40,7 @@ public class VerificationQueuePageObjects {
     public WebElement select_stock_filter;
     @FindBy(css="div.row div.form-group button")
     public WebElement filter_button;
+    @FindBy(css="div.spinner")
+    public WebElement spinner;
 
 }

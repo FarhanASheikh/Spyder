@@ -363,6 +363,7 @@ public class DarazPricingDatabasePage extends Wait {
             reason.moveToElement(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column))).perform();
             Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(skumpo.status_column_reason)).getText(), hover_reason);
         }
+        skumpo.cancel_icon.click();
     }
 
 
