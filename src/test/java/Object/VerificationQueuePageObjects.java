@@ -22,7 +22,7 @@ public class VerificationQueuePageObjects {
         public WebElement select_SortBy_filter;
     @FindBy(xpath = "//*[@value='Exposure']")
         public WebElement select_SortBy_Exposure;
-    @FindBy(css ="div.form-row.flex-column.p-3:nth-child(3)")
+    @FindBy(css ="div.form-row.flex-column.p-3:nth-child(3) div.multiselect-container")
     public WebElement select_l1_category_filter;
     @FindBy(xpath = "//div[@class='form-row flex-column p-3'][2]/div/div[@class='multiselect-container multiSelectContainer  form-control custom-select']/div/ul/li[contains(text(),'All')]")
     public WebElement select_all_l1_category_checkbox;

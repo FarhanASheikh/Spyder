@@ -41,7 +41,7 @@ public class VerificationQueuePage extends Wait {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         Thread.sleep(6000);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_SortBy_filter);
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",driver.findElement(By.cssSelector("div.toggle-switch-gl")));
        waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_SortBy_filter)).click();
         vqpo.select_SortBy_Exposure.click();
 
