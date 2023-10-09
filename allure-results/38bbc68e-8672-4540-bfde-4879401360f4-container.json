@@ -1,1 +1,0 @@
-{"uuid":"38bbc68e-8672-4540-bfde-4879401360f4","name":"Default Suite","children":["917052eb-3e07-4a4f-851e-9b24a98e9ab2"],"befores":[{"name":"driverIntialize","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1693567180779,"stop":1693567190800}],"afters":[],"start":1693567180772,"stop":1693567221451}

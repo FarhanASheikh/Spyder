@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="7">Surefire suite</th></tr>
+<tr><td><a href="#t0">Surefire test</a></td><td class="num">13</td><td class="num">0</td><td class="num attn">3</td><td class="num">44,606</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="3">Tests.Regression_Suit</td><td><a href="#m0">click_filter_button</a></td><td rowspan="1">1696842020527</td><td rowspan="1">124</td></tr><tr class="failedeven"><td><a href="#m1">select_l1_cateogry</a></td><td rowspan="1">1696842007180</td><td rowspan="1">11152</td></tr><tr class="failedeven"><td><a href="#m2">verify_industry_filter</a></td><td rowspan="1">1696842019797</td><td rowspan="1">348</td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="13">Tests.Regression_Suit</td><td><a href="#m3">Select_SortBy_filters</a></td><td rowspan="1">1696841998274</td><td rowspan="1">6563</td></tr><tr class="passedeven"><td><a href="#m4">change_venture_BD</a></td><td rowspan="1">1696841987063</td><td rowspan="1">9712</td></tr><tr class="passedeven"><td><a href="#m5">click_verfication_queue_module</a></td><td rowspan="1">1696841996780</td><td rowspan="1">1444</td></tr><tr class="passedeven"><td><a href="#m6">select_business_type_filter</a></td><td rowspan="1">1696842018733</td><td rowspan="1">386</td></tr><tr class="passedeven"><td><a href="#m7">select_competitors</a></td><td rowspan="1">1696842005840</td><td rowspan="1">647</td></tr><tr class="passedeven"><td><a href="#m8">select_match_age_filter</a></td><td rowspan="1">1696842019154</td><td rowspan="1">641</td></tr><tr class="passedeven"><td><a href="#m9">verify_Competitors_filters</a></td><td rowspan="1">1696842004839</td><td rowspan="1">1000</td></tr><tr class="passedeven"><td><a href="#m10">verify_business_type_filter</a></td><td rowspan="1">1696842018679</td><td rowspan="1">53</td></tr><tr class="passedeven"><td><a href="#m11">verify_l1_cateogry_filter</a></td><td rowspan="1">1696842006488</td><td rowspan="1">691</td></tr><tr class="passedeven"><td><a href="#m12">verify_match_age_filter</a></td><td rowspan="1">1696842019120</td><td rowspan="1">33</td></tr><tr class="passedeven"><td><a href="#m13">verify_sortby_filter</a></td><td rowspan="1">1696841998225</td><td rowspan="1">48</td></tr><tr class="passedeven"><td><a href="#m14">verify_stock_filter</a></td><td rowspan="1">1696842020489</td><td rowspan="1">37</td></tr><tr class="passedeven"><td><a href="#m15">verify_sucessful_login</a></td><td rowspan="1">1696841976336</td><td rowspan="1">10645</td></tr></tbody>
+</table>
+<h2>Surefire test</h2><h3 id="m0">Tests.Regression_Suit#click_filter_button</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;div.spinner&quot;}
+  (Session info: chrome=110.0.5481.177)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;13.5.1&apos;, java.version: &apos;19.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e98d7db0924a08250934b6ea5e90ce3a, findElement {using=css selector, value=div.spinner}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e98d7db0924a08250934b6ea5e90ce3a
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy18.isDisplayed(Unknown Source)
+	at Pages.VerificationQueuePage.click_filter_button(VerificationQueuePage.java:172)
+	at Tests.Regression_Suit.click_filter_button(Regression_Suit.java:1136)
+... Removed 31 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">Tests.Regression_Suit#select_l1_cateogry</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;li class=&quot;option    &quot;&gt;...&lt;/li&gt; is not clickable at point (114, 23). Other element would receive the click: &lt;div class=&quot;sidebar-header&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=110.0.5481.177)
+Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
+System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;13.5.1&apos;, java.version: &apos;19.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e98d7db0924a08250934b6ea5e90ce3a, clickElement {id=8a52f4a2-3c40-4dc5-825d-2b9d20334ef2}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (e98d7db0924a08250934b6ea5e90ce3a)] -&gt; xpath: //div[@class=&apos;form-row flex-column p-3&apos;][2]/div/div[@class=&apos;multiselect-container multiSelectContainer  form-control custom-select&apos;]/div/ul/li[contains(text(),&apos;All&apos;)]]
+Session ID: e98d7db0924a08250934b6ea5e90ce3a
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:242)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy18.click(Unknown Source)
+	at Pages.VerificationQueuePage.select_l1_cateogry(VerificationQueuePage.java:115)
+	at Tests.Regression_Suit.select_l1_cateogry(Regression_Suit.java:1108)
+... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">Tests.Regression_Suit#verify_industry_filter</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [All
+GM
+EL
+FMCG
+Fashion
+Others
+Digital Goods
+Mobiles &amp; Tablets
+Kitchen &amp; Dining] but found [All
+Fashion
+18
+Digital Goods
+Mobiles &amp; Tablets
+0.0
+FMCG
+GM
+Kitchen &amp; Dining
+EL
+Others]
+	at Pages.VerificationQueuePage.verify_industry_filter(VerificationQueuePage.java:150)
+	at Tests.Regression_Suit.verify_industry_filter(Regression_Suit.java:1128)
+... Removed 34 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">Tests.Regression_Suit#Select_SortBy_filters</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">Tests.Regression_Suit#change_venture_BD</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">Tests.Regression_Suit#click_verfication_queue_module</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">Tests.Regression_Suit#select_business_type_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">Tests.Regression_Suit#select_competitors</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">Tests.Regression_Suit#select_match_age_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">Tests.Regression_Suit#verify_Competitors_filters</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m10">Tests.Regression_Suit#verify_business_type_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m11">Tests.Regression_Suit#verify_l1_cateogry_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m12">Tests.Regression_Suit#verify_match_age_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m13">Tests.Regression_Suit#verify_sortby_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m14">Tests.Regression_Suit#verify_stock_filter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m15">Tests.Regression_Suit#verify_sucessful_login</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

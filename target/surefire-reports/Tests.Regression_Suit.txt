@@ -1,0 +1,53 @@
+-------------------------------------------------------------------------------
+Test set: Tests.Regression_Suit
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 56.619 s <<< FAILURE! - in Tests.Regression_Suit
+select_l1_cateogry(Tests.Regression_Suit)  Time elapsed: 11.159 s  <<< FAILURE!
+org.openqa.selenium.ElementClickInterceptedException: 
+element click intercepted: Element <li class="option    ">...</li> is not clickable at point (114, 23). Other element would receive the click: <div class="sidebar-header">...</div>
+  (Session info: chrome=110.0.5481.177)
+Build info: version: '4.10.0', revision: 'c14d967899'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.5.1', java.version: '19.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e98d7db0924a08250934b6ea5e90ce3a, clickElement {id=8a52f4a2-3c40-4dc5-825d-2b9d20334ef2}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on mac (e98d7db0924a08250934b6ea5e90ce3a)] -> xpath: //div[@class='form-row flex-column p-3'][2]/div/div[@class='multiselect-container multiSelectContainer  form-control custom-select']/div/ul/li[contains(text(),'All')]]
+Session ID: e98d7db0924a08250934b6ea5e90ce3a
+	at Tests.Regression_Suit.select_l1_cateogry(Regression_Suit.java:1108)
+
+verify_industry_filter(Tests.Regression_Suit)  Time elapsed: 0.348 s  <<< FAILURE!
+java.lang.AssertionError: 
+expected [All
+GM
+EL
+FMCG
+Fashion
+Others
+Digital Goods
+Mobiles & Tablets
+Kitchen & Dining] but found [All
+Fashion
+18
+Digital Goods
+Mobiles & Tablets
+0.0
+FMCG
+GM
+Kitchen & Dining
+EL
+Others]
+	at Tests.Regression_Suit.verify_industry_filter(Regression_Suit.java:1128)
+
+click_filter_button(Tests.Regression_Suit)  Time elapsed: 0.125 s  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":"div.spinner"}
+  (Session info: chrome=110.0.5481.177)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.10.0', revision: 'c14d967899'
+System info: os.name: 'Mac OS X', os.arch: 'aarch64', os.version: '13.5.1', java.version: '19.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e98d7db0924a08250934b6ea5e90ce3a, findElement {using=css selector, value=div.spinner}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: e98d7db0924a08250934b6ea5e90ce3a
+	at Tests.Regression_Suit.click_filter_button(Regression_Suit.java:1136)
+
