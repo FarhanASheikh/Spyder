@@ -35,14 +35,14 @@ public class VerificationQueuePage extends Wait {
         Assert.assertEquals( vqpo.select_SortBy_filter.getText(),"Select Criteria\n" +
                 "Exposure\n" +
                 "GMV");
-        driver.findElement(By.cssSelector("div.toggle-switch-label-gl:nth-child(1)")).click();
+        driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")).click();
 
     }
     public void Select_SortBy_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         Thread.sleep(6000);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",driver.findElement(By.cssSelector("div.toggle-switch-label-gl:nth-child(1)")));
+        jsExecutor.executeScript("arguments[0].scrollIntoView();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
        waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_SortBy_filter)).click();
         vqpo.select_SortBy_Exposure.click();
 
@@ -105,7 +105,7 @@ public class VerificationQueuePage extends Wait {
                         "Toys Kids and Babies\n" +
                         "TV; Audio / Video; Gaming & Wearables\n" +
                         "Watches Sunglasses Jewellery");
-        driver.findElement(By.cssSelector("div.toggle-switch-label-gl:nth-child(1)")).click();
+        driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")).click();
     }
     public void select_l1_cateogry() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
