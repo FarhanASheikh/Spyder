@@ -35,7 +35,6 @@ public class VerificationQueuePage extends Wait {
         Assert.assertEquals( vqpo.select_SortBy_filter.getText(),"Select Criteria\n" +
                 "Exposure\n" +
                 "GMV");
-
     }
     public void Select_SortBy_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
