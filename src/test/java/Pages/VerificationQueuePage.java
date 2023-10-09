@@ -35,7 +35,6 @@ public class VerificationQueuePage extends Wait {
         Assert.assertEquals( vqpo.select_SortBy_filter.getText(),"Select Criteria\n" +
                 "Exposure\n" +
                 "GMV");
-        driver.findElement(By.xpath("//footer[@class='mt-5 footerScrapy']")).click();
     }
     public void Select_SortBy_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
@@ -105,11 +104,12 @@ public class VerificationQueuePage extends Wait {
                         "Watches Sunglasses Jewellery");
         driver.findElement(By.xpath("//footer[@class='mt-5 footerScrapy']")).click();
     }
-    public void select_l1_cateogry(){
+    public void select_l1_cateogry() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_l1_category_filter);
         waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_l1_category_filter)).click();
+        Thread.sleep(2000);
         waitforelement().until(ExpectedConditions.elementToBeClickable(vqpo.select_all_l1_category_checkbox)).click();
         Assert.assertTrue(vqpo.select_all_l1_category_checkbox.getAttribute("class").contains("selected"));
 
