@@ -35,6 +35,8 @@ public class VerificationQueuePage extends Wait {
         Assert.assertEquals( vqpo.select_SortBy_filter.getText(),"Select Criteria\n" +
                 "Exposure\n" +
                 "GMV");
+        driver.findElement(By.cssSelector("div.toggle-switch-label-gl:nth-child(1)")).click();
+
     }
     public void Select_SortBy_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
@@ -59,10 +61,11 @@ public class VerificationQueuePage extends Wait {
                 "Startech_BD");
         driver.findElement(By.cssSelector("div.toggle-switch-label-gl:nth-child(1)")).click();
     }
-    public void select_competitors(){
+    public void select_competitors() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_Competitor_filter);
+        Thread.sleep(2000);
         vqpo.select_Competitor_filter.click();
       vqpo.select_all_competitor_checkbox.click();
         Assert.assertTrue(vqpo.select_all_competitor_checkbox.getAttribute("class").contains("selected"));
