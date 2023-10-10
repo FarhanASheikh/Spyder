@@ -45,10 +45,11 @@ public class VerificationQueuePage extends Wait {
         vqpo.select_SortBy_Exposure.click();
 
     }
-    public void verify_Competitors_filters(){
+    public void verify_Competitors_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_Competitor_filter);
+        Thread.sleep(2000);
         vqpo.select_Competitor_filter.click();
         Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
                 "AliExpress BD\n" +
