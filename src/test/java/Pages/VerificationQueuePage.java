@@ -48,7 +48,9 @@ public class VerificationQueuePage extends Wait {
     public void verify_Competitors_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView();",vqpo.select_Competitor_filter);
+        jsExecutor.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
+        Thread.sleep(2000);
+        vqpo.select_Competitor_filter.click();
         Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
                 "AliExpress BD\n" +
                 "Chaldal_bd\n" +
@@ -56,7 +58,7 @@ public class VerificationQueuePage extends Wait {
                 "Pickaboo_bd\n" +
                 "Shajgoj\n" +
                 "Startech_BD");
-        jsExecutor.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
+
     }
     public void select_competitors() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
