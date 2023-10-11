@@ -168,7 +168,7 @@ public class VerificationQueuePage extends Wait {
     }
     public void click_filter_button(){
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
-        vqpo.select_industry_filter.click();
+        driver.findElement(By.xpath("//label[@for='industry']")).click();
         waitforelement().until(ExpectedConditions.visibilityOf(vqpo.filter_button)).click();
         Assert.assertTrue(vqpo.spinner.isDisplayed());
 
