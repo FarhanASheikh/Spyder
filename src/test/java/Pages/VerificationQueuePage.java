@@ -156,6 +156,7 @@ public class VerificationQueuePage extends Wait {
                 "Digital Goods\n" +
                 "Mobiles & Tablets\n" +
                 "Kitchen & Dining");
+        vqpo.select_industry_filter.click();
     }
     public void verify_stock_filter(){
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
@@ -167,8 +168,6 @@ public class VerificationQueuePage extends Wait {
     }
     public void click_filter_button(){
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
         vqpo.filter_button.click();
         Assert.assertTrue(vqpo.spinner.isDisplayed());
 
