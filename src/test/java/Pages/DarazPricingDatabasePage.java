@@ -50,7 +50,7 @@ public class DarazPricingDatabasePage extends Wait {
                 Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("Baby"));
             }
             else{
-                Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("BABY"));
+                Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr:nth-child(" + i + ") td:nth-child(1) a"))).getText().contains("baby"));
             }
         }}
 
