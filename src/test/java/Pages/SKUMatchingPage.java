@@ -887,7 +887,10 @@ public class SKUMatchingPage extends Wait {
                 "Pickaboo_bd\n" +
                 "Shajgoj\n" +
                 "Startech_BD\n" +
-                "AliExpress BD");
+                "AliExpress BD\n" +
+                "Diamu BD\n" +
+                "Othoba BD\n" +
+                "Fixit BD");
     }
 
 

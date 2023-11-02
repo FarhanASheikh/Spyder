@@ -24,7 +24,11 @@ public class ScraperPageObjects {
     @FindBy(xpath ="//*[@id='slectVenture' and @name='lang' and @class='my-0 w-80 form-control']")
             public WebElement venture_dropdown;
     @FindBy(xpath ="//*[contains(text(),'BD')]")
-            public WebElement select_venture;
+            public WebElement select_BD_venture;
+    @FindBy(xpath ="//*[contains(text(),'PK')]")
+    public WebElement select_PK_venture;
+    @FindBy(xpath ="//*[contains(text(),'LK')]")
+    public WebElement select_LK_venture;
     @FindBy(css = "div.col-md-12.d-sm-flex.align-items-center.p-0.pageHead div.ml-sm-auto .btnBlue.btn-danger")
             public WebElement button_Initiate_Job;
     @FindBy(xpath = "//*[@for='204']")
@@ -35,6 +39,13 @@ public class ScraperPageObjects {
             public WebElement select_PandaMart;
     @FindBy(xpath = "//*[@for='6']")
             public WebElement select_Chaldal_bd;
+    @FindBy(xpath = "//*[@for='233']")
+    public WebElement select_Startech_bd;
+    @FindBy(xpath = "//*[@for='317']")
+    public WebElement select_Aliexpress_bd;
+    @FindBy(xpath = "//*[@for='324']")
+    public WebElement select_Diamu_bd;
+
     @FindBy(css = ".btn-lg.btn-block.btn-primary")
             public WebElement button_Done;
     @FindBy(xpath = "//*[@id='scrapyDetailtable']/tbody/tr")

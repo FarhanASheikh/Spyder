@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Surefire test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>13/3/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>78/3/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Oct 09 13:59:36 PKT 2023</td>
+<td>Started on:</td><td>Fri Oct 27 12:06:05 PKT 2023</td>
 </tr>
-<tr><td>Total time:</td><td>44 seconds (44606 ms)</td>
+<tr><td>Total time:</td><td>865 seconds (865630 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,61 +75,17 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='Tests.Regression_Suit.click_filter_button()'><b>click_filter_button</b><br>Test class: Tests.Regression_Suit</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;div.spinner&quot;}
-  (Session info: chrome=110.0.5481.177)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;13.5.1&apos;, java.version: &apos;19.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [e98d7db0924a08250934b6ea5e90ce3a, findElement {using=css selector, value=div.spinner}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: e98d7db0924a08250934b6ea5e90ce3a
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy18.isDisplayed(Unknown Source)
-	at Pages.VerificationQueuePage.click_filter_button(VerificationQueuePage.java:172)
-	at Tests.Regression_Suit.click_filter_button(Regression_Suit.java:1136)
-... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1981844352", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1981844352'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;div.spinner&quot;}
-  (Session info: chrome=110.0.5481.177)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;13.5.1&apos;, java.version: &apos;19.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [e98d7db0924a08250934b6ea5e90ce3a, findElement {using=css selector, value=div.spinner}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Session ID: e98d7db0924a08250934b6ea5e90ce3a
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy18.isDisplayed(Unknown Source)
-	at Pages.VerificationQueuePage.click_filter_button(VerificationQueuePage.java:172)
-	at Tests.Regression_Suit.click_filter_button(Regression_Suit.java:1136)
+<td title='Tests.Regression_Suit.dpdp_add_online_competitor_sku_match_valid_url()'><b>dpdp_add_online_competitor_sku_match_valid_url</b><br>Test class: Tests.Regression_Suit</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Scraping Process Started] but found [Error! Scraping Process Failed]
+	at Pages.DarazPricingDatabasePage.add_online_competitor_sku_match_valid_url(DarazPricingDatabasePage.java:566)
+	at Tests.Regression_Suit.dpdp_add_online_competitor_sku_match_valid_url(Regression_Suit.java:1106)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace684752804", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace684752804'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Scraping Process Started] but found [Error! Scraping Process Failed]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:43)
+	at Pages.DarazPricingDatabasePage.add_online_competitor_sku_match_valid_url(DarazPricingDatabasePage.java:566)
+	at Tests.Regression_Suit.dpdp_add_online_competitor_sku_match_valid_url(Regression_Suit.java:1106)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
@@ -159,60 +115,23 @@ Session ID: e98d7db0924a08250934b6ea5e90ce3a
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
 </pre></div></td>
-<td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>7</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
-<td title='Tests.Regression_Suit.select_l1_cateogry()'><b>select_l1_cateogry</b><br>Test class: Tests.Regression_Suit</td>
-<td><div><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;li class=&quot;option    &quot;&gt;...&lt;/li&gt; is not clickable at point (114, 23). Other element would receive the click: &lt;div class=&quot;sidebar-header&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=110.0.5481.177)
-Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;13.5.1&apos;, java.version: &apos;19.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [e98d7db0924a08250934b6ea5e90ce3a, clickElement {id=8a52f4a2-3c40-4dc5-825d-2b9d20334ef2}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on mac (e98d7db0924a08250934b6ea5e90ce3a)] -&gt; xpath: //div[@class=&apos;form-row flex-column p-3&apos;][2]/div/div[@class=&apos;multiselect-container multiSelectContainer  form-control custom-select&apos;]/div/ul/li[contains(text(),&apos;All&apos;)]]
-Session ID: e98d7db0924a08250934b6ea5e90ce3a
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:242)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at jdk.proxy2/jdk.proxy2.$Proxy18.click(Unknown Source)
-	at Pages.VerificationQueuePage.select_l1_cateogry(VerificationQueuePage.java:115)
-	at Tests.Regression_Suit.select_l1_cateogry(Regression_Suit.java:1108)
-... Removed 33 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1351307120", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1351307120'><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;li class=&quot;option    &quot;&gt;...&lt;/li&gt; is not clickable at point (114, 23). Other element would receive the click: &lt;div class=&quot;sidebar-header&quot;&gt;...&lt;/div&gt;
-  (Session info: chrome=110.0.5481.177)
-Build info: version: &apos;4.10.0&apos;, revision: &apos;c14d967899&apos;
-System info: os.name: &apos;Mac OS X&apos;, os.arch: &apos;aarch64&apos;, os.version: &apos;13.5.1&apos;, java.version: &apos;19.0.1&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [e98d7db0924a08250934b6ea5e90ce3a, clickElement {id=8a52f4a2-3c40-4dc5-825d-2b9d20334ef2}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 110.0.5481.177, chrome: {chromedriverVersion: 110.0.5481.77 (65ed616c6e8e..., userDataDir: /var/folders/cn/t8j6szvx4_n...}, goog:chromeOptions: {debuggerAddress: localhost:50001}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: mac, proxy: Proxy(), se:cdp: ws://localhost:50001/devtoo..., se:cdpVersion: 110.0.5481.177, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on mac (e98d7db0924a08250934b6ea5e90ce3a)] -&gt; xpath: //div[@class=&apos;form-row flex-column p-3&apos;][2]/div/div[@class=&apos;multiselect-container multiSelectContainer  form-control custom-select&apos;]/div/ul/li[contains(text(),&apos;All&apos;)]]
-Session ID: e98d7db0924a08250934b6ea5e90ce3a
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:199)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:132)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:531)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:242)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
-	at jdk.proxy2/jdk.proxy2.$Proxy18.click(Unknown Source)
-	at Pages.VerificationQueuePage.select_l1_cateogry(VerificationQueuePage.java:115)
-	at Tests.Regression_Suit.select_l1_cateogry(Regression_Suit.java:1108)
+<td title='Tests.Regression_Suit.getandcomparedata()'><b>getandcomparedata</b><br>Test class: Tests.Regression_Suit</td>
+<td><div><pre>java.lang.AssertionError: expected [387] but found [386]
+	at Pages.ScraperPage.getandcomparedata(ScraperPage.java:169)
+	at Tests.Regression_Suit.getandcomparedata(Regression_Suit.java:191)
+... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1583772475", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1583772475'><pre>java.lang.AssertionError: expected [387] but found [386]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:137)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:652)
+	at org.testng.Assert.assertEquals(Assert.java:662)
+	at Pages.ScraperPage.getandcomparedata(ScraperPage.java:169)
+	at Tests.Regression_Suit.getandcomparedata(Regression_Suit.java:191)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
@@ -242,8 +161,8 @@ Session ID: e98d7db0924a08250934b6ea5e90ce3a
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:125)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
 </pre></div></td>
-<td>11</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>59</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_industry_filter()'><b>verify_industry_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td><div><pre>java.lang.AssertionError: expected [All
@@ -260,15 +179,15 @@ Fashion
 Digital Goods
 Mobiles &amp; Tablets
 0.0
-FMCG
 GM
+FMCG
 Kitchen &amp; Dining
 EL
 Others]
-	at Pages.VerificationQueuePage.verify_industry_filter(VerificationQueuePage.java:150)
-	at Tests.Regression_Suit.verify_industry_filter(Regression_Suit.java:1128)
-... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1984109", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1984109'><pre>java.lang.AssertionError: expected [All
+	at Pages.VerificationQueuePage.verify_industry_filter(VerificationQueuePage.java:153)
+	at Tests.Regression_Suit.verify_industry_filter(Regression_Suit.java:1290)
+... Removed 34 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace161733402", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace161733402'><pre>java.lang.AssertionError: expected [All
 GM
 EL
 FMCG
@@ -282,8 +201,8 @@ Fashion
 Digital Goods
 Mobiles &amp; Tablets
 0.0
-FMCG
 GM
+FMCG
 Kitchen &amp; Dining
 EL
 Others]
@@ -293,8 +212,8 @@ Others]
 	at org.testng.Assert.assertEquals(Assert.java:118)
 	at org.testng.Assert.assertEquals(Assert.java:453)
 	at org.testng.Assert.assertEquals(Assert.java:463)
-	at Pages.VerificationQueuePage.verify_industry_filter(VerificationQueuePage.java:150)
-	at Tests.Regression_Suit.verify_industry_filter(Regression_Suit.java:1128)
+	at Pages.VerificationQueuePage.verify_industry_filter(VerificationQueuePage.java:153)
+	at Tests.Regression_Suit.verify_industry_filter(Regression_Suit.java:1290)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
@@ -325,7 +244,7 @@ Others]
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:413)
 </pre></div></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -335,70 +254,395 @@ Others]
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='Tests.Regression_Suit.CheckLogin_Text()'><b>CheckLogin_Text</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.Checklogo()'><b>Checklogo</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.Empty_Login_and_Verify_username_validation()'><b>Empty_Login_and_Verify_username_validation</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
 <td title='Tests.Regression_Suit.Select_SortBy_filters()'><b>Select_SortBy_filters</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>6</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
-<td title='Tests.Regression_Suit.change_venture_BD()'><b>change_venture_BD</b><br>Test class: Tests.Regression_Suit</td>
+<td title='Tests.Regression_Suit.Start_Scraping_Jobs()'><b>Start_Scraping_Jobs</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>3</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.Success_msg()'><b>Success_msg</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.change_venture()'><b>change_venture</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>2</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.check_cancel_button()'><b>check_cancel_button</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>4</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.click_daraz_pricing_database_module()'><b>click_daraz_pricing_database_module</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>9</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.click_filter_button()'><b>click_filter_button</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.click_verfication_queue_module()'><b>click_verfication_queue_module</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpd_verify_view_matched_item_data()'><b>dpd_verify_view_matched_item_data</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>3</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpd_verify_view_matched_item_data_7th_row()'><b>dpd_verify_view_matched_item_data_7th_row</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>2</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_match_database_tab()'><b>dpdp_add_match_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>10</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_offline_competitor_sku_match_valid_data_click_add_sku_button()'><b>dpdp_add_offline_competitor_sku_match_valid_data_click_add_sku_button</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name()'><b>dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name()'><b>dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category()'><b>dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price()'><b>dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_offline_competitor_sku_match_valid_data_verify_button_enabled()'><b>dpdp_add_offline_competitor_sku_match_valid_data_verify_button_enabled</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_add_online_competitor_sku_invalid_url()'><b>dpdp_add_online_competitor_sku_invalid_url</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>11</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_click_add_competitor_sku_verify_popup()'><b>dpdp_click_add_competitor_sku_verify_popup</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
 <td>1</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_click_cancel_popup()'><b>dpdp_click_cancel_popup</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>3</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_dpdp_verify_database_match_added()'><b>dpdp_dpdp_verify_database_match_added</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>8</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_mark_inaccurate()'><b>dpdp_mark_inaccurate</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_mark_verified()'><b>dpdp_mark_verified</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>13</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_search_sku_name_against_competitor_database_tab()'><b>dpdp_search_sku_name_against_competitor_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>10</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_add_sku_btn_disable_on_add_url()'><b>dpdp_verify_add_sku_btn_disable_on_add_url</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_add_sku_btn_disable_on_competitor_select()'><b>dpdp_verify_add_sku_btn_disable_on_competitor_select</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_add_sku_btn_disable_on_popup_display()'><b>dpdp_verify_add_sku_btn_disable_on_popup_display</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_cancel_button_database_tab()'><b>dpdp_verify_cancel_button_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>11</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_cancel_icon_database_tab()'><b>dpdp_verify_cancel_icon_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>11</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_data_on_filter_by_chaldal_database_tab()'><b>dpdp_verify_data_on_filter_by_chaldal_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>13</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_data_on_filter_by_pandamart_database_tab()'><b>dpdp_verify_data_on_filter_by_pandamart_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>13</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_data_on_filter_by_pickaboo_database_tab()'><b>dpdp_verify_data_on_filter_by_pickaboo_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>13</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_data_on_filter_by_shajgoj_database_tab()'><b>dpdp_verify_data_on_filter_by_shajgoj_database_tab</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>13</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_database_tab_add_btn_disabled()'><b>dpdp_verify_database_tab_add_btn_disabled</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_database_tab_selection()'><b>dpdp_verify_database_tab_selection</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_filter_competitor_name()'><b>dpdp_verify_filter_competitor_name</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_mark_inaccurate_dropdown()'><b>dpdp_verify_mark_inaccurate_dropdown</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>5</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_offline_competitor_sku_match_added_verify_competitor_category()'><b>dpdp_verify_offline_competitor_sku_match_added_verify_competitor_category</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_offline_competitor_sku_match_added_verify_competitor_name()'><b>dpdp_verify_offline_competitor_sku_match_added_verify_competitor_name</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_offline_competitor_sku_match_added_verify_competitor_price()'><b>dpdp_verify_offline_competitor_sku_match_added_verify_competitor_price</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_offline_competitor_sku_match_added_verify_competitor_sku()'><b>dpdp_verify_offline_competitor_sku_match_added_verify_competitor_sku</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_offline_selection()'><b>dpdp_verify_offline_selection</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_online_match_added()'><b>dpdp_verify_online_match_added</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_online_selection()'><b>dpdp_verify_online_selection</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>1</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_search_btn_disabled()'><b>dpdp_verify_search_btn_disabled</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.dpdp_verify_search_btn_enabled_on_filter_selection()'><b>dpdp_verify_search_btn_enabled_on_filter_selection</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.filter_by_defualt_option_all()'><b>filter_by_defualt_option_all</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>9</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.filter_by_higher_than()'><b>filter_by_higher_than</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>16</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.filter_by_lower_than()'><b>filter_by_lower_than</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>16</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.filter_verify_option()'><b>filter_verify_option</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.get_sku_id()'><b>get_sku_id</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>1</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.get_table_data_before_job_start()'><b>get_table_data_before_job_start</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>90</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.left_menu_scraper_selection()'><b>left_menu_scraper_selection</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>2</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.select_business_type_filter()'><b>select_business_type_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.select_competitors()'><b>select_competitors</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.select_l1_cateogry()'><b>select_l1_cateogry</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>2</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.select_match_age_filter()'><b>select_match_age_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_Case3()'><b>verify_Case3</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_Case4()'><b>verify_Case4</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>1</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_Case5()'><b>verify_Case5</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>2</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_Competitors_filters()'><b>verify_Competitors_filters</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
-<td>1</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>2</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_business_type_filter()'><b>verify_business_type_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_case6()'><b>verify_case6</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>1</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_l1_cateogry_filter()'><b>verify_l1_cateogry_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_match_age_filter()'><b>verify_match_age_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_pagetitle()'><b>verify_pagetitle</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_search_sku_id()'><b>verify_search_sku_id</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>18</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_search_sku_id_and_name()'><b>verify_search_sku_id_and_name</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>23</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_search_sku_name_lower_case()'><b>verify_search_sku_name_lower_case</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>99</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_search_sku_name_upper_case()'><b>verify_search_sku_name_upper_case</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>99</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verify_select20records()'><b>verify_select20records</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>25</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_sortby_filter()'><b>verify_sortby_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_stock_filter()'><b>verify_stock_filter</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
 <td>0</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 <tr>
 <td title='Tests.Regression_Suit.verify_sucessful_login()'><b>verify_sucessful_login</b><br>Test class: Tests.Regression_Suit</td>
 <td></td>
-<td>10</td>
-<td>Tests.Regression_Suit@6d171ce0</td></tr>
+<td>7</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
+<tr>
+<td title='Tests.Regression_Suit.verifyfooter_text()'><b>verifyfooter_text</b><br>Test class: Tests.Regression_Suit</td>
+<td></td>
+<td>0</td>
+<td>Tests.Regression_Suit@6345e7b9</td></tr>
 </table><p>
 </body>
 </html>

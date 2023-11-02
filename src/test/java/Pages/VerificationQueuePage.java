@@ -54,6 +54,9 @@ public class VerificationQueuePage extends Wait {
         Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
                 "AliExpress BD\n" +
                 "Chaldal_bd\n" +
+                "Diamu BD\n" +
+                "Fixit BD\n" +
+                "Othoba BD\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
                 "Shajgoj\n" +

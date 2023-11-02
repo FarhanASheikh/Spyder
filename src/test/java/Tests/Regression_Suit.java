@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Base64;
+
+import Utilities.ThreadStorage;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -14,6 +16,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
+import org.testng.annotations.Test;
+import org.testng.annotations.Parameters;
 
 import static Utilities.Wait.driver;
 
@@ -92,7 +96,13 @@ public class Regression_Suit {
 
 
 
+@BeforeClass
+@Parameters("venture")
+public void venture(String ven){
+    System.out.println(ven);
+    ThreadStorage.put("venture",ven);
 
+}
 
     //   Login Test
 
@@ -144,7 +154,7 @@ public class Regression_Suit {
 
     }
     @Test(priority = 10)
-    public void change_venture_BD() throws InterruptedException {
+    public void change_venture() throws InterruptedException {
         sp.Change_venture();
     }
     @Test(priority = 11)
@@ -1065,7 +1075,7 @@ public void click_SKUMatching_module3() throws InterruptedException {
         dpdp.dpd_verify_view_matched_item_data();
     }
     @Test(priority = 236)
-    public void  dpd_verify_view_matched_item_data_7th_row()throws InterruptedException {
+    public void  dpd_verify_view_matched_item_data_7th_row() {
         dpdp.dpd_verify_view_matched_item_data_7th_row();
     }
     @Test(priority = 237)
@@ -1080,58 +1090,210 @@ public void click_SKUMatching_module3() throws InterruptedException {
         dpdp.verify_mark_inaccurate_dropdown();
     }
     @Test(priority = 240)
-    public void click_verfication_queue_module() throws InterruptedException {
-        vqp.click_verfication_queue_module();
+    public void  dpdp_click_add_competitor_sku_verify_popup()throws InterruptedException {
+        dpdp.click_add_competitor_sku_verify_popup();
     }
     @Test(priority = 241)
-    public void verify_sortby_filter() throws InterruptedException {
-        vqp.verify_sortby_filter();
+    public void  dpdp_click_cancel_popup()throws InterruptedException {
+        dpdp.click_cancel_popup();
     }
     @Test(priority = 242)
+    public void  dpdp_verify_online_selection()throws InterruptedException {
+        dpdp.verify_online_selection();
+    }
+    @Test(priority = 243)
+    public void  dpdp_add_online_competitor_sku_match_valid_url()throws InterruptedException {
+        dpdp.add_online_competitor_sku_match_valid_url();
+    }
+    @Test(priority = 244)
+    public void  dpdp_verify_online_match_added()throws InterruptedException {
+        dpdp.verify_online_match_added();
+    }
+    @Test(priority = 245)
+    public void  dpdp_add_online_competitor_sku_invalid_url()throws InterruptedException {
+        dpdp.add_online_competitor_sku_invalid_url();
+    }
+    @Test(priority = 246)
+    public void  dpdp_verify_add_sku_btn_disable_on_popup_display()throws InterruptedException {
+        dpdp.verify_add_sku_btn_disable_on_popup_display();
+    }
+    @Test(priority = 247)
+    public void  dpdp_verify_add_sku_btn_disable_on_competitor_select()throws InterruptedException {
+        dpdp.verify_add_sku_btn_disable_on_competitor_select();
+    }
+    @Test(priority = 248)
+    public void  dpdp_verify_add_sku_btn_disable_on_add_url()throws InterruptedException {
+        dpdp.verify_add_sku_btn_disable_on_add_url();
+    }
+    @Test(priority = 249)
+    public void  dpdp_verify_offline_selection()throws InterruptedException {
+        dpdp.verify_offline_selection();
+    }
+    @Test(priority = 250)
+    public void  dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name()throws InterruptedException {
+        dpdp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name();
+    }
+
+    @Test(priority = 251)
+    public void  dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name()throws InterruptedException {
+        dpdp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name();
+    }
+
+    @Test(priority = 252)
+    public void  dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price()throws InterruptedException {
+        dpdp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price();
+    }
+    @Test(priority = 253)
+    public void  dpdp_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category()throws InterruptedException {
+        dpdp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_l1_category();
+    }
+
+    @Test(priority = 254)
+    public void  dpdp_add_offline_competitor_sku_match_valid_data_verify_button_enabled()throws InterruptedException {
+        dpdp.add_offline_competitor_sku_match_valid_data_verify_button_enabled();
+    }
+    @Test(priority = 255)
+    public void  dpdp_add_offline_competitor_sku_match_valid_data_click_add_sku_button()throws InterruptedException {
+        dpdp.add_offline_competitor_sku_match_valid_data_click_add_sku_button();
+    }
+
+    @Test(priority = 256)
+    public void  dpdp_verify_offline_competitor_sku_match_added_verify_competitor_sku()throws InterruptedException {
+        dpdp.verify_offline_competitor_sku_match_added_verify_competitor_sku();
+    }
+
+    @Test(priority = 257)
+    public void  dpdp_verify_offline_competitor_sku_match_added_verify_competitor_name()throws InterruptedException {
+        dpdp.verify_offline_competitor_sku_match_added_verify_competitor_name();
+    }
+
+    @Test(priority = 258)
+    public void  dpdp_verify_offline_competitor_sku_match_added_verify_competitor_price()throws InterruptedException {
+        dpdp.verify_offline_competitor_sku_match_added_verify_competitor_price();
+    }
+    @Test(priority = 259)
+    public void  dpdp_verify_offline_competitor_sku_match_added_verify_competitor_category()throws InterruptedException {
+        dpdp.verify_offline_competitor_sku_match_added_verify_competitor_category();
+    }
+
+    @Test(priority = 260)
+    public void  dpdp_verify_database_tab_selection()throws InterruptedException {
+        dpdp.verify_database_tab_selection();
+    }
+
+    @Test(priority = 261)
+    public void  dpdp_verify_database_tab_add_btn_disabled()throws InterruptedException {
+        dpdp.verify_database_tab_add_btn_disabled();
+    }
+
+    @Test(priority = 262)
+    public void  dpdp_verify_search_btn_disabled()throws InterruptedException {
+        dpdp.verify_search_btn_disabled();
+    }
+
+    @Test(priority = 263)
+    public void  dpdp_verify_cancel_icon_database_tab()throws InterruptedException {
+        dpdp.verify_cancel_icon_database_tab();
+    }
+
+    @Test(priority = 264)
+    public void  dpdp_verify_cancel_button_database_tab()throws InterruptedException {
+        dpdp.verify_cancel_button_database_tab();
+    }
+
+    @Test(priority = 265)
+    public void  dpdp_verify_search_btn_enabled_on_filter_selection()throws InterruptedException {
+        dpdp.verify_search_btn_enabled_on_filter_selection();
+    }
+    @Test(priority = 266)
+    public void  dpdp_verify_filter_competitor_name()throws InterruptedException {
+        dpdp.verify_filter_competitor_name();
+    }
+
+    @Test(priority = 267)
+    public void  dpdp_verify_data_on_filter_by_chaldal_database_tab()throws InterruptedException {
+        dpdp.verify_data_on_filter_by_chaldal_database_tab();
+    }
+
+    @Test(priority = 268)
+    public void  dpdp_verify_data_on_filter_by_pandamart_database_tab()throws InterruptedException {
+        dpdp.verify_data_on_filter_by_pandamart_database_tab();
+    }
+    @Test(priority = 269)
+    public void  dpdp_verify_data_on_filter_by_pickaboo_database_tab()throws InterruptedException {
+        dpdp.verify_data_on_filter_by_pickaboo_database_tab();
+    }
+    @Test(priority = 270)
+    public void  dpdp_verify_data_on_filter_by_shajgoj_database_tab()throws InterruptedException {
+        dpdp.verify_data_on_filter_by_shajgoj_database_tab();
+    }
+    @Test(priority = 271)
+    public void  dpdp_search_sku_name_against_competitor_database_tab()throws InterruptedException {
+        dpdp.search_sku_name_against_competitor_database_tab();
+    }
+    @Test(priority = 272)
+    public void  dpdp_add_match_database_tab()throws InterruptedException {
+        dpdp.add_match_database_tab();
+    }
+    @Test(priority = 273)
+    public void  dpdp_dpdp_verify_database_match_added()throws InterruptedException {
+        dpdp.dpdp_verify_database_match_added();
+    }
+
+    //VQ
+    @Test(priority = 274)
+    public void click_verfication_queue_module() {
+        vqp.click_verfication_queue_module();
+    }
+    @Test(priority = 275)
+    public void verify_sortby_filter() {
+        vqp.verify_sortby_filter();
+    }
+    @Test(priority = 276)
     public void Select_SortBy_filters() throws InterruptedException {
         vqp.Select_SortBy_filters();
     }
-    @Test(priority = 243)
+    @Test(priority = 277)
     public void verify_Competitors_filters() throws InterruptedException {
         vqp.verify_Competitors_filters();
     }
-    @Test(priority = 244)
+    @Test(priority = 278)
     public void select_competitors() throws InterruptedException {
         vqp.select_competitors();
     }
-    @Test(priority = 245)
+    @Test(priority = 279)
     public void verify_l1_cateogry_filter() throws InterruptedException {
         vqp.verify_l1_cateogry_filter();
     }
-    @Test(priority = 246)
+    @Test(priority = 280)
     public void select_l1_cateogry() throws InterruptedException {
         vqp.select_l1_cateogry();
     }
-    @Test(priority = 247)
+    @Test(priority = 281)
     public void verify_business_type_filter() throws InterruptedException {
         vqp.verify_business_type_filter();
     }
-    @Test(priority = 248)
+    @Test(priority = 282)
     public void select_business_type_filter() throws InterruptedException {
         vqp.select_business_type_filter();
     }
-    @Test(priority = 249)
+    @Test(priority = 283)
     public void verify_match_age_filter()  {
         vqp.verify_match_age_filter();
     }
-    @Test(priority = 250)
+    @Test(priority = 284)
     public void select_match_age_filter()  {
         vqp.select_match_age_filter();
     }
-    @Test(priority = 251)
+    @Test(priority = 285)
     public void verify_industry_filter() {
         vqp.verify_industry_filter();
     }
-    @Test(priority = 252)
+    @Test(priority = 286)
     public void verify_stock_filter()  {
         vqp.verify_stock_filter();
     }
-    @Test(priority = 253)
+    @Test(priority = 287)
     public void click_filter_button()   {
         vqp.click_filter_button();
     }

@@ -1,5 +1,6 @@
 package Pages;
 import Object.ScraperPageObjects;
+import Utilities.ThreadStorage;
 import Utilities.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,11 +17,6 @@ public class ScraperPage extends Wait {
     public void click_scraper_module() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-//        if(!(spo.Daraz_logo_left_pane.size() >0)){
-//            jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.hamburger_icon);
-//           spo.hamburger_icon.click();
-//        }
-
         try{
         waitforelement().until(ExpectedConditions.elementToBeClickable(spo.scraper_module_nav)).click();
         }
@@ -63,11 +59,30 @@ public class ScraperPage extends Wait {
     }
 
     public void Change_venture() throws InterruptedException {
-        ScraperPageObjects spo = new ScraperPageObjects(driver);
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.venture_dropdown)).click();
-        Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.select_venture)).click();
-        Thread.sleep(9000);
-    }
+        switch (ThreadStorage.get("venture")){
+            case "BD": {
+                ScraperPageObjects spo = new ScraperPageObjects(driver);
+                Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.venture_dropdown)).click();
+                Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.select_BD_venture)).click();
+                Thread.sleep(2000);
+            }
+            break;
+            case "PK":{
+                ScraperPageObjects spo = new ScraperPageObjects(driver);
+                Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.venture_dropdown)).click();
+                Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.select_PK_venture)).click();
+                Thread.sleep(2000);
+
+            }
+            break;
+            case "LK":{
+                ScraperPageObjects spo = new ScraperPageObjects(driver);
+                Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.venture_dropdown)).click();
+                Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.select_LK_venture)).click();
+                Thread.sleep(2000);
+
+            }
+    }}
 
     public void get_table_data() {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
@@ -86,7 +101,7 @@ public class ScraperPage extends Wait {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].click();", spo.button_Initiate_Job);
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.cancel_button)).click();
     }
 
@@ -95,11 +110,27 @@ public class ScraperPage extends Wait {
             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
             jsExecutor.executeScript("arguments[0].click();", spo.button_Initiate_Job);
             Thread.sleep(2000);
-            Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Pickaboo_bd)).click();//Select competitors to scrape
-            Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Shajgoj)).click();//Select competitors to scrape
-            Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Chaldal_bd)).click();//Select competitors to scrape
-            Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_PandaMart)).click();///Select competitors to scrape
-            Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();//Click Done button
+            switch (ThreadStorage.get("venture")){
+                case "BD": {
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Pickaboo_bd)).click();//Select competitors to scrape
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Shajgoj)).click();//Select competitors to scrape
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Chaldal_bd)).click();//Select competitors to scrape
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_PandaMart)).click();///Select competitors to scrape
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Startech_bd)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Aliexpress_bd)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Diamu_bd)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();//Click Done button
+                }break;
+                case "PK":{
+
+
+
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();
+
+
+                }
+
+            }
 
     }
 

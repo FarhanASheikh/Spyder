@@ -226,6 +226,7 @@ public class DarazPricingDatabasePage extends Wait {
         String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        Thread.sleep(4000);
         System.out.println(skumpo.view_matched_item_active_tab.getText());
         if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
@@ -269,6 +270,7 @@ public class DarazPricingDatabasePage extends Wait {
         String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+        Thread.sleep(4000);
         System.out.println(skumpo.view_matched_item_active_tab.getText());
         if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
@@ -310,6 +312,7 @@ public class DarazPricingDatabasePage extends Wait {
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
         String competitor_name =waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
+        Thread.sleep(4000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         if(competitor_name.contains("Chaldal_bd") ||competitor_name.contains("Pickaboo_bd")||competitor_name.contains("Shajgoj") ||competitor_name.contains("PandaMart")) {
             driver.findElement(By.xpath("//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'" + competitor_name + "')]")).click();
@@ -945,7 +948,12 @@ public class DarazPricingDatabasePage extends Wait {
                 "Chaldal_bd\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
-                "Shajgoj");
+                "Shajgoj\n" +
+                "Startech_BD\n" +
+                "AliExpress BD\n" +
+                "Diamu BD\n" +
+                "Othoba BD\n" +
+                "Fixit BD");
     }
 
     public void verify_data_on_filter_by_chaldal_database_tab() throws InterruptedException {

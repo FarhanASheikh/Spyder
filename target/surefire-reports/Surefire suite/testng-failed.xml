@@ -5,9 +5,10 @@
     <classes>
       <class name="Tests.Regression_Suit">
         <methods>
+          <include name="getandcomparedata"/>
           <include name="aftertest"/>
-          <include name="click_filter_button"/>
-          <include name="select_l1_cateogry"/>
+          <include name="venture"/>
+          <include name="dpdp_add_online_competitor_sku_match_valid_url"/>
           <include name="afterMethod"/>
           <include name="BeforeSuite"/>
           <include name="verify_industry_filter"/>
