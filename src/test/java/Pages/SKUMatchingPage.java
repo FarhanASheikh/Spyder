@@ -890,7 +890,8 @@ public class SKUMatchingPage extends Wait {
                 "AliExpress BD\n" +
                 "Diamu BD\n" +
                 "Othoba BD\n" +
-                "Fixit BD");
+                "Fixit BD\n" +
+                "Ryans BD");
     }
 
 
@@ -900,6 +901,7 @@ public class SKUMatchingPage extends Wait {
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
+        Thread.sleep(2000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_chaldal)).click();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.database_tab_search_button)).click();
         String third = waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_table_3rd_row_comp_bank_id)).getText();

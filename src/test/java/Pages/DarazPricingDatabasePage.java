@@ -953,7 +953,8 @@ public class DarazPricingDatabasePage extends Wait {
                 "AliExpress BD\n" +
                 "Diamu BD\n" +
                 "Othoba BD\n" +
-                "Fixit BD");
+                "Fixit BD\n" +
+                "Ryans BD");
     }
 
     public void verify_data_on_filter_by_chaldal_database_tab() throws InterruptedException {

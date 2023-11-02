@@ -59,6 +59,7 @@ public class VerificationQueuePage extends Wait {
                 "Othoba BD\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
+                "Ryans BD\n" +
                 "Shajgoj\n" +
                 "Startech_BD");
 
