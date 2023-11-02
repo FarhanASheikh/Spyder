@@ -93,9 +93,9 @@
             <!--                        <allure.results.directory>${allure.result.dir}</allure.results.directory>-->
             <!--                    </systemPropertyVariables>-->
             <testFailureIgnore>true</testFailureIgnore>
-            <suiteXmlFiles>
-                <suiteXmlFile>Testng.xml</suiteXmlFile>
-            </suiteXmlFiles>
+<!--            <suiteXmlFiles>-->
+<!--                <suiteXmlFile>Testng.xml</suiteXmlFile>-->
+<!--            </suiteXmlFiles>-->
         </configuration>
     </plugin>
         </plugins>
