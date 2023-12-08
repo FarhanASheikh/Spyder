@@ -1,5 +1,6 @@
 package Pages;
 import Object.VerificationQueuePageObjects;
+import Utilities.ThreadStorage;
 import Utilities.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -48,6 +49,9 @@ public class VerificationQueuePage extends Wait {
     public void verify_Competitors_filters() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        switch(ThreadStorage.get("venture")){
+            case "BD":{
+
         jsExecutor.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
         Thread.sleep(2000);
         vqpo.select_Competitor_filter.click();
@@ -59,11 +63,52 @@ public class VerificationQueuePage extends Wait {
                 "Othoba BD\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
+                "Rokomari BD\n" +
                 "Ryans BD\n" +
                 "Shajgoj\n" +
                 "Startech_BD");
 
     }
+        break;
+            case "PK":{
+
+                jsExecutor.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
+                Thread.sleep(2000);
+                vqpo.select_Competitor_filter.click();
+                Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
+                        "AliExpress BD\n" +
+                        "Chaldal_bd\n" +
+                        "Diamu BD\n" +
+                        "Fixit BD\n" +
+                        "Othoba BD\n" +
+                        "PandaMart\n" +
+                        "Pickaboo_bd\n" +
+                        "Rokomari BD\n" +
+                        "Ryans BD\n" +
+                        "Shajgoj\n" +
+                        "Startech_BD");
+
+            }
+            break;
+            case "LK":{
+
+                jsExecutor.executeScript("arguments[0].click();",driver.findElement(By.cssSelector("div.top-menu.d-flex.pageTitle")));
+                Thread.sleep(2000);
+                vqpo.select_Competitor_filter.click();
+                Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
+                        "BuyAbans\n" +
+                        "CarGill\n" +
+                        "Daraz\n" +
+                        "Glomark_lk\n" +
+                        "Greasemonkey_lk\n" +
+                        "Ideabeam_lk\n" +
+                        "Keellssuper_lk\n" +
+                        "MyarpicoLK\n" +
+                        "MySoftlogic\n" +
+                        "Wasi_lk");
+
+            }
+        }}
     public void select_competitors() throws InterruptedException {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;

@@ -129,6 +129,10 @@ public class SKUMatchingPageObjects {
     public WebElement select_competitor_dropdown;
     @FindBy(xpath="//select[@name ='competitor_id']/option [contains(text(),'Pickaboo_bd')]")
     public WebElement select_pickaboo;
+    @FindBy(xpath="//select[@name ='competitor_id']/option [contains(text(),'Keellssuper_lk')]")
+    public WebElement select_keelsuper;
+    @FindBy(xpath = "//select[@name ='competitor_id']/option [contains(text(),'Telemart')]")
+    public WebElement select_telemart;
     @FindBy(css = "div.tab-pane.active div.form-group input.form-control.form-control")
     public WebElement product_url_input;
     @FindBy(css = "button.btn.create-btn.blue-shadow.float-right.btn.btn-secondary")
@@ -161,6 +165,10 @@ public class SKUMatchingPageObjects {
     public WebElement matches_popup_offline_tab;
     @FindBy(xpath = "//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Pickaboo_bd')]")
     public WebElement matches_popup_pikaboo_tab;
+    @FindBy(xpath = "//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Telemart')]")
+    public WebElement matches_popup_telemart_tab;
+    @FindBy(xpath = "//ul[@class='nav nav-tabs nav-pills']/li/a[contains(text(),'Keellssuper_lk')]")
+    public WebElement matches_popup_keelsuper_tab;
     @FindBy(css = "ul.nav.nav-tabs.nav-pills li")
     public List <WebElement> view_matched_item_competitor_select;
     @FindBy(css= ".table.table-borderless.reportList tbody tr:nth-child(1) td:nth-child(7)  p")
@@ -187,6 +195,7 @@ public class SKUMatchingPageObjects {
     public WebElement database_tab_search_field;
     @FindBy(css="div.form-row.flex-column.p-3.form-group select.form-control.custom-select")
     public WebElement database_tab_competitor_dropdown_filters;
+    //BD
     @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Chaldal_bd')]")
     public WebElement database_tab_competitor_dropdown_filters_select_chaldal;
     @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'PandaMart')]")
@@ -195,6 +204,27 @@ public class SKUMatchingPageObjects {
     public WebElement database_tab_competitor_dropdown_filters_select_pickaboo;
     @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Shajgoj')]")
     public WebElement database_tab_competitor_dropdown_filters_select_shajgoj;
+    //PK
+    @FindBy(xpath = "//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'GrocersApp')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_GrocersApp;
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Shophive')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_shophive;
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'iShopping')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_ishopping;
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Telemart')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_telemart;
+
+    //LK
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Keellssuper_lk')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_Keellssuper_lk;
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Glomark_lk')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_glomark_lk;
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Wasi_lk')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_wasi_lk;
+    @FindBy(xpath ="//div[@class ='form-row flex-column p-3 form-group']/select/option[contains(text(),'Greasemonkey_lk')]")
+    public WebElement database_tab_competitor_dropdown_filters_select_Greasemonkey_lk;
+
+
     @FindBy(css = "div.tab-pane.active div.form-group button")
     public WebElement database_tab_search_button;
     @FindBy(css= "div.modal-content div.paginationtabledata button:nth-child(2)")
@@ -215,6 +245,11 @@ public class SKUMatchingPageObjects {
     public  WebElement view_matched_item_active_tab;
     @FindBy(xpath="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Chaldal_bd')]")
     public WebElement view_matched_item_chaldal_tab;
+    @FindBy(xpath="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'GrocersApp')]")
+    public WebElement view_matched_item_grocersapp_tab;
+    @FindBy(xpath="//ul[@class = 'nav nav-tabs nav-pills']/li/a[contains(text(),'Glomark_lk')]")
+    public WebElement view_matched_item_Glomark_lk_tab;
+
     @FindBy(css = "div.tab-pane.active tbody tr:nth-child(1) td:nth-child(9) p.reason")
     public WebElement view_matched_item_first_row_of_table;
     //Mark accurate/inaccurate

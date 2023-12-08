@@ -45,6 +45,56 @@ public class ScraperPageObjects {
     public WebElement select_Aliexpress_bd;
     @FindBy(xpath = "//*[@for='324']")
     public WebElement select_Diamu_bd;
+    @FindBy(xpath = "//*[@for='325']")
+    public WebElement select_Othoba_bd;
+    @FindBy(xpath = "//*[@for='326']")
+    public WebElement select_Fixit_bd;
+    @FindBy(xpath = "//*[@for='327']")
+    public WebElement select_Ryans_bd;
+
+    //PK Scraper
+    @FindBy(xpath = "//*[@for='1']")
+    public WebElement select_Grocersapp;
+    @FindBy(xpath = "//*[@for='2']")
+    public WebElement select_shophive;
+    @FindBy(xpath = "//*[@for='3']")
+    public WebElement select_ishopping;
+    @FindBy(xpath = "//*[@for='4']")
+    public WebElement select_foodpanda;
+    @FindBy(xpath = "//*[@for='5']")
+    public WebElement select_telemart;
+    @FindBy(xpath = "//*[@for='203']")
+    public WebElement select_carrefour;
+    @FindBy(xpath = "//*[@for='222']")
+    public WebElement select_alfatah;
+    @FindBy(xpath = "//*[@for='316']")
+    public WebElement select_aliexpress;
+    @FindBy(xpath = "//*[@for='322']")
+    public WebElement select_metro;
+    @FindBy(xpath = "//*[@for='323']")
+    public WebElement select_naheed;
+
+    //LK Scraper
+    @FindBy(xpath = "//*[@for='11']")
+    public WebElement select_Keellssuper_lk;
+    @FindBy(xpath = "//*[@for='12']")
+    public WebElement select_Glomark_lk;
+    @FindBy(xpath = "//*[@for='13']")
+    public WebElement select_Wasi_lk;
+    @FindBy(xpath = "//*[@for='14']")
+    public WebElement select_Ideabeam_lk;
+    @FindBy(xpath = "//*[@for='15']")
+    public WebElement select_Greasemonkey_lk;
+    @FindBy(xpath = "//*[@for='282']")
+    public WebElement select_MySoftlogic;
+    @FindBy(xpath = "//*[@for='318']")
+    public WebElement select_AliExpress;
+    @FindBy(xpath = "//*[@for='328']")
+    public WebElement select_MyarpicoLK;
+    @FindBy(xpath = "//*[@for='329']")
+    public WebElement select_BuyAbans;
+    @FindBy(xpath = "//*[@for='330']")
+    public WebElement select_CarGill;
 
     @FindBy(css = ".btn-lg.btn-block.btn-primary")
             public WebElement button_Done;

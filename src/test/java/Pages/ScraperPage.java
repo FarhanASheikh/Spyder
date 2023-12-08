@@ -119,15 +119,39 @@ public class ScraperPage extends Wait {
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Startech_bd)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Aliexpress_bd)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Diamu_bd)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Othoba_bd)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Ryans_bd)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Fixit_bd)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();//Click Done button
                 }break;
                 case "PK":{
-
-
-
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Grocersapp)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_shophive)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_ishopping)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_foodpanda)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_telemart)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_carrefour)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_alfatah)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_aliexpress)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_metro)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_naheed)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();
 
 
+                }
+                break;
+                case "LK":{
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Keellssuper_lk)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Glomark_lk)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Wasi_lk)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Ideabeam_lk)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_Greasemonkey_lk)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_MySoftlogic)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_AliExpress)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_MyarpicoLK)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_BuyAbans)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_CarGill)).click();
+                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();
                 }
 
             }
@@ -145,7 +169,9 @@ public class ScraperPage extends Wait {
 
     public void     get_table_data_before_job_start() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
-        Thread.sleep(40000);
+        Thread.sleep(4000);
+        switch (ThreadStorage.get("venture")){
+            case "BD": {
         boolean ispresent = Wait.waitforelement().until(ExpectedConditions.visibilityOf(spo.check_bd)).isDisplayed();
         Assert.assertTrue(ispresent);
         int Beforejob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
@@ -155,10 +181,33 @@ public class ScraperPage extends Wait {
             a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
         System.out.println(a);
         }
+        break;
+            case "PK":{
+                int Beforejob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
+                Thread.sleep(2000);
+                waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Beforejob_tablesize-2))).click();
+                Thread.sleep(3000);
+                a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
+                System.out.println(a);
+            }
+            break;
+            case "LK":{
+                int Beforejob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
+                Thread.sleep(2000);
+                waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Beforejob_tablesize-2))).click();
+                Thread.sleep(3000);
+                a = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
+                System.out.println(a);
+            }
+
+            }}
+
     public void     getandcomparedata() throws InterruptedException {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         Thread.sleep(10000);
+        switch (ThreadStorage.get("venture")){
+            case "BD": {
         jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.pagination.get(1));
         int Afterjob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
             Thread.sleep(29000);
@@ -166,11 +215,42 @@ public class ScraperPage extends Wait {
         Thread.sleep(20000);
              b = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
         System.out.println(b);
-            Assert.assertEquals(b, a + 4);
+            Assert.assertEquals(b, a + 10);
         Thread.sleep(29000);
         waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-8))).click();
         Thread.sleep(10000);
         System.out.println("Status-- "+b);
 
         }
-    }
+        break;
+            case "PK":{
+                jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.pagination.get(1));
+                int Afterjob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
+                Thread.sleep(2900);
+                waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-2))).click();
+                Thread.sleep(2000);
+                b = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
+                System.out.println(b);
+                Assert.assertEquals(b, a + 10);
+                Thread.sleep(2900);
+                waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-8))).click();
+                Thread.sleep(1000);
+                System.out.println("Status-- "+b);
+            }
+            break;
+            case "LK":{
+                jsExecutor.executeScript("arguments[0].scrollIntoView();",spo.pagination.get(1));
+                int Afterjob_tablesize = Wait.waitforelement().until(ExpectedConditions.visibilityOfAllElements(spo.pagination)).size();
+                Thread.sleep(2900);
+                waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-2))).click();
+                Thread.sleep(2000);
+                b = Integer.parseInt(waitforelement().until(ExpectedConditions.visibilityOf(spo.last_id)).getText());
+                System.out.println(b);
+                Assert.assertEquals(b, a + 10);
+                Thread.sleep(2900);
+                waitforelement().until(ExpectedConditions.elementToBeClickable(spo.pagination.get(Afterjob_tablesize-4))).click();
+                Thread.sleep(1000);
+                System.out.println("Status-- "+b);
+            }
+
+            }}}
