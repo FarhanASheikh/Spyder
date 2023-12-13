@@ -76,17 +76,16 @@ public class VerificationQueuePage extends Wait {
                 Thread.sleep(2000);
                 vqpo.select_Competitor_filter.click();
                 Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
-                        "AliExpress BD\n" +
-                        "Chaldal_bd\n" +
-                        "Diamu BD\n" +
-                        "Fixit BD\n" +
-                        "Othoba BD\n" +
-                        "PandaMart\n" +
-                        "Pickaboo_bd\n" +
-                        "Rokomari BD\n" +
-                        "Ryans BD\n" +
-                        "Shajgoj\n" +
-                        "Startech_BD");
+                        "Alfatah_Pk\n" +
+                        "Carrefour\n" +
+                        "Daraz\n" +
+                        "FoodPanda\n" +
+                        "GrocersApp\n" +
+                        "iShopping\n" +
+                        "Metro PK\n" +
+                        "Naheed PK\n" +
+                        "Shophive\n" +
+                        "Telemart");
 
             }
             break;

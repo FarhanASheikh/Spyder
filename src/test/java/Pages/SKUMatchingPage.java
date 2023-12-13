@@ -927,7 +927,6 @@ public class SKUMatchingPage extends Wait {
                         found = true;
                         break;
                     }
-
                 }
                 if(!found){
                     Assert.fail();

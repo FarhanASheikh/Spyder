@@ -99,7 +99,7 @@ public class Regression_Suit {
 @BeforeClass
 //@Parameters("venture")
 public void venture(){
-          //  String ven = "BD";
+           // String ven = "LK";
           String ven = System.getProperty("venture");
     System.out.println(ven);
     ThreadStorage.put("venture",ven);
