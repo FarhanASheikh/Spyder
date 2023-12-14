@@ -1319,7 +1319,6 @@ public class SKUMatchingPage extends Wait {
                         "iShopping\n" +
                         "FoodPanda\n" +
                         "Telemart\n" +
-                        "Daraz\n" +
                         "Carrefour\n" +
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +

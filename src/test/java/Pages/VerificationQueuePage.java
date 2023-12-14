@@ -77,8 +77,8 @@ public class VerificationQueuePage extends Wait {
                 vqpo.select_Competitor_filter.click();
                 Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
                         "Alfatah_Pk\n" +
+                        "AliExpress PK\n" +
                         "Carrefour\n" +
-                        "Daraz\n" +
                         "FoodPanda\n" +
                         "GrocersApp\n" +
                         "iShopping\n" +

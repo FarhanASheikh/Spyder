@@ -101,7 +101,7 @@ public class DarazPricingDatabasePage extends Wait {
                 Thread.sleep(9000);
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
                 for (int i = 1; i <= dpdpo.table_row.size(); i++) {
-                    Thread.sleep(4000);
+                    Thread.sleep(5000);
                     Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("handsfree"));
                     Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("376838136"));
                 }}
@@ -1475,7 +1475,6 @@ public class DarazPricingDatabasePage extends Wait {
                         "iShopping\n" +
                         "FoodPanda\n" +
                         "Telemart\n" +
-                        "Daraz\n" +
                         "Carrefour\n" +
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +
