@@ -149,7 +149,6 @@ public class ScraperPage extends Wait {
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_MySoftlogic)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_AliExpress)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_MyarpicoLK)).click();
-                    Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_BuyAbans)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.select_CarGill)).click();
                     Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.button_Done)).click();
                 }

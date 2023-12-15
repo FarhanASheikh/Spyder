@@ -89,7 +89,7 @@ public class ScraperPageObjects {
     public WebElement select_MySoftlogic;
     @FindBy(xpath = "//*[@for='318']")
     public WebElement select_AliExpress;
-    @FindBy(xpath = "//*[@for='328']")
+    @FindBy(xpath = "//*[@for='329']")
     public WebElement select_MyarpicoLK;
     @FindBy(xpath = "//*[@for='329']")
     public WebElement select_BuyAbans;

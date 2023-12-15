@@ -153,7 +153,6 @@ public class SKUMatchingPage extends Wait {
                 spo.select_MySoftlogic.click();
                 spo.select_AliExpress.click();
                 spo.select_MyarpicoLK.click();
-                spo.select_BuyAbans.click();
                 spo.select_CarGill.click();
                 String absoluteFilePath = System.getProperty("user.dir") + "/src/test/java/Support_Files/LK/sku_template_1669017946660.csv";
                 File file = new File(absoluteFilePath);

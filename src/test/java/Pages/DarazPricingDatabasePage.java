@@ -102,7 +102,7 @@ public class DarazPricingDatabasePage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
                 for (int i = 1; i <= dpdpo.table_row.size(); i++) {
                     Thread.sleep(5000);
-                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("handsfree"));
+                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("Handsfree"));
                     Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("376838136"));
                 }}
             break;
