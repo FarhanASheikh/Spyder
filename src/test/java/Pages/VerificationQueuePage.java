@@ -60,6 +60,7 @@ public class VerificationQueuePage extends Wait {
                 "Chaldal_bd\n" +
                 "Diamu BD\n" +
                 "Fixit BD\n" +
+                "Gadget And Gear\n" +
                 "Othoba BD\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
@@ -196,11 +197,11 @@ public class VerificationQueuePage extends Wait {
         VerificationQueuePageObjects vqpo = new VerificationQueuePageObjects(driver);
         vqpo.select_industry_filter.click();
         Assert.assertEquals(waitforelement().until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(6) div.optionListContainer")))).getText(),"All\n" +
-                "GM\n" +
                 "EL\n" +
                 "FMCG\n" +
-                "Fashion\n" +
                 "Others\n" +
+                "Fashion\n" +
+                "GM\n" +
                 "Digital Goods\n" +
                 "Mobiles & Tablets\n" +
                 "Kitchen & Dining");

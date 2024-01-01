@@ -1305,7 +1305,8 @@ public class SKUMatchingPage extends Wait {
                         "Othoba BD\n" +
                         "Fixit BD\n" +
                         "Ryans BD\n" +
-                        "Rokomari BD");
+                        "Rokomari BD\n" +
+                        "Gadget And Gear");
             }
             break;
             case "PK": {

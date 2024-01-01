@@ -89,7 +89,8 @@ public class DarazPricingDatabasePage extends Wait {
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
         for (int i = 1; i <= dpdpo.table_row.size(); i++) {
             Thread.sleep(4000);
-            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("dry"));
+            String text = waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText();
+            Assert.assertTrue(text.contains("dry") ||text.contains("Dry"));
             Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("1237482425"));
         }}
             break;
@@ -102,7 +103,8 @@ public class DarazPricingDatabasePage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
                 for (int i = 1; i <= dpdpo.table_row.size(); i++) {
                     Thread.sleep(5000);
-                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("Handsfree"));
+                    String text = waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText();
+                    Assert.assertTrue(text.contains("Handsfree") || text.contains("handsfree"));
                     Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("376838136"));
                 }}
             break;
@@ -115,7 +117,8 @@ public class DarazPricingDatabasePage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
                 for (int i = 1; i <= dpdpo.table_row.size(); i++) {
                     Thread.sleep(4000);
-                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText().contains("samsung"));
+                    String text = waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText();
+                    Assert.assertTrue(text.contains("Samsung") || text.contains("samsung"));
                     Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("168557044"));
                 }}
         }
@@ -1459,7 +1462,8 @@ public class DarazPricingDatabasePage extends Wait {
                 "Othoba BD\n" +
                 "Fixit BD\n" +
                 "Ryans BD\n" +
-                "Rokomari BD");
+                "Rokomari BD\n" +
+                "Gadget And Gear");
     }
         break;
             case "PK":{
