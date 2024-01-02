@@ -30,7 +30,7 @@ public class LoginPage extends Wait {
     public void Verifyfootertext() {
         LoginPageObjects lpo = new LoginPageObjects(driver);
                String footer_text_verify=lpo.footer_text.getText();
-     Assert.assertEquals(footer_text_verify, "All rights reserved © Daraz2023.");
+     Assert.assertEquals(footer_text_verify, "All rights reserved © Daraz2024.");
 
     }
 

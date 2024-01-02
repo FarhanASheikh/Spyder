@@ -1455,6 +1455,7 @@ public class DarazPricingDatabasePage extends Wait {
                 "Chaldal_bd\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
+                "Daraz\n" +
                 "Shajgoj\n" +
                 "Startech_BD\n" +
                 "AliExpress BD\n" +
