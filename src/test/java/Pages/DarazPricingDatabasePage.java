@@ -948,7 +948,7 @@ public class DarazPricingDatabasePage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_dropdown)).click();
                 skumpo.select_telemart.click();
-                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.product_url_input)).sendKeys("https://telemart.pk/durex-play-massage-stimulating-gel-200ml-price-in-pakistan.html");
+                waitforelement().until(ExpectedConditions.visibilityOf(skumpo.product_url_input)).sendKeys("https://www.telemart.pk/durex-play-massage-stimulating-gel-200ml-price-in-pakistan.html");
                 skumpo.add_online_sku_btn.click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.success_msg)).isDisplayed();
                 String toast_msg_text = (skumpo.success_msg).getText();
@@ -1480,6 +1480,7 @@ public class DarazPricingDatabasePage extends Wait {
                         "iShopping\n" +
                         "FoodPanda\n" +
                         "Telemart\n" +
+                        "Daraz\n" +
                         "Carrefour\n" +
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +

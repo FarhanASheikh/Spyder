@@ -81,6 +81,7 @@ public class VerificationQueuePage extends Wait {
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +
                         "Carrefour\n" +
+                        "Daraz\n" +
                         "FoodPanda\n" +
                         "GrocersApp\n" +
                         "iShopping\n" +

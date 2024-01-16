@@ -99,7 +99,8 @@ public class Regression_Suit {
 @BeforeClass
 //@Parameters("venture")
 public void venture(){
-          String ven = System.getProperty("venture");
+         String ven = "BD";
+            // String ven = System.getProperty("venture");
     System.out.println(ven);
     ThreadStorage.put("venture",ven);
 
@@ -318,11 +319,11 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
     public void add_online_competitor_sku_match_valid_url() throws InterruptedException {
         SKUmp.add_online_competitor_sku_match_valid_url();
     }
-    @Test(priority = 45)
+    @Test(priority = 46)
     public void verify_online_match_added() throws InterruptedException {
             SKUmp.verify_online_match_added();
     }
-    @Test(priority = 46)
+    @Test(priority = 45)
     public void add_online_competitor_sku_invalid_url(){
         SKUmp.add_online_competitor_sku_invalid_url();
     }
@@ -598,11 +599,11 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
     public void online_add_online_competitor_sku_match_valid_url() throws InterruptedException {
         SKUmp.add_online_competitor_sku_match_valid_url();
     }
-    @Test(priority = 114)
+    @Test(priority = 115)
     public void online_verify_online_match_added() throws InterruptedException {
         SKUmp.verify_online_match_added();
     }
-    @Test(priority = 115)
+    @Test(priority = 114)
     public void online_add_online_competitor_sku_invalid_url(){
         SKUmp.add_online_competitor_sku_invalid_url();
     }
@@ -869,11 +870,11 @@ public void click_SKUMatching_module3() throws InterruptedException {
     public void offline_add_online_competitor_sku_match_valid_url() throws InterruptedException {
         SKUmp.add_online_competitor_sku_match_valid_url();
     }
-    @Test(priority = 183)
+    @Test(priority = 184)
     public void offline_verify_online_match_added() throws InterruptedException {
         SKUmp.verify_online_match_added();
     }
-    @Test(priority = 184)
+    @Test(priority = 183)
     public void offline_add_online_competitor_sku_invalid_url(){
         SKUmp.add_online_competitor_sku_invalid_url();
     }
@@ -1106,11 +1107,11 @@ public void click_SKUMatching_module3() throws InterruptedException {
     public void  dpdp_add_online_competitor_sku_match_valid_url()throws InterruptedException {
         dpdp.add_online_competitor_sku_match_valid_url();
     }
-    @Test(priority = 244)
+    @Test(priority = 245)
     public void  dpdp_verify_online_match_added()throws InterruptedException {
         dpdp.verify_online_match_added();
     }
-    @Test(priority = 245)
+    @Test(priority = 244)
     public void  dpdp_add_online_competitor_sku_invalid_url()throws InterruptedException {
         dpdp.add_online_competitor_sku_invalid_url();
     }
