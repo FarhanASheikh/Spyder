@@ -281,6 +281,7 @@ public class DarazPricingDatabasePage extends Wait {
         Actions reason = new Actions(driver);
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         DarazPricingDatabasePageObjects dpdpo= new DarazPricingDatabasePageObjects(driver);
+        Thread.sleep(9000);
         switch(ThreadStorage.get("venture")) {
             case "BD": {
                 String competitor_name = waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_competitor_name)).getText();
@@ -1027,7 +1028,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(6000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(7000);
         switch(ThreadStorage.get("venture")){
             case"BD":{
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
@@ -1115,7 +1116,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.product_url_input)).sendKeys("https://www.foodpanda.com.bd/darkstore/xs1w/pandamart-cumilla/product/3435204");
         String btn_class = (waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_online_sku_btn_disabled)).getAttribute("class"));
@@ -1133,7 +1134,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_search_button)).click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         skumpo.add_competitor_sku_offline_tab.click();
@@ -1148,7 +1149,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_search_button)).click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1163,7 +1164,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_search_button)).click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1179,7 +1180,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_search_button)).click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1197,7 +1198,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_search_button)).click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1215,7 +1216,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1235,7 +1236,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1255,7 +1256,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
         for(int i=0; i<skumpo.online_matched_sku_first_row_competitor_sku.size();i++){
@@ -1276,7 +1277,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
         Assert.assertEquals(skumpo.matched_skucompetitor_name.getText(), "test competitor");
@@ -1291,7 +1292,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
         Assert.assertEquals(skumpo.matched_sku_first_row_competitor_price.getText(), "20");
@@ -1305,7 +1306,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)).click();
         Assert.assertEquals(skumpo.matched_sku_first_row_competitor_categrory.getText(), "Cameras");
