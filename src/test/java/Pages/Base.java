@@ -29,7 +29,20 @@ public class Base extends Wait {
             ChromeDriverService service = ChromeDriverService.createDefaultService();
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless", "--disable-gpu", "--window-size=1920,1080", "--window-position=0,0", "--remote-allow-origins=*");
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(service, options);
+        }
+        else if(os.contains("windows"))
+        {
+            WebDriverManager.chromedriver().setup();
+            ChromeDriverService service = ChromeDriverService.createDefaultService();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--headless");
+            options.addArguments("disable-gpu"); // recommended for running in Docker
+            options.setExperimentalOption("useAutomationExtension", false);
+            options.setExperimentalOption("excludeSwitches", Collections.singletonList("enable-automation"));
+            options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-component-update", "disable-default-apps", "disable-popup-blocking"));
+            driver = new ChromeDriver(service, options);
         }
         else {
 
