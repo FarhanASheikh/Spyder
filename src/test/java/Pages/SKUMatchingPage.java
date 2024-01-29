@@ -1091,9 +1091,10 @@ public class SKUMatchingPage extends Wait {
         Assert.assertFalse(button_enabled);
     }
 
-    public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price() {
+    public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
+        Thread.sleep(7000);
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_offline_tab)).click();
         skumpo.offline_match_sku_name_input.sendKeys("TD-122211");
@@ -1155,7 +1156,7 @@ public class SKUMatchingPage extends Wait {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         driver.navigate().refresh();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
-        Thread.sleep(3000);
+        Thread.sleep(8000);
         jsExecutor.executeScript("arguments[0].click();", waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_offline_tab)));
         for(int i=0; i<skumpo.online_matched_sku_first_row_competitor_sku.size();i++){
             skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText();
@@ -1326,7 +1327,8 @@ public class SKUMatchingPage extends Wait {
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +
                         "Metro PK\n" +
-                        "Naheed PK");
+                        "Naheed PK\n" +
+                        "BaGallery PK");
             }
             break;
             case "LK": {
@@ -1520,6 +1522,7 @@ public class SKUMatchingPage extends Wait {
             case "PK": {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
+                Thread.sleep(1000);
                 waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_competitor_dropdown_filters_select_shophive)).click();
                 Thread.sleep(1000);
@@ -3230,6 +3233,7 @@ public class SKUMatchingPage extends Wait {
 
     public void upload_offline_match_valid_file_click_upload() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         Thread.sleep(1000);
         switch (ThreadStorage.get("venture")){
             case "BD":{
@@ -3244,6 +3248,7 @@ public class SKUMatchingPage extends Wait {
     }
     break;
             case"PK":{
+                jsExecutor.executeScript("arguments[0].scrollIntoView();",skumpo.create_task_btn);
                 Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.upload_matches_btn)).click();
                 Wait.waitforelement().until(ExpectedConditions.visibilityOf(skumpo.offline_match_dropdown_selection)).click();
                 String absoluteFilePath = System.getProperty("user.dir")+"/src/test/java/Support_Files/PK/uploaded_file_794_1674827353544.csv";

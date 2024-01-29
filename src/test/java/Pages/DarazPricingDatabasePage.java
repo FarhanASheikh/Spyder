@@ -1363,7 +1363,7 @@ public class DarazPricingDatabasePage extends Wait {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         DarazPricingDatabasePageObjects dpdpo = new DarazPricingDatabasePageObjects(driver);
         driver.navigate().refresh();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
         Thread.sleep(9000);
@@ -1465,7 +1465,8 @@ public class DarazPricingDatabasePage extends Wait {
                 "Fixit BD\n" +
                 "Ryans BD\n" +
                 "Rokomari BD\n" +
-                "Gadget And Gear");
+                "Gadget And Gear\n" +
+                "Mall BD");
     }
         break;
             case "PK":{
@@ -1789,7 +1790,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
@@ -2058,9 +2059,9 @@ public class DarazPricingDatabasePage extends Wait {
         switch(ThreadStorage.get("venture")){
             case"BD":{
 
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
-        dpdpo.dpd_search_button.click();
+        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_search_button)).click();
         Thread.sleep(4000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
@@ -2132,7 +2133,7 @@ public class DarazPricingDatabasePage extends Wait {
         Thread.sleep(4000);
         dpdpo.dpd_product_id_search_input.sendKeys(sku_id);
         dpdpo.dpd_search_button.click();
-        Thread.sleep(4000);
+        Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
         waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
         skumpo.add_competitor_sku_database_tab.click();

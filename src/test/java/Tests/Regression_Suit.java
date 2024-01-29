@@ -99,7 +99,7 @@ public class Regression_Suit {
 @BeforeClass
 //@Parameters("venture")
 public void venture(){
- //           String ven = "BD";
+ //           String ven = "PK";
            String ven = System.getProperty("venture");
     System.out.println(ven);
     ThreadStorage.put("venture",ven);
@@ -352,7 +352,7 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
         SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name();
     }
     @Test(priority = 53)
-    public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price(){
+    public void add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price() throws InterruptedException {
         SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price();
     }
     @Test(priority = 54)
@@ -632,7 +632,7 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
         SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name();
     }
     @Test(priority = 122)
-    public void online_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price(){
+    public void online_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price() throws InterruptedException {
         SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price();
     }
     @Test(priority = 123)
@@ -903,7 +903,7 @@ public void click_SKUMatching_module3() throws InterruptedException {
         SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name();
     }
     @Test(priority = 191)
-    public void offline_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price(){
+    public void offline_add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price() throws InterruptedException {
         SKUmp.add_offline_competitor_sku_match_valid_data_verify_button_disabled_on_sku_name_and_competitor_name_and_price();
     }
     @Test(priority = 192)

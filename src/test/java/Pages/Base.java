@@ -21,6 +21,7 @@ public class Base extends Wait {
 
 
     public WebDriver driver() throws IOException {
+
         String os = System.getProperty("os.name").toLowerCase();
         WebDriverManager.chromedriver().setup();
         System.out.println("\n\nCurrent OS is: "+os+"\n\n");

@@ -62,6 +62,7 @@ public class VerificationQueuePage extends Wait {
                 "Diamu BD\n" +
                 "Fixit BD\n" +
                 "Gadget And Gear\n" +
+                "Mall BD\n" +
                 "Othoba BD\n" +
                 "PandaMart\n" +
                 "Pickaboo_bd\n" +
