@@ -13,7 +13,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Scanner;
 
 
 public class Base extends Wait {
@@ -46,7 +45,6 @@ public class Base extends Wait {
             driver = new ChromeDriver(service, options);
         }
         else {
-
             Runtime.getRuntime().exec("sudo apt-get install xvfb");
             WebDriverManager.chromedriver().setup();
             ChromeDriverService service = ChromeDriverService.createDefaultService();
@@ -63,7 +61,6 @@ public class Base extends Wait {
             options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-component-update", "disable-default-apps", "disable-popup-blocking"));
             Runtime.getRuntime().exec("xvfb-run -a -s \"-screen 0 1920x1080x24\" google-chrome");
             driver = new ChromeDriver(service, options);
-
         }
             driver.get("https://spyder.daraz.com/scrapy-ui/login");//Open Price Scraper Staging Env
         String title = driver.getTitle();

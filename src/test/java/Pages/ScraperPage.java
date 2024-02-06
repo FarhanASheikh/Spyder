@@ -82,7 +82,8 @@ public class ScraperPage extends Wait {
                 Thread.sleep(2000);
 
             }
-    }}
+    }
+    }
 
     public void get_table_data() {
         ScraperPageObjects spo = new ScraperPageObjects(driver);
