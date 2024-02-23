@@ -952,6 +952,7 @@ public class SKUMatchingPage extends Wait {
             break;
             case "LK": {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+                Thread.sleep(2000);
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.matches_popup_keelsuper_tab)).click();
                 for (int i = 0; i < skumpo.online_matched_sku_first_row_competitor_sku.size(); i++) {
                     skumpo.online_matched_sku_first_row_competitor_sku.get(i).getText();
@@ -1316,7 +1317,7 @@ public class SKUMatchingPage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
                 skumpo.add_competitor_sku_database_tab.click();
-                Assert.assertEquals(skumpo.database_tab_competitor_dropdown_filters.getText(), "Select competitor\n" +
+                Assert. assertEquals(skumpo.database_tab_competitor_dropdown_filters.getText(), "Select competitor\n" +
                         "GrocersApp\n" +
                         "Shophive\n" +
                         "iShopping\n" +
@@ -1328,7 +1329,8 @@ public class SKUMatchingPage extends Wait {
                         "AliExpress PK\n" +
                         "Metro PK\n" +
                         "Naheed PK\n" +
-                        "BaGallery PK");
+                        "BaGallery PK\n" +
+                        "Vegas");
             }
             break;
             case "LK": {
@@ -1339,14 +1341,15 @@ public class SKUMatchingPage extends Wait {
                         "Keellssuper_lk\n" +
                         "Glomark_lk\n" +
                         "Wasi_lk\n" +
-                        "Ideabeam_lk\n" +
                         "Greasemonkey_lk\n" +
                         "Daraz\n" +
                         "MySoftlogic\n" +
                         "AliExpress LK\n" +
-                        "MyarpicoLK\n" +
-                        "BuyAbans\n" +
-                        "CarGill");
+                        "Myarpico LK\n" +
+                        "CarGill\n" +
+                        "Singer LK\n" +
+                        "Damro LK\n" +
+                        "Idealz");
             }
         }
     }
@@ -1898,7 +1901,7 @@ public class SKUMatchingPage extends Wait {
                     for (int i = 1; i <= skumpo.database_tab_search_row.size(); i++) {
                         System.out.println("loop" + i);
                         String productname = driver.findElement(By.xpath("//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr[" + i + "]/td[2]")).getText();
-                        Assert.assertTrue(productname.contains("food"));
+                        Assert.assertTrue(productname.contains("food") || productname.contains("Food"));
                         String comp_id = driver.findElement(By.xpath("//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr[" + i + "]/td[3]")).getText();
                         Assert.assertTrue(comp_id.contains("KEEL-LK"));
                     }
@@ -1936,7 +1939,7 @@ public class SKUMatchingPage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.add_competitor_sku_btn)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
                 waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
-                skumpo.database_tab_search_field.sendKeys("Samsung Galaxy A03s 4GB/64GB Company");
+                skumpo.database_tab_search_field.sendKeys("Kelloggs Extra Muesli Fruit & Nut 500G");
                 skumpo.database_tab_search_button.click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_select_sku)).click();
                 skumpo.add_sku_database_btn.click();
@@ -1944,7 +1947,7 @@ public class SKUMatchingPage extends Wait {
             }
         }}
 
-    public void verify_database_match_added() {
+    public void verify_database_match_added() throws InterruptedException {
         SKUMatchingPageObjects skumpo = new SKUMatchingPageObjects(driver);
         driver.navigate().refresh();
         boolean found=false;
@@ -1983,11 +1986,12 @@ public class SKUMatchingPage extends Wait {
             break;
             case "LK": {
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_btn)).click();
+                Thread.sleep(2000);
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.view_matched_item_Glomark_lk_tab)).click();
                 waitforelement().until(ExpectedConditions.visibilityOfAllElements(skumpo.database_tab_sku_from_matched_items)).size();
                 for (int i = 0; i < skumpo.database_tab_sku_from_matched_items.size(); i++)
-                    if (skumpo.database_tab_sku_from_matched_items.get(i).getText().contains("Samsung Galaxy A03s 4GB/64GB Company")) {
-                        Assert.assertEquals(skumpo.database_tab_sku_from_matched_items.get(i).getText(), "Samsung Galaxy A03s 4GB/64GB Company");
+                    if (skumpo.database_tab_sku_from_matched_items.get(i).getText().contains("Kelloggs Extra Muesli Fruit & Nut 500G")) {
+                        Assert.assertEquals(skumpo.database_tab_sku_from_matched_items.get(i).getText(), "Kelloggs Extra Muesli Fruit & Nut 500G");
                         skumpo.cancel_icon.click();
                         found = true;
                     }

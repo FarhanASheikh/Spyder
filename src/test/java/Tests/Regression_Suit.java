@@ -99,8 +99,7 @@ public class Regression_Suit {
 @BeforeClass
 //@Parameters("venture")
 public void venture(){
-        // String ven = "PK";
-          String ven = System.getProperty("venture");
+       String ven = System.getProperty("venture");
     System.out.println(ven);
     ThreadStorage.put("venture",ven);
 
@@ -436,7 +435,7 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
         SKUmp.add_match_database_tab();
     }
     @Test(priority = 74)
-    public void verify_database_match_added(){
+    public void verify_database_match_added() throws InterruptedException {
         SKUmp.verify_database_match_added();
     }
 //    @Test(priority = 75)
@@ -716,7 +715,7 @@ public void verify_check_single_competitor_selection() throws InterruptedExcepti
         SKUmp.add_match_database_tab();
     }
     @Test(priority = 143)
-    public void online_verify_database_match_added(){
+    public void online_verify_database_match_added() throws InterruptedException {
         SKUmp.verify_database_match_added();
     }
 //    @Test(priority = 145)
@@ -987,7 +986,7 @@ public void click_SKUMatching_module3() throws InterruptedException {
         SKUmp.add_match_database_tab();
     }
     @Test(priority = 212)
-    public void offline_verify_database_match_added(){
+    public void offline_verify_database_match_added() throws InterruptedException {
         SKUmp.verify_database_match_added();
     }
 //    @Test(priority = 213)

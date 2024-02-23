@@ -81,6 +81,7 @@ public class VerificationQueuePage extends Wait {
                 Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +
+                        "BaGallery PK\n" +
                         "Carrefour\n" +
                         "Daraz\n" +
                         "FoodPanda\n" +
@@ -89,7 +90,8 @@ public class VerificationQueuePage extends Wait {
                         "Metro PK\n" +
                         "Naheed PK\n" +
                         "Shophive\n" +
-                        "Telemart");
+                        "Telemart\n" +
+                        "Vegas");
 
             }
             break;
@@ -99,15 +101,17 @@ public class VerificationQueuePage extends Wait {
                 Thread.sleep(2000);
                 vqpo.select_Competitor_filter.click();
                 Assert.assertEquals(driver.findElement(By.cssSelector("div.form-row.flex-column.p-3:nth-child(2) div.optionListContainer")).getText(),"All\n" +
-                        "BuyAbans\n" +
+                        "AliExpress LK\n" +
                         "CarGill\n" +
+                        "Damro LK\n" +
                         "Daraz\n" +
                         "Glomark_lk\n" +
                         "Greasemonkey_lk\n" +
-                        "Ideabeam_lk\n" +
+                        "Idealz\n" +
                         "Keellssuper_lk\n" +
-                        "MyarpicoLK\n" +
+                        "Myarpico LK\n" +
                         "MySoftlogic\n" +
+                        "Singer LK\n" +
                         "Wasi_lk");
 
             }

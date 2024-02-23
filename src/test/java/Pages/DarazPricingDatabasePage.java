@@ -83,7 +83,7 @@ public class DarazPricingDatabasePage extends Wait {
         switch (ThreadStorage.get("venture")){
             case"BD":{
         waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("dry");
-        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1237482425");
+        waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1086032647");
         dpdpo.dpd_search_button.click();
         Thread.sleep(9000);
         waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
@@ -91,7 +91,7 @@ public class DarazPricingDatabasePage extends Wait {
             Thread.sleep(4000);
             String text = waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText();
             Assert.assertTrue(text.contains("dry") ||text.contains("Dry"));
-            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("1237482425"));
+            Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("1086032647"));
         }}
             break;
             case"PK":{
@@ -111,7 +111,7 @@ public class DarazPricingDatabasePage extends Wait {
             case"LK":{
 
                 waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_name_search_input)).sendKeys("Samsung");
-                waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("168557044");
+                waitforelement().until(ExpectedConditions.elementToBeClickable(dpdpo.dpd_product_id_search_input)).sendKeys("1117654955");
                 dpdpo.dpd_search_button.click();
                 Thread.sleep(9000);
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.table_row.get(0))).isDisplayed();
@@ -119,7 +119,7 @@ public class DarazPricingDatabasePage extends Wait {
                     Thread.sleep(4000);
                     String text = waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") a"))).getText();
                     Assert.assertTrue(text.contains("Samsung") || text.contains("samsung"));
-                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("168557044"));
+                    Assert.assertTrue(waitforelement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("tbody tr td:nth-child("+i+") p.table-product-id"))).getText().contains("1117654955"));
                 }}
         }
 
@@ -1053,6 +1053,7 @@ public class DarazPricingDatabasePage extends Wait {
             }
             break;
             case"LK":{
+                Thread.sleep(2000);
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.select_competitor_dropdown)).click();
                 skumpo.select_keelsuper.click();
@@ -1487,7 +1488,9 @@ public class DarazPricingDatabasePage extends Wait {
                         "Alfatah_Pk\n" +
                         "AliExpress PK\n" +
                         "Metro PK\n" +
-                        "Naheed PK");
+                        "Naheed PK\n" +
+                        "BaGallery PK\n" +
+                        "Vegas");
             }
             break;
             case "LK":{
@@ -1501,14 +1504,15 @@ public class DarazPricingDatabasePage extends Wait {
                         "Keellssuper_lk\n" +
                         "Glomark_lk\n" +
                         "Wasi_lk\n" +
-                        "Ideabeam_lk\n" +
                         "Greasemonkey_lk\n" +
                         "Daraz\n" +
                         "MySoftlogic\n" +
                         "AliExpress LK\n" +
-                        "MyarpicoLK\n" +
-                        "BuyAbans\n" +
-                        "CarGill");
+                        "Myarpico LK\n" +
+                        "CarGill\n" +
+                        "Singer LK\n" +
+                        "Damro LK\n" +
+                        "Idealz");
             }
         }}
 
@@ -2117,7 +2121,7 @@ public class DarazPricingDatabasePage extends Wait {
                 for (int i = 1; i <= skumpo.database_tab_search_row.size(); i++) {
                     System.out.println("loop" + i);
                     String productname = driver.findElement(By.xpath("//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr[" + i + "]/td[2]")).getText();
-                    Assert.assertTrue(productname.contains("food"));
+                    Assert.assertTrue(productname.contains("food") || productname.contains("Food"));
                     String comp_id = driver.findElement(By.xpath("//*[@class='scrappy-table']/table[@id= 'taskListTable']/tbody/tr[" + i + "]/td[3]")).getText();
                     Assert.assertTrue(comp_id.contains("KEEL-LK"));
                 }
@@ -2168,7 +2172,7 @@ public class DarazPricingDatabasePage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_add_competitor_sku_btn)).click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.popup)).isDisplayed();
                 waitforelement().until(ExpectedConditions.elementToBeClickable(skumpo.add_competitor_sku_database_tab)).click();
-                skumpo.database_tab_search_field.sendKeys("Samsung Galaxy A03s 4GB/64GB Company");
+                skumpo.database_tab_search_field.sendKeys("Samsung Galaxy A03s - 3GB RAM 32GB ROM 6.5 Display 5000mAh Battery");
                 skumpo.database_tab_search_button.click();
                 waitforelement().until(ExpectedConditions.visibilityOf(skumpo.database_tab_select_sku)).click();
                 skumpo.add_sku_database_btn.click();
@@ -2231,8 +2235,8 @@ public class DarazPricingDatabasePage extends Wait {
                 waitforelement().until(ExpectedConditions.visibilityOf(dpdpo.dpd_view_matched_item_btn)).click();
                 Thread.sleep(2000);
                 for (int i = 0; i < skumpo.database_tab_sku_from_matched_items.size(); i++)
-                    if (skumpo.database_tab_sku_from_matched_items.get(i).getText().contains("Samsung Galaxy A03s 4GB/64GB Company")) {
-                        Assert.assertEquals(skumpo.database_tab_sku_from_matched_items.get(i).getText(), "Samsung Galaxy A03s 4GB/64GB Company");
+                    if (skumpo.database_tab_sku_from_matched_items.get(i).getText().contains("Samsung Galaxy A03s - 3GB RAM 32GB ROM 6.5 Display 5000mAh Battery")) {
+                        Assert.assertEquals(skumpo.database_tab_sku_from_matched_items.get(i).getText(), "Samsung Galaxy A03s - 3GB RAM 32GB ROM 6.5 Display 5000mAh Battery");
                         skumpo.cancel_icon.click();
                         found = true;
                     }

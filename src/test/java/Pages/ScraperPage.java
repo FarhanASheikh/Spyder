@@ -104,6 +104,7 @@ public class ScraperPage extends Wait {
         jsExecutor.executeScript("arguments[0].click();", spo.button_Initiate_Job);
         Thread.sleep(4000);
         Wait.waitforelement().until(ExpectedConditions.elementToBeClickable(spo.cancel_button)).click();
+        Thread.sleep(1000);
     }
 
         public void Start_Scraping_Jobs() throws InterruptedException {
